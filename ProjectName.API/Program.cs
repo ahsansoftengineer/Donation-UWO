@@ -4,32 +4,31 @@ namespace ProjectName.API
   {
     public static void Main(string[] args)
     {
-      var builder = WebApplication.CreateBuilder(args);
-
-      // Add services to the container.
-
-      builder.Services.AddControllers();
-      // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-      builder.Services.AddEndpointsApiExplorer();
-      builder.Services.AddSwaggerGen();
-
-      var app = builder.Build();
-
-      // Configure the HTTP request pipeline.
-      if (app.Environment.IsDevelopment())
+      //Log.Logger = new LoggerConfiguration()
+      //  .WriteTo.File(
+      //    path: "d:\\Trevoir\\logs\\log-.txt",
+      //    outputTemplate: "{Timestamp:dd-MM-yyyy HH:mm:ss} [{Level:u3}] {Message: 1j}{NewLine}{Exception}",
+      //    rollingInterval: RollingInterval.Day,
+      //    restrictedToMinimumLevel: LogEventLevel.Information
+      //).CreateLogger();
+      try
       {
-        app.UseSwagger();
-        app.UseSwaggerUI();
+        //Log.Information("Application is Starting");
+        CreateHostBuilder(args).Build().Run();
       }
+      catch (Exception e)
+      {
 
-      app.UseHttpsRedirection();
-
-      app.UseAuthorization();
-
-
-      app.MapControllers();
-
-      app.Run();
+        //Log.Fatal(e, "Application Failed to start");
+      }
     }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+      Host.CreateDefaultBuilder(args)
+      //.UseSerilog()
+      .ConfigureWebHostDefaults(webBuilder =>
+      {
+        webBuilder.UseStartup<Startup>();
+      });
   }
 }
