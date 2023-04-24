@@ -9,18 +9,47 @@ namespace ProjectName.API.DI
 {
   public static partial class DIExternal
   {
-    public static IServiceCollection AddExternal(this IServiceCollection services, IApplicationBuilder app)
+    public static IServiceCollection AddExternalServices(this IServiceCollection services)
     {
-
       services
         .ConfigureIdentity()
         .ConfigureVersioning()
         .ConfigureHttpCacheHeaders()
         .ConfigureRateLimiting();
 
-      app.ConfigureExceptionHandler();
-
       return services;
+    }
+
+    public static IApplicationBuilder AddExternalConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
+    {
+      app.ConfigureDevEnv(env);
+      app.ConfigureExceptionHandler();
+      app.UseHttpsRedirection();
+
+      app.UseCors("CorsPolicyAllowAll");
+
+      // API Caching 2. Setting up Caching
+      app.UseResponseCaching();
+      // API Caching 7. Setting up Caching Profile at Globally
+      app.UseHttpCacheHeaders();
+      // API Throttling 4. Setting up Middleware
+      // This is giving error while runing
+      //app.UseIpRateLimiting();
+
+      app.UseRouting();
+      app.UseAuthorization();
+      app.UseEndpoints(ep =>
+      {
+        // This Routing is useful for MVC type application
+        // Convention Based Routing Schema
+        //ep.MapControllerRoute(
+        //  name: "default",
+        //  pattern: "{controller=Home}/{action=Index}/{id?}"
+        //  );
+        ep.MapControllers();
+      });
+
+      return app;
     }
     public static void ConfigureDevEnv(this IApplicationBuilder app, IWebHostEnvironment env)
     {
@@ -61,7 +90,6 @@ namespace ProjectName.API.DI
     {
       var builder = services
         .AddIdentityCore<ApiUser>(q => q.User.RequireUniqueEmail = true);
-
       builder = new IdentityBuilder(
         builder.UserType,
         typeof(IdentityRole), services);

@@ -7,7 +7,7 @@ namespace ProjectName.API.DI
 
     public static IServiceCollection AddDICommon(this IServiceCollection services)
     {
-      // 1. API Throttling 1: Adding Service
+      // API Throttling 1: Adding Service
       services.AddMemoryCache();
       // API Throttling 3
       services.ConfigureRateLimiting();

@@ -25,18 +25,23 @@ namespace ProjectName.API.Controllers
     }
 
     [HttpGet]
-    public async Task<IActionResult> Gets(
+    public async Task<IActionResult> Gets()
+    {
+      var countries = await UnitOfWork.Countries.GetAll();
+      var result = Mapper.Map<IList<CountryDTO>>(countries);
+      return Ok(result);
+    }
+    [HttpGet("GetPagging")]
+    public async Task<IActionResult> GetPagging(
       [FromQuery] RequestParams query)
     {
-      //var countries = await UnitOfWork.Countries.GetPagedList(query);
-      var countries = await UnitOfWork.Countries.GetAll();
+      var countries = await UnitOfWork.Countries.GetPagedList(query);
       var result = Mapper.Map<IList<CountryDTO>>(countries);
       return Ok(result);
     }
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
-
       var country = await UnitOfWork.Countries.Get(q => q.Id == id);
       var result = Mapper.Map<CountryDTO>(country);
       return Ok(result);
