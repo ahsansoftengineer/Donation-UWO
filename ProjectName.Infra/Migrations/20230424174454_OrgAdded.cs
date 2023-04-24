@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectName.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class NameOfMigration : Migration
+    public partial class OrgAdded : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,6 +52,22 @@ namespace ProjectName.Infra.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Countries", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Orgs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orgs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -185,8 +201,8 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "ApiUserId", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "087db682-97b0-4625-9d79-fbd7f7d01823", null, null, "Administrator", "ADMINISTRATOR" },
-                    { "be805881-be97-48ef-abf5-d1dca3c39f74", null, null, "User", "USER" }
+                    { "8679e4f2-0e9d-4108-932b-d58071e18818", null, null, "Administrator", "ADMINISTRATOR" },
+                    { "ccbd2e75-89c1-4402-9fe3-986dbef4587d", null, null, "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -198,6 +214,15 @@ namespace ProjectName.Infra.Migrations
                     { 2, "India", "IND" },
                     { 3, "United State America", "USA" },
                     { 4, "Europe", "ER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Orgs",
+                columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, "Monday, 1 January 0001", "No Description", "Dawat-e-Islami", "Monday, 1 January 0001" },
+                    { 2, "Monday, 1 January 0001", "No Description", "Jamia", "Monday, 1 January 0001" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -265,6 +290,9 @@ namespace ProjectName.Infra.Migrations
 
             migrationBuilder.DropTable(
                 name: "Countries");
+
+            migrationBuilder.DropTable(
+                name: "Orgs");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

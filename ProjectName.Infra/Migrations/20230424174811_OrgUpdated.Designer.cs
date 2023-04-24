@@ -12,8 +12,8 @@ using ProjectName.Infra.Context;
 namespace ProjectName.Infra.Migrations
 {
     [DbContext(typeof(DBCntxt))]
-    [Migration("20230423215839_NameOfMigration")]
-    partial class NameOfMigration
+    [Migration("20230424174811_OrgUpdated")]
+    partial class OrgUpdated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,13 +59,13 @@ namespace ProjectName.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "be805881-be97-48ef-abf5-d1dca3c39f74",
+                            Id = "10a05c73-ba58-437a-9e32-9df937618fca",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "087db682-97b0-4625-9d79-fbd7f7d01823",
+                            Id = "868bb11d-1007-4a05-9ad5-547b1845d82a",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -290,6 +290,49 @@ namespace ProjectName.Infra.Migrations
                             Id = 4,
                             Name = "Europe",
                             ShortName = "ER"
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Org", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedAt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedAt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orgs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = "Monday, 24 April 2023",
+                            Description = "No Description",
+                            Title = "Dawat-e-Islami",
+                            UpdatedAt = "Monday, 24 April 2023"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = "Monday, 24 April 2023",
+                            Description = "No Description",
+                            Title = "Jamia",
+                            UpdatedAt = "Monday, 24 April 2023"
                         });
                 });
 

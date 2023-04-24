@@ -14,6 +14,7 @@ namespace ProjectName.API.Config
       // API is Depending on both Domain and Infrastructure
 
       CreateMap<Country, CountryDTO>().ReverseMap();
+      CreateMap<Org, BaseDTOCreateFull>().ReverseMap();
       //CreateMap<Country, CreateCountryDTO>().ReverseMap();
       //CreateMap<Hotel, HotelDTO>().ReverseMap();
       //CreateMap<Hotel, CreateHotelDTO>().ReverseMap();

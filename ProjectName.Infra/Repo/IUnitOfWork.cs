@@ -5,7 +5,7 @@ namespace ProjectName.Infra.Repo
   public interface IUnitOfWork : IDisposable
   {
     IGenericRepo<Country> Countries { get; }  // CountryRepo ???
-    //IGenericRepo<Hotel> Hotels { get; } //
+    IGenericRepo<Org> Orgs { get; }  
 
     Task Save();
   }

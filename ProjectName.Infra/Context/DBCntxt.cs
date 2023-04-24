@@ -9,6 +9,7 @@ namespace ProjectName.Infra.Context
   {
     public DBCntxt(DbContextOptions options) : base(options) { }
     public DbSet<Country> Countries { get; set; }
+    public DbSet<Org> Orgs{ get; set; }
     //public DbSet<Hotel> Hotels { get; set; } //
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -20,6 +21,9 @@ namespace ProjectName.Infra.Context
       
       builder.ApplyConfiguration(
         new CountryConfig());
+
+      builder.ApplyConfiguration(
+        new OrgConfig());
       //builder.ApplyConfiguration(
       //  new HotelConfiguration()); //
       builder.ApplyConfiguration(

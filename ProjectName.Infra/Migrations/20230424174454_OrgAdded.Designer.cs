@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectName.Infra.Context;
 
@@ -11,9 +12,11 @@ using ProjectName.Infra.Context;
 namespace ProjectName.Infra.Migrations
 {
     [DbContext(typeof(DBCntxt))]
-    partial class DBCntxtModelSnapshot : ModelSnapshot
+    [Migration("20230424174454_OrgAdded")]
+    partial class OrgAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,13 +59,13 @@ namespace ProjectName.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "10a05c73-ba58-437a-9e32-9df937618fca",
+                            Id = "ccbd2e75-89c1-4402-9fe3-986dbef4587d",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "868bb11d-1007-4a05-9ad5-547b1845d82a",
+                            Id = "8679e4f2-0e9d-4108-932b-d58071e18818",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -318,18 +321,18 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = "Monday, 24 April 2023",
+                            CreatedAt = "Monday, 1 January 0001",
                             Description = "No Description",
                             Title = "Dawat-e-Islami",
-                            UpdatedAt = "Monday, 24 April 2023"
+                            UpdatedAt = "Monday, 1 January 0001"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = "Monday, 24 April 2023",
+                            CreatedAt = "Monday, 1 January 0001",
                             Description = "No Description",
                             Title = "Jamia",
-                            UpdatedAt = "Monday, 24 April 2023"
+                            UpdatedAt = "Monday, 1 January 0001"
                         });
                 });
 
