@@ -12,8 +12,8 @@ using ProjectName.Infra.Context;
 namespace ProjectName.Infra.Migrations
 {
     [DbContext(typeof(DBCntxt))]
-    [Migration("20230424174811_OrgUpdated")]
-    partial class OrgUpdated
+    [Migration("20230424181545_OrgUpdated1")]
+    partial class OrgUpdated1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,13 +59,13 @@ namespace ProjectName.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "10a05c73-ba58-437a-9e32-9df937618fca",
+                            Id = "3a989162-29e1-4622-9f66-faa130bfe2a1",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "868bb11d-1007-4a05-9ad5-547b1845d82a",
+                            Id = "ff4da87a-2fb6-4a9e-9abf-94eeb4343734",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -295,14 +295,14 @@ namespace ProjectName.Infra.Migrations
 
             modelBuilder.Entity("ProjectName.Infra.Entity.Org", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -310,8 +310,8 @@ namespace ProjectName.Infra.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -321,18 +321,18 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = "Monday, 24 April 2023",
+                            CreatedAt = new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2310),
                             Description = "No Description",
                             Title = "Dawat-e-Islami",
-                            UpdatedAt = "Monday, 24 April 2023"
+                            UpdatedAt = new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2357)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = "Monday, 24 April 2023",
+                            CreatedAt = new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2359),
                             Description = "No Description",
                             Title = "Jamia",
-                            UpdatedAt = "Monday, 24 April 2023"
+                            UpdatedAt = new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2359)
                         });
                 });
 

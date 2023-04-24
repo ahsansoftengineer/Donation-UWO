@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectName.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class OrgAdded : Migration
+    public partial class OrgUpdated1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -62,8 +62,8 @@ namespace ProjectName.Infra.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -201,8 +201,8 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "ApiUserId", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "8679e4f2-0e9d-4108-932b-d58071e18818", null, null, "Administrator", "ADMINISTRATOR" },
-                    { "ccbd2e75-89c1-4402-9fe3-986dbef4587d", null, null, "User", "USER" }
+                    { "3a989162-29e1-4622-9f66-faa130bfe2a1", null, null, "User", "USER" },
+                    { "ff4da87a-2fb6-4a9e-9abf-94eeb4343734", null, null, "Administrator", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
@@ -221,8 +221,8 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "Monday, 1 January 0001", "No Description", "Dawat-e-Islami", "Monday, 1 January 0001" },
-                    { 2, "Monday, 1 January 0001", "No Description", "Jamia", "Monday, 1 January 0001" }
+                    { 1, new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2310), "No Description", "Dawat-e-Islami", new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2357) },
+                    { 2, new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2359), "No Description", "Jamia", new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2359) }
                 });
 
             migrationBuilder.CreateIndex(

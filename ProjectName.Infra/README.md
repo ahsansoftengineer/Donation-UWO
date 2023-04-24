@@ -26,7 +26,7 @@ dotnet ef migrations add NameOfMigration --context DBCntx // When you have Two o
 
 UPDATE-DATABASE -Context DatabaseContext // PM Package Manager Console
 
-// Before Running the Below Command Ensure the Project is not Running
+// Before Running the Below Command Ensure the Project is not Running Because DB In Use
 dotnet ef database update -p ProjectName.Infra -s ProjectName.Api --connection "SERVER=.;DATABASE=Test;USER=sa;PASSWORD=asdf1234;Encrypt=false"
 
 dotnet run --project ProjectName.Api

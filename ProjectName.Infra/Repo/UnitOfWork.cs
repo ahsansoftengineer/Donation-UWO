@@ -1,4 +1,6 @@
-﻿using ProjectName.Infra.Context;
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore;
+using ProjectName.Infra.Context;
 using ProjectName.Infra.Entity;
 
 namespace ProjectName.Infra.Repo
@@ -25,7 +27,25 @@ namespace ProjectName.Infra.Repo
 
     public async Task Save()
     {
+      AddTimestamps();
       await _context.SaveChangesAsync();
+    }
+    private void AddTimestamps()
+    {
+      var entities = _context.ChangeTracker.Entries()
+          .Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
+
+      foreach (var entity in entities)
+      {
+        var now = DateTime.UtcNow; // current datetime
+        Console.WriteLine(entity.State);
+        if (entity.State == EntityState.Added)
+        {
+          ((BaseEntity)entity.Entity).CreatedAt = now;
+        } 
+        //EntityState.Detached, EntityState.Deleted, EntityState.Unchanged
+        ((BaseEntity)entity.Entity).UpdatedAt = now;
+      }
     }
   }
 }

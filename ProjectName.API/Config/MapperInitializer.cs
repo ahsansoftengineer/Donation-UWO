@@ -15,6 +15,7 @@ namespace ProjectName.API.Config
 
       CreateMap<Country, CountryDTO>().ReverseMap();
       CreateMap<Org, BaseDTOCreateFull>().ReverseMap();
+      CreateMap<Org, BaseDTOCreate>().ReverseMap();
       //CreateMap<Country, CreateCountryDTO>().ReverseMap();
       //CreateMap<Hotel, HotelDTO>().ReverseMap();
       //CreateMap<Hotel, CreateHotelDTO>().ReverseMap();

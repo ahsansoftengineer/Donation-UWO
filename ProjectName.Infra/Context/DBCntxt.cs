@@ -9,7 +9,7 @@ namespace ProjectName.Infra.Context
   {
     public DBCntxt(DbContextOptions options) : base(options) { }
     public DbSet<Country> Countries { get; set; }
-    public DbSet<Org> Orgs{ get; set; }
+    public DbSet<Org> Orgs { get; set; }
     //public DbSet<Hotel> Hotels { get; set; } //
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -18,7 +18,7 @@ namespace ProjectName.Infra.Context
       base.OnModelCreating(builder);
 
       // builder.Entity<Country>().HasData(SeedCountry.Data); //
-      
+
       builder.ApplyConfiguration(
         new CountryConfig());
 
@@ -29,6 +29,7 @@ namespace ProjectName.Infra.Context
       builder.ApplyConfiguration(
         new RoleConfig());
     }
+
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     //{
     //  base.OnConfiguring(optionsBuilder);
@@ -39,6 +40,6 @@ namespace ProjectName.Infra.Context
     //    typeof(DonationDbContext).Assembly
     //  );
     //  base.OnModelCreating(builder);
-    //}
+    //}    
   }
 }

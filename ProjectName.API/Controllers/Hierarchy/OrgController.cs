@@ -107,7 +107,7 @@ namespace ProjectName.API.Controllers.Hierarchy
           return BadRequest("Submit Data is Invalid");
         }
 
-        Mapper.Map(data, item);
+        var result = Mapper.Map(data, item);
         UnitOfWork.Orgs.Update(item);
         await UnitOfWork.Save();
         return NoContent();

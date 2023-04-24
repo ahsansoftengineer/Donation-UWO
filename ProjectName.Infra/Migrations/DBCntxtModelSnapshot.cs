@@ -56,13 +56,13 @@ namespace ProjectName.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "10a05c73-ba58-437a-9e32-9df937618fca",
+                            Id = "3df04e5e-222c-4c60-9bcd-c8031b30c863",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "868bb11d-1007-4a05-9ad5-547b1845d82a",
+                            Id = "e34dffea-d6c2-4f93-af8d-a5ff688bb994",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -292,14 +292,14 @@ namespace ProjectName.Infra.Migrations
 
             modelBuilder.Entity("ProjectName.Infra.Entity.Org", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -307,8 +307,8 @@ namespace ProjectName.Infra.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -318,18 +318,18 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = "Monday, 24 April 2023",
+                            CreatedAt = new DateTime(2023, 4, 24, 19, 15, 16, 81, DateTimeKind.Utc).AddTicks(7708),
                             Description = "No Description",
                             Title = "Dawat-e-Islami",
-                            UpdatedAt = "Monday, 24 April 2023"
+                            UpdatedAt = new DateTime(2023, 4, 24, 19, 15, 16, 81, DateTimeKind.Utc).AddTicks(7713)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = "Monday, 24 April 2023",
+                            CreatedAt = new DateTime(2023, 4, 24, 19, 15, 16, 81, DateTimeKind.Utc).AddTicks(7715),
                             Description = "No Description",
                             Title = "Jamia",
-                            UpdatedAt = "Monday, 24 April 2023"
+                            UpdatedAt = new DateTime(2023, 4, 24, 19, 15, 16, 81, DateTimeKind.Utc).AddTicks(7716)
                         });
                 });
 
