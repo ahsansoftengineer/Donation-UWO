@@ -14,7 +14,7 @@ namespace ProjectName.API.DI
       services
         .ConfigureIdentity()
         .ConfigureVersioning()
-        .ConfigureHttpCacheHeaders()
+        //.ConfigureHttpCacheHeaders() // Enable on Production
         .ConfigureRateLimiting();
 
       return services;
@@ -29,12 +29,12 @@ namespace ProjectName.API.DI
       app.UseCors("CorsPolicyAllowAll");
 
       // API Caching 2. Setting up Caching
-      app.UseResponseCaching();
+      //app.UseResponseCaching(); // Enable Production
       // API Caching 7. Setting up Caching Profile at Globally
-      app.UseHttpCacheHeaders();
+      //app.UseHttpCacheHeaders(); // Enable Production
       // API Throttling 4. Setting up Middleware
-      // This is giving error while runing
-      //app.UseIpRateLimiting();
+      // This is giving error while running
+      //app.UseIpRateLimiting(); // Prevent Unnecessary Http Call from same User
 
       app.UseRouting();
       app.UseAuthorization();

@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using ProjectName.Domain.Model;
+using ProjectName.Domain.Model.Base;
 using ProjectName.Infra.Entity;
+using ProjectName.Infra.Entity.Hierarchy;
 
 namespace ProjectName.API.Config
 {
-  public class MapperInitializer : Profile
+    public class MapperInitializer : Profile
   {
     public MapperInitializer()
     {

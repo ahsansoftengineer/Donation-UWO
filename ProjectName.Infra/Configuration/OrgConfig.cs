@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProjectName.Infra.Entity;
+using ProjectName.Infra.Entity.Hierarchy;
 
 namespace ProjectName.Infra.Configuration
 {
-  internal class OrgConfig : IEntityTypeConfiguration<Org>
+    internal class OrgConfig : IEntityTypeConfiguration<Org>
   {
     public void Configure(EntityTypeBuilder<Org> builder)
     {

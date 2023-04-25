@@ -2,10 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectName.Infra.Configuration;
 using ProjectName.Infra.Entity;
+using ProjectName.Infra.Entity.Hierarchy;
 
 namespace ProjectName.Infra.Context
 {
-  public class DBCntxt : IdentityDbContext<ApiUser>
+    public class DBCntxt : IdentityDbContext<ApiUser>
   {
     public DBCntxt(DbContextOptions options) : base(options) { }
     public DbSet<Country> Countries { get; set; }

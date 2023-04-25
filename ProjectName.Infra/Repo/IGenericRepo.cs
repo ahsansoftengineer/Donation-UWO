@@ -8,6 +8,8 @@ namespace ProjectName.Infra.Repo
   {
     Task<List<T>> GetAll(
       Expression<Func<T, bool>>? expression = null,
+      // OrderBy UpdatedAt for Looking at the currently updated record at top in the list
+      // We need to set it to default
       Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
       List<string>? includes = null
     );
@@ -16,6 +18,8 @@ namespace ProjectName.Infra.Repo
       RequestParams? param = null,
       List<string>? includes = null,
       Expression<Func<T, bool>>? expression = null,
+      // OrderBy UpdatedAt for Looking at the currently updated record at top in the list
+      // We need to set it to default
       Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null
      );
 
