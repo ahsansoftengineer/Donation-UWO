@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProjectName.Infra.Entity.Hierarchy;
 
-namespace ProjectName.Infra.Configuration
+namespace ProjectName.Infra.Config.Hierarchy
 {
   internal class SystemzConfig : IEntityTypeConfiguration<Systemz>
   {
@@ -13,7 +13,7 @@ namespace ProjectName.Infra.Configuration
         {
           Id = 1,
           Title = "Systemz 1",
-          OrgId= 1,
+          OrgId = 1,
           Description = "Systemz 1 Description",
         },
          new Systemz

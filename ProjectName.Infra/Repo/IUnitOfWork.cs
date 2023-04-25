@@ -7,9 +7,9 @@ namespace ProjectName.Infra.Repo
   {
     Task Save();
 
-    IGenericRepo<Country> Countries { get; }  // CountryRepo ???
-    IGenericRepo<Org> Orgs { get; }
+    IGenericRepo<Org> Orgs { get; } // Alternate of OrgRepo
     IGenericRepo<Systemz> Systemzs { get; }
+    IGenericRepo<BG> BGs { get; }
 
 
   }

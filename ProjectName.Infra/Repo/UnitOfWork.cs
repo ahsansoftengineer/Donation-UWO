@@ -9,18 +9,18 @@ namespace ProjectName.Infra.Repo
     public class UnitOfWork : IUnitOfWork
   {
     private readonly DBCntxt _context;
-    private IGenericRepo<Country> _countries;
     private IGenericRepo<Org> _orgs;
     private IGenericRepo<Systemz> _systemz;
+    private IGenericRepo<BG> _bgs;
 
     public UnitOfWork(DBCntxt context)
     {
       _context = context;
     }
     // ??= C# 9 Short-hand Syntax
-    public IGenericRepo<Country> Countries => _countries ??= new GenericRepo<Country>(_context);
     public IGenericRepo<Org> Orgs => _orgs ??= new GenericRepo<Org>(_context);
     public IGenericRepo<Systemz> Systemzs => _systemz ??= new GenericRepo<Systemz>(_context);
+    public IGenericRepo<BG> BGs => _bgs ??= new GenericRepo<BG>(_context);
 
     public void Dispose()
     {

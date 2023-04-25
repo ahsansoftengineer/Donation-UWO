@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProjectName.Infra.Entity.Hierarchy;
 
-namespace ProjectName.Infra.Configuration
+namespace ProjectName.Infra.Config.Hierarchy
 {
   internal class OrgConfig : IEntityTypeConfiguration<Org>
   {
