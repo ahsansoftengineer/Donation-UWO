@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProjectName.Domain.Model;
+using ProjectName.Domain.Model.Common;
 using ProjectName.Infra.Context;
 using System.Linq.Expressions;
 using X.PagedList;
@@ -69,11 +69,11 @@ namespace ProjectName.Infra.Repo
       return await query.AsNoTracking().ToListAsync();
     }
 
-    // X.PagedList.Mvc.Core ->  X_Pagedist Library Requires
+    // X.PagedList.Mvc.Core ->  X_PagedList Library Requires
     public async Task<IPagedList<T>> GetPagedList(
       RequestParams? param = null,
       List<string>? includes = null,
-       Expression<Func<T, bool>>? expression = null,
+      Expression<Func<T, bool>>? expression = null,
       Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null)
     {
       IQueryable<T> query = _db;

@@ -10,16 +10,16 @@ namespace ProjectName.API
       //    outputTemplate: "{Timestamp:dd-MM-yyyy HH:mm:ss} [{Level:u3}] {Message: 1j}{NewLine}{Exception}",
       //    rollingInterval: RollingInterval.Day,
       //    restrictedToMinimumLevel: LogEventLevel.Information
-      //).CreateLogger();
+      //).CreateLogger(); //
       try
       {
-        //Log.Information("Application is Starting");
+        //Log.Information("Application is Starting"); // 
         CreateHostBuilder(args).Build().Run();
       }
       catch (Exception e)
       {
 
-        //Log.Fatal(e, "Application Failed to start");
+        //Log.Fatal(e, "Application Failed to start"); //
       }
     }
 

@@ -4,7 +4,7 @@ using ProjectName.Infra.Entity.Hierarchy;
 
 namespace ProjectName.Infra.Configuration
 {
-    internal class OrgConfig : IEntityTypeConfiguration<Org>
+  internal class OrgConfig : IEntityTypeConfiguration<Org>
   {
     public void Configure(EntityTypeBuilder<Org> builder)
     {
@@ -12,18 +12,14 @@ namespace ProjectName.Infra.Configuration
         new Org
         {
           Id = 1,
-          Title = "Dawat-e-Islami",
-          Description = "No Description",
-          CreatedAt = DateTime.UtcNow,
-          UpdatedAt = DateTime.UtcNow
+          Title = "Org 1",
+          Description = "Org 1 Description",
         },
          new Org
          {
            Id = 2,
-           Title = "Jamia",
-           Description = "No Description",
-           CreatedAt = DateTime.UtcNow,
-           UpdatedAt = DateTime.UtcNow
+           Title = "Org 2",
+           Description = "Org 2 Description",
          }
       );
     }

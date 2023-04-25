@@ -1,7 +1,7 @@
 ﻿using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
-using ProjectName.Domain.Model;
+using ProjectName.Domain.Model.Common;
 using ProjectName.Infra.Context;
 using ProjectName.Infra.Entity;
 

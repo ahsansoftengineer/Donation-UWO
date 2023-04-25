@@ -1,10 +1,10 @@
-﻿using ProjectName.Domain.Model;
+﻿using ProjectName.Domain.Model.Common;
 using System.Linq.Expressions;
 using X.PagedList;
 
 namespace ProjectName.Infra.Repo
 {
-  public interface IGenericRepo<T> where T : class
+    public interface IGenericRepo<T> where T : class
   {
     Task<List<T>> GetAll(
       Expression<Func<T, bool>>? expression = null,

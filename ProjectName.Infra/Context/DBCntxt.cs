@@ -6,12 +6,11 @@ using ProjectName.Infra.Entity.Hierarchy;
 
 namespace ProjectName.Infra.Context
 {
-    public class DBCntxt : IdentityDbContext<ApiUser>
+  public class DBCntxt : IdentityDbContext<ApiUser>
   {
     public DBCntxt(DbContextOptions options) : base(options) { }
-    public DbSet<Country> Countries { get; set; }
     public DbSet<Org> Orgs { get; set; }
-    //public DbSet<Hotel> Hotels { get; set; } //
+    public DbSet<Systemz> Systemzs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -20,15 +19,9 @@ namespace ProjectName.Infra.Context
 
       // builder.Entity<Country>().HasData(SeedCountry.Data); //
 
-      builder.ApplyConfiguration(
-        new CountryConfig());
-
-      builder.ApplyConfiguration(
-        new OrgConfig());
-      //builder.ApplyConfiguration(
-      //  new HotelConfiguration()); //
-      builder.ApplyConfiguration(
-        new RoleConfig());
+      builder.ApplyConfiguration(new OrgConfig());
+      builder.ApplyConfiguration(new SystemzConfig());
+      builder.ApplyConfiguration(new RoleConfig());
     }
 
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

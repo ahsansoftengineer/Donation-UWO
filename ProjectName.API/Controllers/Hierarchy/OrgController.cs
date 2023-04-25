@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Marvin.Cache.Headers;
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.Model.Base;
+using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
 
@@ -36,7 +36,7 @@ namespace ProjectName.API.Controllers.Hierarchy
       try
       {
         var list = await UnitOfWork.Orgs.GetAll();
-        var result = Mapper.Map<IList<BaseDTOCreateFull>>(list);
+        var result = Mapper.Map<IList<OrgDTO>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -44,14 +44,14 @@ namespace ProjectName.API.Controllers.Hierarchy
         return CatchException(ex, nameof(Gets));
       }
     }
-    [HttpGet("{id:int}", Name = "Get")]
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
       var single = await UnitOfWork.Orgs.Get(
         q => q.Id == id
         // ,new List<string> { "Systemz" }
      );
-      var result = Mapper.Map<BaseDTOCreateFull>(single);
+      var result = Mapper.Map<BaseDTOFull>(single);
       //result.Systemz.Hotels = null; //
       return Ok(result);
     }
@@ -60,7 +60,8 @@ namespace ProjectName.API.Controllers.Hierarchy
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<IActionResult> Create([FromBody] BaseDTOCreate data)
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> Create([FromBody] OrgDTOCreate data)
     {
       if (!ModelState.IsValid) return CreateInvalid();
       try
@@ -70,7 +71,8 @@ namespace ProjectName.API.Controllers.Hierarchy
         var result = Mapper.Map<Org>(data);
         await UnitOfWork.Orgs.Insert(result);
         await UnitOfWork.Save();
-        return CreatedAtRoute("Get", new { id = result.Id }, result);
+        return Ok(result);
+        //return CreatedAtRoute("Get", new { id = result.Id }, result);
         //CreatedResult
         //CreatedAtAction
         //CreatedAtActionResult
@@ -84,7 +86,7 @@ namespace ProjectName.API.Controllers.Hierarchy
 
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<IActionResult> Update(int id, [FromBody] BaseDTOCreate data)
+    public async Task<IActionResult> Update(int id, [FromBody] OrgDTOCreate data)
     {
       if (!ModelState.IsValid || id < 1) return UpdateInvalid();
       try
@@ -100,7 +102,6 @@ namespace ProjectName.API.Controllers.Hierarchy
       }
       catch (Exception ex)
       {
-
         return CatchException(ex, nameof(Update));
       }
     }

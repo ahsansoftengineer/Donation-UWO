@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectName.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class OrgUpdated1 : Migration
+    public partial class SystemzCRUD : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -38,20 +38,6 @@ namespace ProjectName.Infra.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Countries",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ShortName = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Countries", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -152,6 +138,29 @@ namespace ProjectName.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Systemzs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrgId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Systemzs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Systemzs_Orgs_OrgId",
+                        column: x => x.OrgId,
+                        principalTable: "Orgs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -201,19 +210,8 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "ApiUserId", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "3a989162-29e1-4622-9f66-faa130bfe2a1", null, null, "User", "USER" },
-                    { "ff4da87a-2fb6-4a9e-9abf-94eeb4343734", null, null, "Administrator", "ADMINISTRATOR" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Countries",
-                columns: new[] { "Id", "Name", "ShortName" },
-                values: new object[,]
-                {
-                    { 1, "Pakistan", "PK" },
-                    { 2, "India", "IND" },
-                    { 3, "United State America", "USA" },
-                    { 4, "Europe", "ER" }
+                    { "91bfb847-70e6-44f2-9ea2-f30e85384399", null, null, "User", "USER" },
+                    { "e85883a9-4fe5-413f-a4d3-ff09f3e5b992", null, null, "Administrator", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
@@ -221,8 +219,17 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2310), "No Description", "Dawat-e-Islami", new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2357) },
-                    { 2, new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2359), "No Description", "Jamia", new DateTime(2023, 4, 24, 18, 15, 45, 586, DateTimeKind.Utc).AddTicks(2359) }
+                    { 1, new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(7918), "Org 1 Description", "Org 1", new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(7921) },
+                    { 2, new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(7925), "Org 2 Description", "Org 2", new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(7926) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Systemzs",
+                columns: new[] { "Id", "CreatedAt", "Description", "OrgId", "Title", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(8184), "Systemz 1 Description", 1, "Systemz 1", new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(8184) },
+                    { 2, new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(8187), "Systemz 2 Description", 2, "Systemz 2", new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(8187) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -268,6 +275,11 @@ namespace ProjectName.Infra.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Systemzs_OrgId",
+                table: "Systemzs",
+                column: "OrgId");
         }
 
         /// <inheritdoc />
@@ -289,13 +301,13 @@ namespace ProjectName.Infra.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Countries");
-
-            migrationBuilder.DropTable(
-                name: "Orgs");
+                name: "Systemzs");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Orgs");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

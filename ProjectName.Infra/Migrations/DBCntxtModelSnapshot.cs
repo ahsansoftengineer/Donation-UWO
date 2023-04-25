@@ -56,13 +56,13 @@ namespace ProjectName.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3df04e5e-222c-4c60-9bcd-c8031b30c863",
+                            Id = "91bfb847-70e6-44f2-9ea2-f30e85384399",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "e34dffea-d6c2-4f93-af8d-a5ff688bb994",
+                            Id = "e85883a9-4fe5-413f-a4d3-ff09f3e5b992",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -245,52 +245,7 @@ namespace ProjectName.Infra.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("ProjectName.Infra.Entity.Country", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShortName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Countries");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Pakistan",
-                            ShortName = "PK"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "India",
-                            ShortName = "IND"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "United State America",
-                            ShortName = "USA"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Europe",
-                            ShortName = "ER"
-                        });
-                });
-
-            modelBuilder.Entity("ProjectName.Infra.Entity.Org", b =>
+            modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.Org", b =>
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
@@ -318,18 +273,68 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 24, 19, 15, 16, 81, DateTimeKind.Utc).AddTicks(7708),
-                            Description = "No Description",
-                            Title = "Dawat-e-Islami",
-                            UpdatedAt = new DateTime(2023, 4, 24, 19, 15, 16, 81, DateTimeKind.Utc).AddTicks(7713)
+                            CreatedAt = new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(7918),
+                            Description = "Org 1 Description",
+                            Title = "Org 1",
+                            UpdatedAt = new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(7921)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 24, 19, 15, 16, 81, DateTimeKind.Utc).AddTicks(7715),
-                            Description = "No Description",
-                            Title = "Jamia",
-                            UpdatedAt = new DateTime(2023, 4, 24, 19, 15, 16, 81, DateTimeKind.Utc).AddTicks(7716)
+                            CreatedAt = new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(7925),
+                            Description = "Org 2 Description",
+                            Title = "Org 2",
+                            UpdatedAt = new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(7926)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.Systemz", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrgId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrgId");
+
+                    b.ToTable("Systemzs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(8184),
+                            Description = "Systemz 1 Description",
+                            OrgId = 1,
+                            Title = "Systemz 1",
+                            UpdatedAt = new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(8184)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(8187),
+                            Description = "Systemz 2 Description",
+                            OrgId = 2,
+                            Title = "Systemz 2",
+                            UpdatedAt = new DateTime(2023, 4, 25, 17, 27, 10, 184, DateTimeKind.Utc).AddTicks(8187)
                         });
                 });
 
@@ -391,9 +396,25 @@ namespace ProjectName.Infra.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.Systemz", b =>
+                {
+                    b.HasOne("ProjectName.Infra.Entity.Hierarchy.Org", "Org")
+                        .WithMany("Systemzs")
+                        .HasForeignKey("OrgId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Org");
+                });
+
             modelBuilder.Entity("ProjectName.Infra.Entity.ApiUser", b =>
                 {
                     b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.Org", b =>
+                {
+                    b.Navigation("Systemzs");
                 });
 #pragma warning restore 612, 618
         }

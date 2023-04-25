@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ProjectName.Domain.Model;
 using ProjectName.Domain.Model.Base;
+using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity;
 using ProjectName.Infra.Entity.Hierarchy;
 
@@ -16,12 +17,12 @@ namespace ProjectName.API.Config
       // API is Depending on both Domain and Infrastructure
 
       CreateMap<Country, CountryDTO>().ReverseMap();
-      CreateMap<Org, BaseDTOCreateFull>().ReverseMap();
+      CreateMap<Org, OrgDTO>().ReverseMap();
       CreateMap<Org, BaseDTOCreate>().ReverseMap();
-      //CreateMap<Country, CreateCountryDTO>().ReverseMap();
-      //CreateMap<Hotel, HotelDTO>().ReverseMap();
-      //CreateMap<Hotel, CreateHotelDTO>().ReverseMap();
-      //CreateMap<ApiUser, UserDTO>().ReverseMap();
+      CreateMap<Org, BaseDTORelation>();
+      CreateMap<Systemz, SystemzDTO>().ReverseMap();
+      CreateMap<Systemz, SystemzDTOCreate>().ReverseMap();
+
     }
   }
 }

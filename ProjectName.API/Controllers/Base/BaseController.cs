@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using ProjectName.Infra.Repo;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ProjectName.API.Controllers.Base
 {
-  public class BaseController<T> : ControllerBase
+  public abstract class BaseController<T> : ControllerBase
   {
     protected ILogger<T> Logger { get; }
     protected IMapper Mapper { get; }
