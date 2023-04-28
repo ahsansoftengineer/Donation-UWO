@@ -13,6 +13,7 @@ namespace ProjectName.Infra.Context
     public DbSet<Org> Orgs { get; set; }
     public DbSet<Systemz> Systemzs { get; set; }
     public DbSet<BG> BGs { get; set; }
+    public DbSet<LE> LEs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -25,6 +26,7 @@ namespace ProjectName.Infra.Context
       builder.ApplyConfiguration(new OrgConfig());
       builder.ApplyConfiguration(new SystemzConfig());
       builder.ApplyConfiguration(new BGConfig());
+      builder.ApplyConfiguration(new LEConfig());
     }
 
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

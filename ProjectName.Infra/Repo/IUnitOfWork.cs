@@ -10,6 +10,7 @@ namespace ProjectName.Infra.Repo
     IGenericRepo<Org> Orgs { get; } // Alternate of OrgRepo
     IGenericRepo<Systemz> Systemzs { get; }
     IGenericRepo<BG> BGs { get; }
+    IGenericRepo<LE> LEs { get; }
 
 
   }

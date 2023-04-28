@@ -21,6 +21,8 @@ namespace ProjectName.API.Config
       CreateMap<Systemz, SystemzDTOCreate>().ReverseMap();
       CreateMap<BG, BGDTO>().ReverseMap();
       CreateMap<BG, BGDTOCreate>().ReverseMap();
+      CreateMap<LE, LEDTO>().ReverseMap();
+      CreateMap<LE, LEDTOCreate>().ReverseMap();
 
     }
   }

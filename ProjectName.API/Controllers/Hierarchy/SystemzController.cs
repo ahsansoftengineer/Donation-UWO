@@ -51,7 +51,7 @@ namespace ProjectName.API.Controllers.Hierarchy
         var result = Mapper.Map<Systemz>(data);
         await UnitOfWork.Systemzs.Insert(result);
         await UnitOfWork.Save();
-        return CreatedAtRoute("Get", new { id = result.Id }, result);
+        return Ok(result);
       }
       catch (Exception ex)
       {
@@ -72,7 +72,7 @@ namespace ProjectName.API.Controllers.Hierarchy
         var result = Mapper.Map(data, item);
         UnitOfWork.Systemzs.Update(item);
         await UnitOfWork.Save();
-        return NoContent();
+        return Ok(result);
       }
       catch (Exception ex)
       {

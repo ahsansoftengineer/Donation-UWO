@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectName.Infra.Context;
 
@@ -11,9 +12,11 @@ using ProjectName.Infra.Context;
 namespace ProjectName.Infra.Migrations
 {
     [DbContext(typeof(DBCntxt))]
-    partial class DBCntxtModelSnapshot : ModelSnapshot
+    [Migration("20230428174543_LE")]
+    partial class LE
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,13 +59,13 @@ namespace ProjectName.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3b915e32-c808-4098-b10b-8bfabf34243d",
+                            Id = "e3ce2138-6cef-4be0-a279-a3acc0798a34",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "facdc18a-abcc-40d0-9eda-ad5cf6fe71c6",
+                            Id = "bc98e928-4364-4aba-8187-3f9ee26a16b8",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -273,18 +276,18 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7309),
+                            CreatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(1213),
                             Description = "BG 1 Description",
                             Title = "BG 1",
-                            UpdatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7309)
+                            UpdatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(1213)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7311),
+                            CreatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(1215),
                             Description = "BG 2 Description",
                             Title = "BG 2",
-                            UpdatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7311)
+                            UpdatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(1215)
                         });
                 });
 
@@ -316,26 +319,6 @@ namespace ProjectName.Infra.Migrations
                     b.HasIndex("BGId");
 
                     b.ToTable("LEs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BGId = 1,
-                            CreatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7467),
-                            Description = "LE 1 Description",
-                            Title = "LE 1",
-                            UpdatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7467)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BGId = 2,
-                            CreatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7469),
-                            Description = "LE 2 Description",
-                            Title = "LE 2",
-                            UpdatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7469)
-                        });
                 });
 
             modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.Org", b =>
@@ -366,18 +349,18 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(6980),
+                            CreatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(829),
                             Description = "Org 1 Description",
                             Title = "Org 1",
-                            UpdatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(6983)
+                            UpdatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(832)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(6986),
+                            CreatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(835),
                             Description = "Org 2 Description",
                             Title = "Org 2",
-                            UpdatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(6986)
+                            UpdatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(836)
                         });
                 });
 
@@ -414,20 +397,20 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7148),
+                            CreatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(1028),
                             Description = "Systemz 1 Description",
                             OrgId = 1,
                             Title = "Systemz 1",
-                            UpdatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7148)
+                            UpdatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(1029)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7151),
+                            CreatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(1032),
                             Description = "Systemz 2 Description",
                             OrgId = 2,
                             Title = "Systemz 2",
-                            UpdatedAt = new DateTime(2023, 4, 28, 17, 47, 56, 795, DateTimeKind.Utc).AddTicks(7151)
+                            UpdatedAt = new DateTime(2023, 4, 28, 17, 45, 43, 575, DateTimeKind.Utc).AddTicks(1032)
                         });
                 });
 
