@@ -2,14 +2,14 @@
 
 namespace ProjectName.Domain.Model.Hierarchy
 {
-  public class SystemzDTOCreate : BaseDTOCreate
+  public class SystemzDtoCreate : BaseDtoCreate
   {
     public int OrgId { get; set; }
   }
 
-  public class SystemzDTO : BaseDTOFull
+  public class SystemzDto : BaseDtoFull
   {
     public int OrgId { get; set; }
-    public BaseDTORelation Org { get; set; }
+    public BaseDtoRelation? Org { get; set; }
   }
 }

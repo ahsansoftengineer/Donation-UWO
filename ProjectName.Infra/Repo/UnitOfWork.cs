@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectName.Infra.Context;
-using ProjectName.Infra.Entity;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.Base;
 
@@ -9,10 +8,11 @@ namespace ProjectName.Infra.Repo
     public class UnitOfWork : IUnitOfWork
   {
     private readonly DBCntxt _context;
-    private IGenericRepo<Org> _orgs;
-    private IGenericRepo<Systemz> _systemz;
-    private IGenericRepo<BG> _bgs;
-    private IGenericRepo<LE> _les;
+    private IGenericRepo<Org>? _orgs;
+    private IGenericRepo<Systemz>? _systemz;
+    private IGenericRepo<BG>? _bgs;
+    private IGenericRepo<LE>? _les;
+    private IGenericRepo<OU>? _ous;
 
     public UnitOfWork(DBCntxt context)
     {
@@ -23,6 +23,7 @@ namespace ProjectName.Infra.Repo
     public IGenericRepo<Systemz> Systemzs => _systemz ??= new GenericRepo<Systemz>(_context);
     public IGenericRepo<BG> BGs => _bgs ??= new GenericRepo<BG>(_context);
     public IGenericRepo<LE> LEs => _les ??= new GenericRepo<LE>(_context);
+    public IGenericRepo<OU> OUs => _ous ??= new GenericRepo<OU>(_context);
 
     public void Dispose()
     {

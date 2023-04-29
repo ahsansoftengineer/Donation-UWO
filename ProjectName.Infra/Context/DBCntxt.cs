@@ -27,6 +27,7 @@ namespace ProjectName.Infra.Context
       builder.ApplyConfiguration(new SystemzConfig());
       builder.ApplyConfiguration(new BGConfig());
       builder.ApplyConfiguration(new LEConfig());
+      builder.ApplyConfiguration(new OUConfig());
     }
 
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

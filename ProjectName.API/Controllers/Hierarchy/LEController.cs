@@ -23,7 +23,7 @@ namespace ProjectName.API.Controllers.Hierarchy
       try
       {
         var list = await UnitOfWork.LEs.GetAll();
-        var result = Mapper.Map<IList<LEDTO>>(list);
+        var result = Mapper.Map<IList<LEDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -38,12 +38,12 @@ namespace ProjectName.API.Controllers.Hierarchy
       var single = await UnitOfWork.LEs.Get(
         q => q.Id == id //, new List<string> { "Org" }
      );
-      var result = Mapper.Map<LEDTO>(single);
+      var result = Mapper.Map<LEDto>(single);
       return Ok(result);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] LEDTOCreate data)
+    public async Task<IActionResult> Create([FromBody] LEDtoCreate data)
     {
       if (!ModelState.IsValid) return CreateInvalid();
       try
@@ -60,7 +60,7 @@ namespace ProjectName.API.Controllers.Hierarchy
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody] LEDTOCreate data)
+    public async Task<IActionResult> Update(int id, [FromBody] LEDtoCreate data)
     {
       if (!ModelState.IsValid || id < 1) return UpdateInvalid();
       try

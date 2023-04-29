@@ -9,10 +9,10 @@ namespace ProjectName.API.Controllers.Hierarchy
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class BGController : BaseController<BGController>
+  public class OUController : BaseController<OUController>
   {
-    public BGController(
-      ILogger<BGController> logger,
+    public OUController(
+      ILogger<OUController> logger,
       IMapper mapper,
       IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
     { }
@@ -22,8 +22,8 @@ namespace ProjectName.API.Controllers.Hierarchy
     {
       try
       {
-        var list = await UnitOfWork.BGs.GetAll();
-        var result = Mapper.Map<IList<BGDto>>(list);
+        var list = await UnitOfWork.OUs.GetAll();
+        var result = Mapper.Map<IList<OUDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -35,22 +35,21 @@ namespace ProjectName.API.Controllers.Hierarchy
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
-      var single = await UnitOfWork.BGs.Get(
-        q => q.Id == id 
-         //, new List<string> { "Org" }
+      var single = await UnitOfWork.OUs.Get(
+        q => q.Id == id //, new List<string> { "Org" }
      );
-      var result = Mapper.Map<BGDto>(single);
+      var result = Mapper.Map<OUDto>(single);
       return Ok(result);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] BGDtoCreate data)
+    public async Task<IActionResult> Create([FromBody] OUDtoCreate data)
     {
       if (!ModelState.IsValid) return CreateInvalid();
       try
       {
-        var result = Mapper.Map<BG>(data);
-        await UnitOfWork.BGs.Insert(result);
+        var result = Mapper.Map<OU>(data);
+        await UnitOfWork.OUs.Insert(result);
         await UnitOfWork.Save();
         return Ok(result);
       }
@@ -61,17 +60,17 @@ namespace ProjectName.API.Controllers.Hierarchy
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody] BGDtoCreate data)
+    public async Task<IActionResult> Update(int id, [FromBody] OUDtoCreate data)
     {
       if (!ModelState.IsValid || id < 1) return UpdateInvalid();
       try
       {
-        var item = await UnitOfWork.BGs.Get(q => q.Id == id);
+        var item = await UnitOfWork.OUs.Get(q => q.Id == id);
 
         if (item == null) return UpdateNull();
 
         var result = Mapper.Map(data, item);
-        UnitOfWork.BGs.Update(item);
+        UnitOfWork.OUs.Update(item);
         await UnitOfWork.Save();
         return Ok(result);
       }
@@ -86,12 +85,12 @@ namespace ProjectName.API.Controllers.Hierarchy
     {
       if (id < 1) return DeleteInvalid();
 
-      var search = await UnitOfWork.BGs.Get(q => q.Id == id);
+      var search = await UnitOfWork.OUs.Get(q => q.Id == id);
       if (search == null) return DeleteNull();
 
       try
       {
-        await UnitOfWork.BGs.Delete(id);
+        await UnitOfWork.OUs.Delete(id);
         await UnitOfWork.Save();
       }
       catch (Exception ex)

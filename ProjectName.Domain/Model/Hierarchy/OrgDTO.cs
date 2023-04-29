@@ -2,6 +2,6 @@
 
 namespace ProjectName.Domain.Model.Hierarchy
 {
-  public class OrgDTO : BaseDTOFull { }
-  public class OrgDTOCreate : BaseDTOCreate { }
+  public class OrgDto : BaseDtoFull { }
+  public class OrgDtoCreate : BaseDtoCreate { }
 }

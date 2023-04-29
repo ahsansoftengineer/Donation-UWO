@@ -28,7 +28,7 @@ namespace ProjectName.API.Controllers
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] UserDTO data)
+    public async Task<IActionResult> Register([FromBody] UserDto data)
     {
       Logger.LogInformation($"Registration Attempt for {data.Email}");
 
@@ -54,7 +54,7 @@ namespace ProjectName.API.Controllers
     }
 
     //[HttpPost("login")]
-    //public async Task<IActionResult> Login([FromBody] LoginDTO data)
+    //public async Task<IActionResult> Login([FromBody] LoginDto data)
     //{
     //  Logger.LogInformation($"Login Attempt for {data.Email}");
     //  if (!ModelState.IsValid)

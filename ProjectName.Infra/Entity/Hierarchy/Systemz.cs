@@ -7,7 +7,7 @@ namespace ProjectName.Infra.Entity.Hierarchy
   {
     [ForeignKey(nameof(Org))]
     public int OrgId { get; set; }
-    public virtual Org Org { get; set; }
+    public virtual Org? Org { get; set; }
 
   }
 }

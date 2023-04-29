@@ -23,7 +23,7 @@ namespace ProjectName.API.Controllers.Hierarchy
       try
       {
         var list = await UnitOfWork.Systemzs.GetAll();
-        var result = Mapper.Map<IList<SystemzDTO>>(list);
+        var result = Mapper.Map<IList<SystemzDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -38,12 +38,12 @@ namespace ProjectName.API.Controllers.Hierarchy
       var single = await UnitOfWork.Systemzs.Get(
         q => q.Id == id //, new List<string> { "Org" }
      );
-      var result = Mapper.Map<SystemzDTO>(single);
+      var result = Mapper.Map<SystemzDto>(single);
       return Ok(result);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] SystemzDTOCreate data)
+    public async Task<IActionResult> Create([FromBody] SystemzDtoCreate data)
     {
       if (!ModelState.IsValid) return CreateInvalid();
       try
@@ -60,7 +60,7 @@ namespace ProjectName.API.Controllers.Hierarchy
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody] SystemzDTOCreate data)
+    public async Task<IActionResult> Update(int id, [FromBody] SystemzDtoCreate data)
     {
       if (!ModelState.IsValid || id < 1) return UpdateInvalid();
       try

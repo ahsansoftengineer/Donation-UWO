@@ -36,7 +36,7 @@ namespace ProjectName.API.Controllers.Hierarchy
       try
       {
         var list = await UnitOfWork.Orgs.GetAll();
-        var result = Mapper.Map<IList<OrgDTO>>(list);
+        var result = Mapper.Map<IList<OrgDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -51,7 +51,7 @@ namespace ProjectName.API.Controllers.Hierarchy
         q => q.Id == id
         // ,new List<string> { "Systemz" }
      );
-      var result = Mapper.Map<BaseDTOFull>(single);
+      var result = Mapper.Map<BaseDtoFull>(single);
       //result.Systemz.Hotels = null; //
       return Ok(result);
     }
@@ -61,7 +61,7 @@ namespace ProjectName.API.Controllers.Hierarchy
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> Create([FromBody] OrgDTOCreate data)
+    public async Task<IActionResult> Create([FromBody] OrgDtoCreate data)
     {
       if (!ModelState.IsValid) return CreateInvalid();
       try
@@ -86,7 +86,7 @@ namespace ProjectName.API.Controllers.Hierarchy
 
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<IActionResult> Update(int id, [FromBody] OrgDTOCreate data)
+    public async Task<IActionResult> Update(int id, [FromBody] OrgDtoCreate data)
     {
       if (!ModelState.IsValid || id < 1) return UpdateInvalid();
       try

@@ -18,6 +18,7 @@ namespace ProjectName.API
       }
       catch (Exception e)
       {
+        Console.WriteLine(e.Message);
 
         //Log.Fatal(e, "Application Failed to start"); //
       }

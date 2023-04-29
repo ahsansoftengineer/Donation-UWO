@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectName.Infra.Entity.Hierarchy
 {
-  public class LE : BaseEntity
+  public class OU : BaseEntity
   {
-    [ForeignKey(nameof(BG))]
-    public int BGId { get; set; }
-    public virtual BG? BG { get; set; }
+    [ForeignKey(nameof(LE))]
+    public int LEId { get; set; }
+    public virtual LE? LE { get; set; }
 
   }
 }

@@ -2,14 +2,14 @@
 
 namespace ProjectName.Domain.Model.Hierarchy
 {
-  public class LEDTOCreate : BaseDTOCreate
+  public class LEDtoCreate : BaseDtoCreate
   {
     public int BGId { get; set; }
   }
 
-  public class LEDTO : BaseDTOFull
+  public class LEDto : BaseDtoFull
   {
     public int BGId { get; set; }
-    public BaseDTORelation BG { get; set; }
+    public BaseDtoRelation? BG { get; set; }
   }
 }

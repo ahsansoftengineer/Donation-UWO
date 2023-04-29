@@ -14,15 +14,17 @@ namespace ProjectName.API.Config
       // Cannot Put in This Class in Domain because Domain cannot be Dependent on Infrastructure
       // API is Depending on both Domain and Infrastructure
 
-      CreateMap<Org, OrgDTO>().ReverseMap();
-      CreateMap<Org, BaseDTOCreate>().ReverseMap();
-      CreateMap<Org, BaseDTORelation>();
-      CreateMap<Systemz, SystemzDTO>().ReverseMap();
-      CreateMap<Systemz, SystemzDTOCreate>().ReverseMap();
-      CreateMap<BG, BGDTO>().ReverseMap();
-      CreateMap<BG, BGDTOCreate>().ReverseMap();
-      CreateMap<LE, LEDTO>().ReverseMap();
-      CreateMap<LE, LEDTOCreate>().ReverseMap();
+      CreateMap<Org, OrgDto>().ReverseMap();
+      CreateMap<Org, BaseDtoCreate>().ReverseMap();
+      CreateMap<Org, BaseDtoRelation>();
+      CreateMap<Systemz, SystemzDto>().ReverseMap();
+      CreateMap<Systemz, SystemzDtoCreate>().ReverseMap();
+      CreateMap<BG, BGDto>().ReverseMap();
+      CreateMap<BG, BGDtoCreate>().ReverseMap();
+      CreateMap<LE, LEDto>().ReverseMap();
+      CreateMap<LE, LEDtoCreate>().ReverseMap();
+      CreateMap<OU, OUDto>().ReverseMap();
+      CreateMap<OU, OUDtoCreate>().ReverseMap();
 
     }
   }

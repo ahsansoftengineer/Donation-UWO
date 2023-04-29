@@ -2,6 +2,6 @@
 
 namespace ProjectName.Domain.Model.Hierarchy
 {
-  public class BGDTO : BaseDTOFull { }
-  public class BGDTOCreate : BaseDTOCreate { }
+  public class BGDto : BaseDtoFull { }
+  public class BGDtoCreate : BaseDtoCreate { }
 }
