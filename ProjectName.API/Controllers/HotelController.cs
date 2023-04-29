@@ -35,7 +35,7 @@
 //    {
 //      try
 //      {
-//        var hotels = await UnitOfWork.Hotels.GetAll();
+//        var hotels = await UnitOfWork.Hotels.Gets();
 //        var result = Mapper.Map<IList<HotelDTO>>(hotels);
 //        return Ok(result);
 //      }

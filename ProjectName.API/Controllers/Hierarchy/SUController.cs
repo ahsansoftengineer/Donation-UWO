@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
-using ProjectName.Domain.Model.Base;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
@@ -10,21 +9,21 @@ namespace ProjectName.API.Controllers.Hierarchy
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class SystemzController : BaseController<SystemzController>
+  public class SUController : BaseController<SUController>
   {
-    public SystemzController(
-      ILogger<SystemzController> logger,
+    public SUController(
+      ILogger<SUController> logger,
       IMapper mapper,
       IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
     { }
 
     [HttpGet]
-    public async Task<IActionResult> Gets(GenericPaginateRequest<SystemzDto> req)
+    public async Task<IActionResult> Gets()
     {
       try
       {
-        var list = await UnitOfWork.Systemzs.Gets<SystemzDto, SystemzDto>(req);
-        var result = Mapper.Map<IList<SystemzDto>>(list);
+        var list = await UnitOfWork.SUs.Gets();
+        var result = Mapper.Map<IList<SUDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -36,21 +35,21 @@ namespace ProjectName.API.Controllers.Hierarchy
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
-      var single = await UnitOfWork.Systemzs.Get(
+      var single = await UnitOfWork.SUs.Get(
         q => q.Id == id //, new List<string> { "Org" }
      );
-      var result = Mapper.Map<SystemzDto>(single);
+      var result = Mapper.Map<SUDto>(single);
       return Ok(result);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] SystemzDtoCreate data)
+    public async Task<IActionResult> Create([FromBody] SUDtoCreate data)
     {
       if (!ModelState.IsValid) return CreateInvalid();
       try
       {
-        var result = Mapper.Map<Systemz>(data);
-        await UnitOfWork.Systemzs.Insert(result);
+        var result = Mapper.Map<SU>(data);
+        await UnitOfWork.SUs.Insert(result);
         await UnitOfWork.Save();
         return Ok(result);
       }
@@ -61,17 +60,17 @@ namespace ProjectName.API.Controllers.Hierarchy
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody] SystemzDtoCreate data)
+    public async Task<IActionResult> Update(int id, [FromBody] SUDtoCreate data)
     {
       if (!ModelState.IsValid || id < 1) return UpdateInvalid();
       try
       {
-        var item = await UnitOfWork.Systemzs.Get(q => q.Id == id);
+        var item = await UnitOfWork.SUs.Get(q => q.Id == id);
 
         if (item == null) return UpdateNull();
 
         var result = Mapper.Map(data, item);
-        UnitOfWork.Systemzs.Update(item);
+        UnitOfWork.SUs.Update(item);
         await UnitOfWork.Save();
         return Ok(result);
       }
@@ -86,12 +85,12 @@ namespace ProjectName.API.Controllers.Hierarchy
     {
       if (id < 1) return DeleteInvalid();
 
-      var search = await UnitOfWork.Systemzs.Get(q => q.Id == id);
+      var search = await UnitOfWork.SUs.Get(q => q.Id == id);
       if (search == null) return DeleteNull();
 
       try
       {
-        await UnitOfWork.Systemzs.Delete(id);
+        await UnitOfWork.SUs.Delete(id);
         await UnitOfWork.Save();
       }
       catch (Exception ex)

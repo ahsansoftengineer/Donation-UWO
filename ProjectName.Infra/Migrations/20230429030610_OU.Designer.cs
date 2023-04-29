@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectName.Infra.Context;
 
@@ -11,9 +12,11 @@ using ProjectName.Infra.Context;
 namespace ProjectName.Infra.Migrations
 {
     [DbContext(typeof(DBCntxt))]
-    partial class DBCntxtModelSnapshot : ModelSnapshot
+    [Migration("20230429030610_OU")]
+    partial class OU
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,13 +59,13 @@ namespace ProjectName.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "56cad2c0-8f29-464e-b16e-646cf896dd59",
+                            Id = "71d45a2d-e26d-4d5d-941c-f218f5bb9784",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "a4a1abaf-b966-4a6d-8a00-9f002586b169",
+                            Id = "9117cd17-0745-4c01-a05a-9ee31851345c",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -273,18 +276,18 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9924),
+                            CreatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(3732),
                             Description = "BG 1 Description",
                             Title = "BG 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9926)
+                            UpdatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(3733)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9930),
+                            CreatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(3739),
                             Description = "BG 2 Description",
                             Title = "BG 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9931)
+                            UpdatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(3740)
                         });
                 });
 
@@ -322,19 +325,19 @@ namespace ProjectName.Infra.Migrations
                         {
                             Id = 1,
                             BGId = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(303),
+                            CreatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(4205),
                             Description = "LE 1 Description",
                             Title = "LE 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(304)
+                            UpdatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(4206)
                         },
                         new
                         {
                             Id = 2,
                             BGId = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(312),
+                            CreatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(4274),
                             Description = "LE 2 Description",
                             Title = "LE 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(312)
+                            UpdatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(4275)
                         });
                 });
 
@@ -365,26 +368,26 @@ namespace ProjectName.Infra.Migrations
 
                     b.HasIndex("LEId");
 
-                    b.ToTable("OUs");
+                    b.ToTable("OU");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(684),
+                            CreatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 280, DateTimeKind.Utc).AddTicks(5179),
                             Description = "OU 1 Description",
                             LEId = 1,
                             Title = "OU 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(685)
+                            UpdatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 280, DateTimeKind.Utc).AddTicks(5184)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(690),
+                            CreatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 280, DateTimeKind.Utc).AddTicks(5198),
                             Description = "OU 2 Description",
                             LEId = 2,
                             Title = "OU 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(691)
+                            UpdatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 280, DateTimeKind.Utc).AddTicks(5199)
                         });
                 });
 
@@ -416,68 +419,18 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9121),
+                            CreatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(2558),
                             Description = "Org 1 Description",
                             Title = "Org 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9131)
+                            UpdatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(2564)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9138),
+                            CreatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(2573),
                             Description = "Org 2 Description",
                             Title = "Org 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9139)
-                        });
-                });
-
-            modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.SU", b =>
-                {
-                    b.Property<int?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OUId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OUId");
-
-                    b.ToTable("SUs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(1188),
-                            Description = "SU 1 Description",
-                            OUId = 1,
-                            Title = "SU 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(1189)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(1193),
-                            Description = "SU 2 Description",
-                            OUId = 2,
-                            Title = "SU 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(1194)
+                            UpdatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(2574)
                         });
                 });
 
@@ -514,20 +467,20 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9527),
+                            CreatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(3203),
                             Description = "Systemz 1 Description",
                             OrgId = 1,
                             Title = "Systemz 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9528)
+                            UpdatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(3205)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9534),
+                            CreatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(3212),
                             Description = "Systemz 2 Description",
                             OrgId = 2,
                             Title = "Systemz 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9535)
+                            UpdatedAt = new DateTime(2023, 4, 29, 3, 6, 10, 276, DateTimeKind.Utc).AddTicks(3212)
                         });
                 });
 
@@ -609,17 +562,6 @@ namespace ProjectName.Infra.Migrations
                         .IsRequired();
 
                     b.Navigation("LE");
-                });
-
-            modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.SU", b =>
-                {
-                    b.HasOne("ProjectName.Infra.Entity.Hierarchy.OU", "OU")
-                        .WithMany()
-                        .HasForeignKey("OUId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("OU");
                 });
 
             modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.Systemz", b =>

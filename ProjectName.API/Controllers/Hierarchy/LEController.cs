@@ -22,7 +22,7 @@ namespace ProjectName.API.Controllers.Hierarchy
     {
       try
       {
-        var list = await UnitOfWork.LEs.GetAll();
+        var list = await UnitOfWork.LEs.Gets();
         var result = Mapper.Map<IList<LEDto>>(list);
         return Ok(result);
       }

@@ -4,7 +4,7 @@ namespace ProjectName.Domain.Model.Hierarchy
 {
   public class OUDtoCreate : BaseDtoCreate
   {
-    public int BGId { get; set; }
+    public int LEId { get; set; }
   }
 
   public class OUDto : BaseDtoFull

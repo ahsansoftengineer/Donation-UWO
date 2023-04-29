@@ -13,6 +13,7 @@ namespace ProjectName.Infra.Repo
     private IGenericRepo<BG>? _bgs;
     private IGenericRepo<LE>? _les;
     private IGenericRepo<OU>? _ous;
+    private IGenericRepo<SU>? _sus;
 
     public UnitOfWork(DBCntxt context)
     {
@@ -24,6 +25,7 @@ namespace ProjectName.Infra.Repo
     public IGenericRepo<BG> BGs => _bgs ??= new GenericRepo<BG>(_context);
     public IGenericRepo<LE> LEs => _les ??= new GenericRepo<LE>(_context);
     public IGenericRepo<OU> OUs => _ous ??= new GenericRepo<OU>(_context);
+    public IGenericRepo<SU> SUs => _sus ??= new GenericRepo<SU>(_context);
 
     public void Dispose()
     {

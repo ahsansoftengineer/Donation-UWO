@@ -1,12 +1,17 @@
-﻿using ProjectName.Domain.Model.Common;
+﻿using ProjectName.Domain.Model.Base;
+using ProjectName.Domain.Model.Common;
 using System.Linq.Expressions;
 using X.PagedList;
 
 namespace ProjectName.Infra.Repo
 {
-    public interface IGenericRepo<T> where T : class
+  public interface IGenericRepo<T> where T : class
   {
-    Task<List<T>> GetAll(
+    Task<T> Get(
+      Expression<Func<T, bool>> expression,
+      List<string>? includes = null
+    );
+    Task<List<T>> Gets(
       Expression<Func<T, bool>>? expression = null,
       // OrderBy UpdatedAt for Looking at the currently updated record at top in the list
       // We need to set it to default
@@ -14,19 +19,9 @@ namespace ProjectName.Infra.Repo
       List<string>? includes = null
     );
 
-    Task<IPagedList<T>> GetPagedList(
-      RequestParams? param = null,
-      List<string>? includes = null,
-      Expression<Func<T, bool>>? expression = null,
-      // OrderBy UpdatedAt for Looking at the currently updated record at top in the list
-      // We need to set it to default
-      Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null
-     );
+    Task<IPagedList<T>> Gets(BasePagination req,List<string>? includes = null);
 
-    Task<T> Get(
-      Expression<Func<T, bool>> expression,
-      List<string>? includes = null
-    );
+    Task<PaginateResponse<ResDto>> Gets<ReqDto, ResDto>(GenericPaginateRequest<ReqDto> req);
     Task Insert(T entity);
     Task InsertRange(IEnumerable<T> entities);
     Task Delete(int id);

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
+using ProjectName.Domain.Model.Base;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
@@ -18,11 +19,11 @@ namespace ProjectName.API.Controllers.Hierarchy
     { }
 
     [HttpGet]
-    public async Task<IActionResult> Gets()
+    public async Task<IActionResult> Gets(PaginateRequest<OrgDto> req)
     {
       try
       {
-        var list = await UnitOfWork.BGs.GetAll();
+        var list = await UnitOfWork.BGs.Gets();
         var result = Mapper.Map<IList<BGDto>>(list);
         return Ok(result);
       }

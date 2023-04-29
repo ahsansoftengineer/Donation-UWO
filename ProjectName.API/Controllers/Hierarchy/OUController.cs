@@ -22,7 +22,7 @@ namespace ProjectName.API.Controllers.Hierarchy
     {
       try
       {
-        var list = await UnitOfWork.OUs.GetAll();
+        var list = await UnitOfWork.OUs.Gets();
         var result = Mapper.Map<IList<OUDto>>(list);
         return Ok(result);
       }

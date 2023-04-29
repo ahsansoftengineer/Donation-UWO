@@ -14,6 +14,8 @@ namespace ProjectName.Infra.Context
     public DbSet<Systemz> Systemzs { get; set; }
     public DbSet<BG> BGs { get; set; }
     public DbSet<LE> LEs { get; set; }
+    public DbSet<OU> OUs { get; set; }
+    public DbSet<SU> SUs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -28,8 +30,12 @@ namespace ProjectName.Infra.Context
       builder.ApplyConfiguration(new BGConfig());
       builder.ApplyConfiguration(new LEConfig());
       builder.ApplyConfiguration(new OUConfig());
+      builder.ApplyConfiguration(new SUConfig());
     }
-
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //  optionsBuilder.LogTo(Console.WriteLine);
+    //}
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     //{
     //  base.OnConfiguring(optionsBuilder);

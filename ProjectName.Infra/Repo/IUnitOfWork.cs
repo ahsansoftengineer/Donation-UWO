@@ -12,6 +12,7 @@ namespace ProjectName.Infra.Repo
     IGenericRepo<BG> BGs { get; }
     IGenericRepo<LE> LEs { get; }
     IGenericRepo<OU> OUs { get; }
+    IGenericRepo<SU> SUs { get; }
 
 
   }

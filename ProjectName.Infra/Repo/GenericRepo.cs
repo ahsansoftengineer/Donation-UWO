@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DynamicExpressions;
+using Microsoft.EntityFrameworkCore;
+using ProjectName.Domain.Model.Base;
 using ProjectName.Domain.Model.Common;
 using ProjectName.Infra.Context;
 using System.Linq.Expressions;
@@ -25,10 +27,24 @@ namespace ProjectName.Infra.Repo
     {
       _db.RemoveRange(entities);
     }
+    public async Task Insert(T entity)
+    {
+      await _db.AddAsync(entity);
+    }
 
+    public async Task InsertRange(IEnumerable<T> entities)
+    {
+      await _db.AddRangeAsync(entities);
+    }
+
+    public void Update(T entity)
+    {
+      _db.Attach(entity);
+      _context.Entry(entity).State = EntityState.Modified;
+    }
     public async Task<T> Get(
-      Expression<Func<T, bool>> expression,
-      List<string>? includes = null)
+     Expression<Func<T, bool>> expression,
+     List<string>? includes = null)
     {
       // Here Includes refers to Child Entity tobe Include in Dataset
       IQueryable<T> query = _db;
@@ -43,7 +59,7 @@ namespace ProjectName.Infra.Repo
       return await query.AsNoTracking().FirstOrDefaultAsync(expression);
     }
 
-    public async Task<List<T>> GetAll(
+    public async Task<List<T>> Gets(
       Expression<Func<T, bool>>? expression = null,
       Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
       List<string>? includes = null)
@@ -70,18 +86,19 @@ namespace ProjectName.Infra.Repo
     }
 
     // X.PagedList.Mvc.Core ->  X_PagedList Library Requires
-    public async Task<IPagedList<T>> GetPagedList(
-      RequestParams? param = null,
-      List<string>? includes = null,
-      Expression<Func<T, bool>>? expression = null,
-      Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null)
+    public async Task<IPagedList<T>> Gets(
+      BasePagination req,
+      List<string>? includes = null)
     {
-      IQueryable<T> query = _db;
-      if (expression != null)
+      if (req == null)
       {
-        query = query.Where(expression);
+        req = new BasePagination()
+        {
+          PageNo = 1,
+          PageSize = 2
+        };
       }
-
+      IQueryable<T> query = _db;
       if (includes != null)
       {
         foreach (var item in includes)
@@ -89,29 +106,94 @@ namespace ProjectName.Infra.Repo
           query = query.Include(item);
         }
       }
-
-      if (orderBy != null)
-      {
-        query = orderBy(query);
-      }
       return await query.AsNoTracking()
-        .ToPagedListAsync(param.PageNumber, param.PageSize);
+        .ToPagedListAsync(req.PageNo, req.PageSize);
     }
-
-    public async Task Insert(T entity)
+    public Task<PaginateResponse<ResDto>> Gets<ReqDto, ResDto>(GenericPaginateRequest<ReqDto> req)
     {
-      await _db.AddAsync(entity);
-    }
-
-    public async Task InsertRange(IEnumerable<T> entities)
-    {
-      await _db.AddRangeAsync(entities);
-    }
-
-    public void Update(T entity)
-    {
-      _db.Attach(entity);
-      _context.Entry(entity).State = EntityState.Modified;
+      throw new NotImplementedException();
     }
   }
 }
+// https://blog.zhaytam.com/2020/05/17/dynamic-sorting-filtering-csharp/
+
+// APPROACH 1. WITHOUT LIBRARY
+// MANUAL DYNAMIC SORTING
+//public IQueryable<Product> ApplyOrderBy(IQueryable<Product> query, string property)
+//{
+//  switch (property)
+//  {
+//    case "Name":
+//      return query.OrderBy(p => p.Name);
+//    case "Quantity":
+//      return query.OrderBy(p => p.Quantity);
+//    case "Price":
+//      return query.OrderBy(p => p.Price);
+//    default:
+//      return query;
+//  }
+//}
+
+//var query = _dbContext.Products.AsQueryable();
+//query = ApplyOrderBy(query, propertySentByUser);
+
+// MANUAL DYNAMIC FILTERING
+//public IQueryable<Product> ApplyFilter(IQueryable<Product> query, string property, object value)
+//{
+//  switch (property)
+//  {
+//    case "Name":
+//      return query.Where(p => p.Name.Contains(value.ToString()));
+//    case "Quantity":
+//      return query.Where(p => p.Quantity >= value);
+//    case "Price":
+//      return query.Where(p => p.Price >= value);
+//    default:
+//      return query;
+//  }
+//}
+// MANUAL DYNAMIC ADVANCE FILTER
+//(Product.Brand == "Nike" || Product.Brand == "Adidas")
+//&& (Product.Price >= 20 && Product.Price <= 100)
+//&& Product.Enabled
+
+
+
+// APPROACH 2. WITH DYNAMIC.NET LIBRARY
+// Dynamic.NET ->  TODO
+
+// DYNAMIC SORTING
+//public async Task<IPagedList<T>> GetPagetListAlternate()
+//{
+//  var propertyGetter = DynamicExpressions.GetPropertyGetter<Product>(propertySentByUser);
+//  // ^ can be cached or even compiled to a Func<Product, object>
+//  var query = _dbContext.Products.AsQueryable().OrderBy(propertyGetter);
+//}
+
+// DYNAMIC FILTERING
+//var predicate = DynamicExpressions.GetPredicate<Product>(propertySentByUser, operatorSentByUser, valueSentByUser);
+//// ^ can also be cached or compiled and used anywhere
+//var products = _dbContext.Products.AsQueryable().Where(predicate).ToList();
+//// ^ or FirstByDefault, Any, etc...
+
+// DYNAMIC FILTERING LIBRARY APPROACH
+//var predicate = new DynamicFilterBuilder<Product>()
+//  .And("Enabled", FilterOperator.Equals, true)
+//  .And(b => b.And("Brand", FilterOperator.Equals, "Nike").Or("Brand", FilterOperator.Equals, "Adidas"))
+//  .And(b => b.And("Price", FilterOperator.GreaterThanOrEqual, 20).And("Price", FilterOperator.LessThanOrEqual, 100))
+//  .Build();
+
+//var products = _dbContext.Products.AsQueryable().Where(predicate).ToList()
+
+
+// HOW DOES IT WORKS UNDER THE HOOD
+//public static Expression<Func<TEntity, object>> GetPropertyGetter<TEntity>(string property)
+//{
+//  if (property == null)
+//    throw new ArgumentNullException(nameof(property));
+
+//  var param = Expression.Parameter(typeof(TEntity));
+//  var prop = param.GetNestedProperty(property);
+//  var convertedProp = Expression.Convert(prop, typeof(object));
+//  return Expression.Lambda<Func<TEntity, object>>(convertedProp, param);
+//}

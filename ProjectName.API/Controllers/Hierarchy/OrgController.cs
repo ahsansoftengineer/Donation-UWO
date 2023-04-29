@@ -1,10 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using ProjectName.API.Config;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.Model.Base;
+using ProjectName.Domain.Model.Common;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
+using X.PagedList;
 
 namespace ProjectName.API.Controllers.Hierarchy
 {
@@ -17,10 +21,25 @@ namespace ProjectName.API.Controllers.Hierarchy
       IMapper mapper,
       IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
     { }
+    //[HttpGet("Paginate")]
+    //public async Task<IActionResult> Paginate([FromQuery] RequestParams paramz)
+    //{
+    //  try
+    //  {
+    //    var list = await UnitOfWork.Orgs.Gets(paramz);
+    //    var result = Mapper.Map<IList<OrgDto>>(list);
+    //    return Ok(result);
+    //  }
+    //  catch (Exception ex)
+    //  {
+    //    return CatchException(ex, nameof(Paginate));
+    //  }
+    //}
 
-    [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    // Without Pagination
+    //[HttpGet]
+    //[ProducesResponseType(StatusCodes.Status200OK)]
+    //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
     // API Caching 1. To Client know API Caching
     // [ResponseCache(Duration = 60)]
@@ -31,12 +50,37 @@ namespace ProjectName.API.Controllers.Hierarchy
     // API Caching 9. With Marvin.Cache.Headers
     //[HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 60)]
     //[HttpCacheValidation(MustRevalidate = false)]
-    public async Task<IActionResult> Gets()
+    //public async Task<IActionResult> Gets()
+    //{
+    //  try
+    //  {
+    //    var list = await UnitOfWork.Orgs.Gets();
+    //    var result = Mapper.Map<IList<OrgDto>>(list);
+    //    return Ok(result);
+    //  }
+    //  catch (Exception ex)
+    //  {
+    //    return CatchException(ex, nameof(Gets));
+    //  }
+    //}
+    [HttpGet]
+    public async Task<IActionResult> Gets([FromQuery] BasePagination req)
     {
       try
       {
-        var list = await UnitOfWork.Orgs.GetAll();
-        var result = Mapper.Map<IList<OrgDto>>(list);
+        var list = await UnitOfWork.Orgs.Gets(req);
+        var result = Mapper.Map<IPagedList<Org>, PaginateResponse<OrgDto>>(list);
+
+        // Alternate way of Achieving without using full AutoMapper 
+
+        //result.Records = list.Select(x => new OrgDto
+        //{
+        //  Id = x.Id ?? 0,
+        //  Title = x.Title ?? "",
+        //  Description = x.Description ?? "",
+        //  CreatedAt = x.CreatedAt,
+        //  UpdatedAt = x.UpdatedAt
+        //}).ToList();
         return Ok(result);
       }
       catch (Exception ex)
@@ -44,6 +88,20 @@ namespace ProjectName.API.Controllers.Hierarchy
         return CatchException(ex, nameof(Gets));
       }
     }
+    //[HttpGet]
+    //public async Task<IActionResult> Gets()
+    //{
+    //  try
+    //  {
+    //    var list = await UnitOfWork.Orgs.Gets();
+    //    var result = Mapper.Map<IPagedList<Org>, TabulatedList<OrgDto>>(list);
+    //    return Ok(result);
+    //  }
+    //  catch (Exception ex)
+    //  {
+    //    return CatchException(ex, nameof(Gets));
+    //  }
+    //}
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
@@ -127,3 +185,4 @@ namespace ProjectName.API.Controllers.Hierarchy
     }
   }
 }
+

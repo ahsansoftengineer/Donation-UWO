@@ -28,7 +28,7 @@
 //    [HttpGet]
 //    public async Task<IActionResult> Gets()
 //    {
-//      var countries = await UnitOfWork.Countries.GetAll();
+//      var countries = await UnitOfWork.Countries.Gets();
 //      var result = Mapper.Map<IList<CountryDTO>>(countries);
 //      return Ok(result);
 //    }
