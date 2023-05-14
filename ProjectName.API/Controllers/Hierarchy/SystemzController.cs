@@ -18,20 +18,20 @@ namespace ProjectName.API.Controllers.Hierarchy
       IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
     { }
 
-    [HttpGet]
-    public async Task<IActionResult> Gets(GenericPaginateRequest<SystemzDto> req)
-    {
-      try
-      {
-        var list = await UnitOfWork.Systemzs.Gets<SystemzDto, SystemzDto>(req);
-        var result = Mapper.Map<IList<SystemzDto>>(list);
-        return Ok(result);
-      }
-      catch (Exception ex)
-      {
-        return CatchException(ex, nameof(Gets));
-      }
-    }
+    //[HttpGet]
+    //public async Task<IActionResult> Gets(GenericPaginateRequest<SystemzDto> req)
+    //{
+    //  try
+    //  {
+    //    var list = await UnitOfWork.Systemzs.Gets<SystemzDto, SystemzDto>(req);
+    //    var result = Mapper.Map<IList<SystemzDto>>(list);
+    //    return Ok(result);
+    //  }
+    //  catch (Exception ex)
+    //  {
+    //    return CatchException(ex, nameof(Gets));
+    //  }
+    //}
 
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)

@@ -1,7 +1,5 @@
-﻿using DynamicExpressions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProjectName.Domain.Model.Base;
-using ProjectName.Domain.Model.Common;
 using ProjectName.Infra.Context;
 using System.Linq.Expressions;
 using X.PagedList;
@@ -46,7 +44,6 @@ namespace ProjectName.Infra.Repo
      Expression<Func<T, bool>> expression,
      List<string>? includes = null)
     {
-      // Here Includes refers to Child Entity tobe Include in Dataset
       IQueryable<T> query = _db;
       if (includes != null)
       {
@@ -64,6 +61,7 @@ namespace ProjectName.Infra.Repo
       Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
       List<string>? includes = null)
     {
+      Console.WriteLine("----------Expression-------------");
       IQueryable<T> query = _db;
       if (expression != null)
       {
@@ -85,11 +83,11 @@ namespace ProjectName.Infra.Repo
       return await query.AsNoTracking().ToListAsync();
     }
 
-    // X.PagedList.Mvc.Core ->  X_PagedList Library Requires
     public async Task<IPagedList<T>> Gets(
       BasePagination req,
       List<string>? includes = null)
     {
+      Console.WriteLine("----------BasePagination-------------");
       if (req == null)
       {
         req = new BasePagination()
@@ -107,11 +105,38 @@ namespace ProjectName.Infra.Repo
         }
       }
       return await query.AsNoTracking()
-        .ToPagedListAsync(req.PageNo, req.PageSize);
+        .ToList().ToPagedListAsync(req.PageNo ?? 1, req.PageSize);
     }
-    public Task<PaginateResponse<ResDto>> Gets<ReqDto, ResDto>(GenericPaginateRequest<ReqDto> req)
+
+    public async Task<IPagedList<T>> Gets<TDto>(PaginateRequestFilter<T, TDto?>? req) 
+      where TDto : class
     {
-      throw new NotImplementedException();
+      Console.WriteLine("----------PaginateRequestFilter-------------");
+      if (req == null)
+      {
+        req = new PaginateRequestFilter<T, TDto>()
+        {
+          PageNo = 1,
+          PageSize = 2,
+          Sort = null,
+          Search = null
+        };
+      }
+
+      IQueryable<T> query = _db;
+      query = query.FilterByGeneric<T, TDto>(req.Search);
+      query = query.OrderByGeneric<T>(req.Sort);
+
+      //if (req.includes != null)
+      //{
+      //  foreach (var item in includes)
+      //  {
+      //    query = query.Include(item);
+      //  }
+      //}
+      return await query
+        .AsNoTracking()
+        .ToPagedListAsync(req.PageNo, req.PageSize);
     }
   }
 }

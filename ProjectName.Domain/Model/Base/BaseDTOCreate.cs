@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
 
 namespace ProjectName.Domain.Model.Base
 {
@@ -8,16 +9,14 @@ namespace ProjectName.Domain.Model.Base
     [StringLength(maximumLength: 50, ErrorMessage = "Title is Too Long")]
     public string Title { get; set; } = "";
     [StringLength(maximumLength: 100, ErrorMessage = "Description is Too Long")]
-    public string Description { get; set; } = "";
+    public string? Description { get; set; }
 
   }
   public class BaseDtoFull : BaseDtoCreate
   {
-    public int Id { get; set; }
+    public int? Id { get; set; } = null;
     public DateTime? CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
-    //public IList<Hotel> Hotels { get; set; } //
-
   }
   public class BaseDtoRelation
   {

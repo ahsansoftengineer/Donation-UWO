@@ -1,5 +1,4 @@
 ﻿using ProjectName.Domain.Model.Base;
-using ProjectName.Domain.Model.Common;
 using System.Linq.Expressions;
 using X.PagedList;
 
@@ -19,9 +18,10 @@ namespace ProjectName.Infra.Repo
       List<string>? includes = null
     );
 
-    Task<IPagedList<T>> Gets(BasePagination req,List<string>? includes = null);
+    //Task<IPagedList<T>> Gets(BasePagination req, List<string>? includes = null);
+    Task<IPagedList<T>> Gets<TDto>(PaginateRequestFilter<T, TDto?> req)
+      where TDto : class;
 
-    Task<PaginateResponse<ResDto>> Gets<ReqDto, ResDto>(GenericPaginateRequest<ReqDto> req);
     Task Insert(T entity);
     Task InsertRange(IEnumerable<T> entities);
     Task Delete(int id);

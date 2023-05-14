@@ -19,7 +19,7 @@ namespace ProjectName.API.Controllers.Hierarchy
     { }
 
     [HttpGet]
-    public async Task<IActionResult> Gets(PaginateRequest<OrgDto> req)
+    public async Task<IActionResult> Gets(PaginateRequestFilter<Org, OrgDto> req)
     {
       try
       {

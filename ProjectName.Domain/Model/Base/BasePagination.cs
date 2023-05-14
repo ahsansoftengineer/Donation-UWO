@@ -1,12 +1,9 @@
-﻿
-using System.Linq.Expressions;
-
-namespace ProjectName.Domain.Model.Base
+﻿namespace ProjectName.Domain.Model.Base
 {
   public class BasePagination
   {
     const int maxPageSize = 50;
-    public int PageNo { get; set; } = 1;
+    public int? PageNo { get; set; } = 1;
     private int pageSize = 10;
     public int PageSize
     {
@@ -16,7 +13,8 @@ namespace ProjectName.Domain.Model.Base
       }
       set
       {
-        pageSize = value > maxPageSize ? maxPageSize : value;
+        if (value == null) pageSize = 10;
+        else pageSize = value > maxPageSize ? maxPageSize : value;
       }
     }
   }
@@ -27,28 +25,24 @@ namespace ProjectName.Domain.Model.Base
     // public bool HasNextPage { get; set; } //
 
   }
-  public class PaginateRequest<T> : BasePagination
+
+  public class PaginateRequestFilter<T, TDto> : BasePagination
+    where T : class
   {
-    public T? search { get; set; }
-    public T? orderBy { get; set; }
-    public OrderType? orderType { get; set; }
+    public TDto? Search { get; set; }
+    public Sort? Sort { get; set; }
   }
-
-  public enum OrderType
+  public enum Order
   {
-    Asc,
-    Desc
+    Unspecified = -1,
+    Ascending,
+    Descending
   }
-
-  public class GenericPaginateRequest<T>
+  public class Sort
   {
-    public PaginateRequest<T> request { get; set; } = null;
-    List<string>? includes = null;
-    Expression<Func<T, bool>>? expression = null;
-    //// OrderBy UpdatedAt for Looking at the currently updated record at top in the list //
-    //// We need to set it to default //
-    Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null;
-
+    public string? By { get; set; }
+    public Order? Order { get; set; } = Base.Order.Unspecified;
 
   }
+  
 }

@@ -15,11 +15,12 @@ namespace ProjectName.API.Config
       // Cannot Put in This Class in Domain because Domain cannot be Dependent on Infrastructure
       // API is Depending on both Domain and Infrastructure
 
-      CreateMap<Org, OrgDto>().ReverseMap();
       CreateMap<Org, BaseDtoCreate>().ReverseMap();
-      // CreateMap(typeof(IPagedList<>), typeof(IPagedList<>)).ConvertUsing(typeof(PagedListConverter<,>)); //
+      CreateMap<Org, OrgDto>().ReverseMap();
+      CreateMap<Org, BaseDtoRelation>().ReverseMap();
+      CreateMap<Org, OrgDtoWithSystemzs>();
+      CreateMap<Org, OrgDtoSearch>();
       CreateMap(typeof(PagedList<>), typeof(PagedList<>));
-      //CreateMap(typeof(IPagedList<>), typeof(IPagedList<>)); //
 
       // Working with Previous Code Example
       CreateMap<IPagedList<Org>, PaginateResponse<OrgDto>>()
@@ -27,12 +28,12 @@ namespace ProjectName.API.Config
                     .ForMember(d => d.Count, c => c.MapFrom(s => s.TotalItemCount))
                     .ForMember(d => d.PageNo, c => c.MapFrom(s => s.PageNumber))
                     .ForMember(d => d.PageSize, c => c.MapFrom(s => s.PageSize));
-                    //.ForMember(d => d.HasNextPage, c => c.MapFrom(s => s.HasNextPage)).ReverseMap(); //
 
-      CreateMap<Org, BaseDtoRelation>();
 
-      CreateMap<Systemz, SystemzDto>().ReverseMap();
+
+      CreateMap<Systemz, SystemzDto>();
       CreateMap<Systemz, SystemzDtoCreate>().ReverseMap();
+      CreateMap<Systemz, BaseDtoRelation>();
       CreateMap<BG, BGDto>().ReverseMap();
       CreateMap<BG, BGDtoCreate>().ReverseMap();
       CreateMap<LE, LEDto>().ReverseMap();
