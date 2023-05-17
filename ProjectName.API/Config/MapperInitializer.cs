@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using ProjectName.Domain.Model.Base;
+using ProjectName.Domain.Base;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
+using System.Runtime.CompilerServices;
 using X.PagedList;
 
 namespace ProjectName.API.Config
@@ -14,26 +15,21 @@ namespace ProjectName.API.Config
       // Entity => Infrastructure
       // Cannot Put in This Class in Domain because Domain cannot be Dependent on Infrastructure
       // API is Depending on both Domain and Infrastructure
+      CreateMap(typeof(PagedList<>), typeof(PagedList<>));
 
-      CreateMap<Org, BaseDtoCreate>().ReverseMap();
-      CreateMap<Org, OrgDto>().ReverseMap();
+      CreateMap<BaseDtoCreate, Org>().ReverseMap();
+      CreateMap<Org, OrgDto>();
       CreateMap<Org, BaseDtoRelation>().ReverseMap();
       CreateMap<Org, OrgDtoWithSystemzs>();
       CreateMap<Org, OrgDtoSearch>();
-      CreateMap(typeof(PagedList<>), typeof(PagedList<>));
+      CreateMapPagedList<Org, OrgDto>();
 
-      // Working with Previous Code Example
-      CreateMap<IPagedList<Org>, PaginateResponse<OrgDto>>()
-                    .ForMember(d => d.Records, c => c.MapFrom(y => y.ToList()))
-                    .ForMember(d => d.Count, c => c.MapFrom(s => s.TotalItemCount))
-                    .ForMember(d => d.PageNo, c => c.MapFrom(s => s.PageNumber))
-                    .ForMember(d => d.PageSize, c => c.MapFrom(s => s.PageSize));
-
-
-
-      CreateMap<Systemz, SystemzDto>();
       CreateMap<Systemz, SystemzDtoCreate>().ReverseMap();
+      CreateMap<Systemz, SystemzDto>();
       CreateMap<Systemz, BaseDtoRelation>();
+      CreateMap<Systemz, SystemzDtoSearch>();
+      CreateMapPagedList<Systemz, SystemzDto>();
+
       CreateMap<BG, BGDto>().ReverseMap();
       CreateMap<BG, BGDtoCreate>().ReverseMap();
       CreateMap<LE, LEDto>().ReverseMap();
@@ -43,6 +39,15 @@ namespace ProjectName.API.Config
       CreateMap<SU, SUDto>().ReverseMap();
       CreateMap<SU, SUDtoCreate>().ReverseMap();
 
+    }
+
+    private void CreateMapPagedList<Src, Dest>()
+    {
+      CreateMap<IPagedList<Src>, PaginateResponse<Dest>>()
+        .ForMember(d => d.Records, c => c.MapFrom(y => y.ToList()))
+        .ForMember(d => d.Count, c => c.MapFrom(s => s.TotalItemCount))
+        .ForMember(d => d.PageNo, c => c.MapFrom(s => s.PageNumber))
+        .ForMember(d => d.PageSize, c => c.MapFrom(s => s.PageSize));
     }
   }
 

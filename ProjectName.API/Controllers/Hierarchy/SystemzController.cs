@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
-using ProjectName.Domain.Model.Base;
+using ProjectName.Domain.Base;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
+using X.PagedList;
 
 namespace ProjectName.API.Controllers.Hierarchy
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
   [ApiController]
   public class SystemzController : BaseController<SystemzController>
   {
@@ -18,20 +19,21 @@ namespace ProjectName.API.Controllers.Hierarchy
       IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
     { }
 
-    //[HttpGet]
-    //public async Task<IActionResult> Gets(GenericPaginateRequest<SystemzDto> req)
-    //{
-    //  try
-    //  {
-    //    var list = await UnitOfWork.Systemzs.Gets<SystemzDto, SystemzDto>(req);
-    //    var result = Mapper.Map<IList<SystemzDto>>(list);
-    //    return Ok(result);
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return CatchException(ex, nameof(Gets));
-    //  }
-    //}
+    [HttpGet]
+    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<Systemz, SystemzDtoSearch?> filter)
+    {
+      try
+      {
+        var list = await UnitOfWork.Systemzs.Gets(filter);
+        var result = Mapper.Map<IPagedList<Systemz>, PaginateResponse<SystemzDto>>(list);
+        return Ok(result);
+      }
+      catch (Exception ex)
+      {
+        return CatchException(ex, nameof(Gets));
+      }
+    }
+
 
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
-using ProjectName.Domain.Model.Base;
+using ProjectName.Domain.Base;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
@@ -9,7 +9,7 @@ using X.PagedList;
 
 namespace ProjectName.API.Controllers.Hierarchy
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
   [ApiController]
   public class OrgController : BaseController<OrgController>
   {
@@ -19,34 +19,6 @@ namespace ProjectName.API.Controllers.Hierarchy
       IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
     { }
 
-    //[HttpGet("Paginate")]
-    //public async Task<IActionResult> Paginate([FromQuery] RequestParams paramz)
-    //{
-    //  try
-    //  {
-    //    var list = await UnitOfWork.Orgs.Gets(paramz);
-    //    var result = Mapper.Map<IList<OrgDto>>(list);
-    //    return Ok(result);
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return CatchException(ex, nameof(Paginate));
-    //  }
-    //}
-
-
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
-    // API Caching 1. To Client know API Caching
-    // [ResponseCache(Duration = 60)]
-    // API Caching 4. Using Global Cache Profile
-    // API Caching 8. Setting Applied Globally no need to apply here
-    // [ResponseCache(CacheProfileName="120SecondsDuration")]
-
-    // API Caching 9. With Marvin.Cache.Headers
-    //[HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 60)]
-    //[HttpCacheValidation(MustRevalidate = false)]
     // Without Pagination
     //[HttpGet]
     //public async Task<IActionResult> Gets(
@@ -67,7 +39,6 @@ namespace ProjectName.API.Controllers.Hierarchy
     //      ,
     //      new List<string> { "Systemzs" } // Working but no Mapping with DTO
     //    );
-
     //    //var result = Mapper.Map<IList<OrgDto>>(list);
     //     var result = Mapper.Map<IList<OrgDtoWithSystemzs>>(list); //
     //    return Ok(result);
@@ -78,23 +49,18 @@ namespace ProjectName.API.Controllers.Hierarchy
     //  }
     //}
 
-    // Only Pagination
-    //[HttpGet]
-    //public async Task<IActionResult> Gets([FromQuery] BasePagination req)
-    //{
-    //  try
-    //  {
-    //    var list = await UnitOfWork.Orgs.Gets(req);
-    //    var result = Mapper.Map<IPagedList<Org>, PaginateResponse<OrgDto>>(list);
-    //    return Ok(result);
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return CatchException(ex, nameof(Gets));
-    //  }
-    //}
 
+    // API Caching 1. To Client know API Caching
+    // [ResponseCache(Duration = 60)]
+    // API Caching 4. Using Global Cache Profile
+    // API Caching 8. Setting Applied Globally no need to apply here
+    // [ResponseCache(CacheProfileName="120SecondsDuration")]
+    // API Caching 9. With Marvin.Cache.Headers
+    //[HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 60)]
+    //[HttpCacheValidation(MustRevalidate = false)]
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<Org, OrgDtoSearch?> filter)
     {
       try
@@ -115,7 +81,7 @@ namespace ProjectName.API.Controllers.Hierarchy
         q => q.Id == id
         // ,new List<string> { "Systemz" }
      );
-      var result = Mapper.Map<BaseDtoFull>(single);
+      var result = Mapper.Map<OrgDto>(single);
       //result.Systemz.Hotels = null; //
       return Ok(result);
     }

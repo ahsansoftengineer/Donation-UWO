@@ -1,7 +1,7 @@
 ﻿
 using Newtonsoft.Json;
 
-namespace ProjectName.Domain.Model.Common
+namespace ProjectName.Domain.Common
 {
     public class Error
     {

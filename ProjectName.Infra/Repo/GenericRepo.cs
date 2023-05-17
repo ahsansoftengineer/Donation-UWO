@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProjectName.Domain.Model.Base;
+using ProjectName.Domain.Base;
 using ProjectName.Infra.Context;
 using System.Linq.Expressions;
 using X.PagedList;
 
 namespace ProjectName.Infra.Repo
 {
-  public class GenericRepo<T> : IGenericRepo<T> where T : class
+    public class GenericRepo<T> : IGenericRepo<T> where T : class
   {
     private readonly DBCntxt _context;
     private readonly DbSet<T> _db;

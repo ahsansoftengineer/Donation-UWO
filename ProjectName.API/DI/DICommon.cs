@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ProjectName.API.DI
 {
@@ -28,6 +29,7 @@ namespace ProjectName.API.DI
         // API Caching 3. Defining Cache Profile
         .AddControllers(config =>
         {
+          //config.Filters<Filters>();
           config.CacheProfiles.Add("120SecondsDuration", new CacheProfile
           {
             Duration = 120

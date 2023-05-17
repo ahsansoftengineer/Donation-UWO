@@ -1,4 +1,5 @@
-﻿using ProjectName.Domain.Model.Base;
+﻿using ProjectName.Domain.Base;
+using System.Runtime.InteropServices;
 
 namespace ProjectName.Domain.Model.Hierarchy
 {
@@ -11,5 +12,10 @@ namespace ProjectName.Domain.Model.Hierarchy
   {
     public int OrgId { get; set; }
     public BaseDtoRelation? Org { get; set; }
+  }
+
+  public class SystemzDtoSearch : BaseDtoSearchFull
+  {
+    public int? OrgId { get; set; }
   }
 }

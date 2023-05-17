@@ -1,6 +1,5 @@
 ﻿using LinqKit;
 using Microsoft.EntityFrameworkCore;
-using ProjectName.Domain.Common;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -49,23 +48,16 @@ namespace ProjectName.Infra.Repo
         if (entityProp != null)
         {
           var entityValue = dtoPropInfo.GetValue(searchObject);
+          var constant = Expression.Constant(entityValue, entityProp.Type); // dtoPropInfo.PropertyType
 
           //var lambda = Expression.Lambda<Func<T, bool>>(comparison, parameter); //
           //predicate = predicate.And(lambda); //
 
           if (!string.IsNullOrWhiteSpace(entityValue?.ToString()))
           {
-            if (entityValue.GetType() == typeof(string))
-            {
-              predicate = predicate.And(p => EF.Functions.Like(
-              EF.Property<string>(p, dtoPropInfo.Name),
-              $"%{entityValue}%")
-             );
-            }
-            else if (dtoPropInfo.Name == "DateFrom" || dtoPropInfo.Name == "DateTo")
+            if (dtoPropInfo.Name == "DateFrom" || dtoPropInfo.Name == "DateTo")
             {
 
-              var constant = Expression.Constant(entityValue, dtoPropInfo.PropertyType);
               BinaryExpression comparison = null;
               if (dtoPropInfo.Name == "DateFrom")
                 comparison = Expression.GreaterThanOrEqual(entityProp, constant);
@@ -75,9 +67,15 @@ namespace ProjectName.Infra.Repo
               var lambda = Expression.Lambda(comparison, entityParam);
               predicate = predicate.And((Expression<Func<T, bool>>)lambda);
             }
+            else if (entityValue.GetType() == typeof(string))
+            {
+              predicate = predicate.And(p => EF.Functions.Like(
+              EF.Property<string>(p, dtoPropInfo.Name),
+              $"%{entityValue}%")
+             );
+            }
             else
             {
-              var constant = Expression.Constant(entityValue, dtoPropInfo.PropertyType);
               var comparison = Expression.Equal(entityProp, constant);
               var lambda = Expression.Lambda(comparison, entityParam);
               predicate = predicate.And((Expression<Func<T, bool>>)lambda);

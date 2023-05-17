@@ -1,9 +1,9 @@
-﻿using ProjectName.Domain.Model.Base;
+﻿using ProjectName.Domain.Base;
 using System.Linq.Dynamic.Core;
 
 namespace ProjectName.Infra.Repo
 {
-  internal static class GenericSort
+    internal static class GenericSort
   {
     public static IQueryable<T> OrderByGeneric<T>(this IQueryable<T> query, Sort sort)
       where T : class

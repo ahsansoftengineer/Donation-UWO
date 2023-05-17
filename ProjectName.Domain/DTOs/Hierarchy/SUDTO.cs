@@ -1,8 +1,8 @@
-﻿using ProjectName.Domain.Model.Base;
+﻿using ProjectName.Domain.Base;
 
 namespace ProjectName.Domain.Model.Hierarchy
 {
-  public class SUDtoCreate : BaseDtoCreate
+    public class SUDtoCreate : BaseDtoCreate
   {
     public int OUId { get; set; }
   }
