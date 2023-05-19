@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
+using ProjectName.Domain.Base;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
+using X.PagedList;
 
 namespace ProjectName.API.Controllers.Hierarchy
 {
@@ -18,12 +20,12 @@ namespace ProjectName.API.Controllers.Hierarchy
     { }
 
     [HttpGet]
-    public async Task<IActionResult> Gets()
+    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<LE, LEDtoSearch?> filter)
     {
       try
       {
-        var list = await UnitOfWork.LEs.Gets();
-        var result = Mapper.Map<IList<LEDto>>(list);
+        var list = await UnitOfWork.LEs.Gets(filter);
+        var result = Mapper.Map<IPagedList<LE>, PaginateResponse<LEDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -31,7 +33,6 @@ namespace ProjectName.API.Controllers.Hierarchy
         return CatchException(ex, nameof(Gets));
       }
     }
-
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {

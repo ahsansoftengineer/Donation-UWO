@@ -15,32 +15,38 @@ namespace ProjectName.API.Config
       // Entity => Infrastructure
       // Cannot Put in This Class in Domain because Domain cannot be Dependent on Infrastructure
       // API is Depending on both Domain and Infrastructure
+
+      // Future Reference
+      //CreateMap<Org, OrgDto>();
+      //CreateMapPagedList<Org, OrgDto>();
+      //CreateMap<Org, BaseDtoRelation>();
+      //CreateMap<Org, OrgDtoWithSystemzs>();
+      //CreateMap<Org, OrgDtoSearch>();
+      //CreateMap<BaseDtoCreate, Org>(); //.ReverseMap()
+
       CreateMap(typeof(PagedList<>), typeof(PagedList<>));
 
-      CreateMap<BaseDtoCreate, Org>().ReverseMap();
-      CreateMap<Org, OrgDto>();
-      CreateMap<Org, BaseDtoRelation>().ReverseMap();
+      CreateMapAll<Org, OrgDto, BaseDtoCreate, OrgDtoSearch>();
       CreateMap<Org, OrgDtoWithSystemzs>();
-      CreateMap<Org, OrgDtoSearch>();
-      CreateMapPagedList<Org, OrgDto>();
+      CreateMapAll<Systemz, SystemzDto, SystemzDtoCreate, SystemzDtoSearch>();
+      CreateMapAll<BG, BGDto, BGDtoCreate, BGDtoSearch>();
+      CreateMapAll<LE, LEDto, LEDtoCreate, LEDtoSearch>();
 
-      CreateMap<Systemz, SystemzDtoCreate>().ReverseMap();
-      CreateMap<Systemz, SystemzDto>();
-      CreateMap<Systemz, BaseDtoRelation>();
-      CreateMap<Systemz, SystemzDtoSearch>();
-      CreateMapPagedList<Systemz, SystemzDto>();
 
-      CreateMap<BG, BGDto>().ReverseMap();
-      CreateMap<BG, BGDtoCreate>().ReverseMap();
-      CreateMap<LE, LEDto>().ReverseMap();
-      CreateMap<LE, LEDtoCreate>().ReverseMap();
       CreateMap<OU, OUDto>().ReverseMap();
       CreateMap<OU, OUDtoCreate>().ReverseMap();
       CreateMap<SU, SUDto>().ReverseMap();
       CreateMap<SU, SUDtoCreate>().ReverseMap();
 
     }
-
+    private void CreateMapAll<Entity, Dto, Create, Search>() // Relation
+    {
+      CreateMap<Entity, Dto>();
+      CreateMapPagedList<Entity, Dto>();
+      CreateMap<Entity, BaseDtoRelation>();
+      CreateMap<Entity, Search>();
+      CreateMap<Create, Entity>();
+    }
     private void CreateMapPagedList<Src, Dest>()
     {
       CreateMap<IPagedList<Src>, PaginateResponse<Dest>>()

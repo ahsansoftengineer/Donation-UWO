@@ -5,10 +5,11 @@ using ProjectName.Domain.Base;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
+using X.PagedList;
 
 namespace ProjectName.API.Controllers.Hierarchy
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class BGController : BaseController<BGController>
   {
@@ -19,12 +20,12 @@ namespace ProjectName.API.Controllers.Hierarchy
     { }
 
     [HttpGet]
-    public async Task<IActionResult> Gets(PaginateRequestFilter<Org, OrgDto> req)
+    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<BG, BGDtoSearch?> filter)
     {
       try
       {
-        var list = await UnitOfWork.BGs.Gets();
-        var result = Mapper.Map<IList<BGDto>>(list);
+        var list = await UnitOfWork.BGs.Gets(filter);
+        var result = Mapper.Map<IPagedList<BG>, PaginateResponse<BGDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -37,8 +38,8 @@ namespace ProjectName.API.Controllers.Hierarchy
     public async Task<IActionResult> Get(int id)
     {
       var single = await UnitOfWork.BGs.Get(
-        q => q.Id == id 
-         //, new List<string> { "Org" }
+        q => q.Id == id
+     //, new List<string> { "Org" }
      );
       var result = Mapper.Map<BGDto>(single);
       return Ok(result);
