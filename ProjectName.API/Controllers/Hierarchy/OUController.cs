@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
+using ProjectName.Domain.Base;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
+using X.PagedList;
 
 namespace ProjectName.API.Controllers.Hierarchy
 {
@@ -18,12 +20,12 @@ namespace ProjectName.API.Controllers.Hierarchy
     { }
 
     [HttpGet]
-    public async Task<IActionResult> Gets()
+    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<OU, OUDtoSearch?> filter)
     {
       try
       {
-        var list = await UnitOfWork.OUs.Gets();
-        var result = Mapper.Map<IList<OUDto>>(list);
+        var list = await UnitOfWork.OUs.Gets(filter);
+        var result = Mapper.Map<IPagedList<OU>, PaginateResponse<OUDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)

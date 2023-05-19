@@ -2,7 +2,6 @@
 using ProjectName.Domain.Base;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
-using System.Runtime.CompilerServices;
 using X.PagedList;
 
 namespace ProjectName.API.Config
@@ -31,14 +30,12 @@ namespace ProjectName.API.Config
       CreateMapAll<Systemz, SystemzDto, SystemzDtoCreate, SystemzDtoSearch>();
       CreateMapAll<BG, BGDto, BGDtoCreate, BGDtoSearch>();
       CreateMapAll<LE, LEDto, LEDtoCreate, LEDtoSearch>();
-
-
-      CreateMap<OU, OUDto>().ReverseMap();
-      CreateMap<OU, OUDtoCreate>().ReverseMap();
-      CreateMap<SU, SUDto>().ReverseMap();
-      CreateMap<SU, SUDtoCreate>().ReverseMap();
-
+      CreateMapAll<OU, OUDto, OUDtoCreate, OUDtoSearch>();
+      CreateMapAll<SU, SUDto, SUDtoCreate, SUDtoSearch>();
     }
+
+
+
     private void CreateMapAll<Entity, Dto, Create, Search>() // Relation
     {
       CreateMap<Entity, Dto>();
