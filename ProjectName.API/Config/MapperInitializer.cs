@@ -35,6 +35,12 @@ namespace ProjectName.API.Config
       CreateMapAll<OU, OUDto, OUDtoCreate, OUDtoSearch>();
       CreateMapAll<SU, SUDto, SUDtoCreate, SUDtoSearch>();
       CreateMapAll<MadaniBasta, MadaniBastaDto, MadaniBastaDtoCreate, MadaniBastaDtoSearch>();
+      CreateMapAll<MadaniBastaSubCategory, 
+        MadaniBastaSubCategoryDto, 
+        MadaniBastaSubCategoryDtoCreate, 
+        MadaniBastaSubCategoryDtoSearch>();
+      CreateMapAll<MadaniBastaEvent, MadaniBastaEventDto, MadaniBastaEventDtoCreate, MadaniBastaEventDtoSearch>();
+      CreateMapAll<MadaniBastaPlace, MadaniBastaPlaceDto, MadaniBastaPlaceDtoCreate, MadaniBastaPlaceDtoSearch>();
     }
     private void CreateMapAllWithChild<Entity, Dto, Create, Search, Child>() // Relation
     {
