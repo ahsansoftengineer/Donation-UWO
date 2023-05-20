@@ -41,7 +41,7 @@ namespace ProjectName.API.Controllers.Hierarchy
         q => q.Id == id
      //, new List<string> { "Org" }
      );
-      var result = Mapper.Map<BGDto>(single);
+      var result = Mapper.Map< BaseDTOSingle<BGDto>>(single);
       return Ok(result);
     }
 

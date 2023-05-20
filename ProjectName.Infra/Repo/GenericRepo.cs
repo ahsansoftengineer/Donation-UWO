@@ -61,7 +61,6 @@ namespace ProjectName.Infra.Repo
       Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
       List<string>? includes = null)
     {
-      Console.WriteLine("----------Expression-------------");
       IQueryable<T> query = _db;
       if (expression != null)
       {
@@ -84,13 +83,12 @@ namespace ProjectName.Infra.Repo
     }
 
     public async Task<IPagedList<T>> Gets(
-      BasePagination req,
+      BaseDTOPagination req,
       List<string>? includes = null)
     {
-      Console.WriteLine("----------BasePagination-------------");
       if (req == null)
       {
-        req = new BasePagination()
+        req = new BaseDTOPagination()
         {
           PageNo = 1,
           PageSize = 2

@@ -81,7 +81,7 @@ namespace ProjectName.API.Controllers.Hierarchy
         q => q.Id == id
         // ,new List<string> { "Systemz" }
      );
-      var result = Mapper.Map<OrgDto>(single);
+      var result = Mapper.Map<BaseDTOSingle<OrgDto>>(single);
       //result.Systemz.Hotels = null; //
       return Ok(result);
     }

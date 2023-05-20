@@ -40,7 +40,7 @@ namespace ProjectName.API.Controllers.Hierarchy
       var single = await UnitOfWork.SUs.Get(
         q => q.Id == id //, new List<string> { "Org" }
      );
-      var result = Mapper.Map<SUDto>(single);
+      var result = Mapper.Map<BaseDTOSingle<SUDto>>(single);
       return Ok(result);
     }
 
