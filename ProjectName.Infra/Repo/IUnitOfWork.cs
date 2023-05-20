@@ -1,5 +1,5 @@
-﻿using ProjectName.Infra.Entity;
-using ProjectName.Infra.Entity.Hierarchy;
+﻿using ProjectName.Infra.Entity.Hierarchy;
+using ProjectName.Infra.Entity.MadaniBastaEntity;
 
 namespace ProjectName.Infra.Repo
 {
@@ -13,6 +13,10 @@ namespace ProjectName.Infra.Repo
     IGenericRepo<LE> LEs { get; }
     IGenericRepo<OU> OUs { get; }
     IGenericRepo<SU> SUs { get; }
+    IGenericRepo<MadaniBasta> MadaniBastas { get; }
+    IGenericRepo<MadaniBastaSubCategory> MadaniBastaSubCategorys { get; }
+    IGenericRepo<MadaniBastaEvent> MadaniBastaEvents { get; }
+    IGenericRepo<MadaniBastaPlace> MadaniBastaPlaces { get; }
 
 
   }

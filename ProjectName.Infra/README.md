@@ -19,15 +19,17 @@ Add-Migration NameOfMigration -Context DatabaseContextName // PM Package Manager
 
 dotnet ef migrations add NameOfMigration // When you have One DBContext and One Project
 
+// Before Running Command you should Build your Project
 dotnet ef migrations add NameOfMigration -p ProjectName.Infra -s ProjectName.Api // When you have two or more Projects
 
 dotnet ef migrations add NameOfMigration --context DBCntx // When you have Two or More DB Context
 
+dotnet ef migrations remove -p ProjectName.Infra -s ProjectName.Api
 
 UPDATE-DATABASE -Context DatabaseContext // PM Package Manager Console
 
 // Before Running the Below Command Ensure the Project is not Running Because DB In Use
-dotnet ef database update -p ProjectName.Infra -s ProjectName.Api --connection "SERVER=.;DATABASE=Test;USER=sa;PASSWORD=asdf1234;Encrypt=false"
+dotnet ef database update -p ProjectName.Infra -s ProjectName.Api --connection "SERVER=.;DATABASE=Donation;USER=sa;PASSWORD=asdf1234;Encrypt=false"
 
 dotnet run --project ProjectName.Api
 ```

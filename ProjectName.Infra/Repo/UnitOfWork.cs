@@ -2,6 +2,7 @@
 using ProjectName.Infra.Context;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.Base;
+using ProjectName.Infra.Entity.MadaniBastaEntity;
 
 namespace ProjectName.Infra.Repo
 {
@@ -14,6 +15,10 @@ namespace ProjectName.Infra.Repo
     private IGenericRepo<LE>? _les;
     private IGenericRepo<OU>? _ous;
     private IGenericRepo<SU>? _sus;
+    private IGenericRepo<MadaniBasta>? _madaniBastas;
+    private IGenericRepo<MadaniBastaSubCategory>? _madaniBastaSubCategorys;
+    private IGenericRepo<MadaniBastaEvent>? _madaniBastaEvents;
+    private IGenericRepo<MadaniBastaPlace>? _madaniBastaPlaces;
 
     public UnitOfWork(DBCntxt context)
     {
@@ -26,6 +31,10 @@ namespace ProjectName.Infra.Repo
     public IGenericRepo<LE> LEs => _les ??= new GenericRepo<LE>(_context);
     public IGenericRepo<OU> OUs => _ous ??= new GenericRepo<OU>(_context);
     public IGenericRepo<SU> SUs => _sus ??= new GenericRepo<SU>(_context);
+    public IGenericRepo<MadaniBasta> MadaniBastas => _madaniBastas ??= new GenericRepo<MadaniBasta>(_context);
+    public IGenericRepo<MadaniBastaSubCategory> MadaniBastaSubCategorys => _madaniBastaSubCategorys ??= new GenericRepo<MadaniBastaSubCategory>(_context);
+    public IGenericRepo<MadaniBastaEvent> MadaniBastaEvents => _madaniBastaEvents ??= new GenericRepo<MadaniBastaEvent>(_context);
+    public IGenericRepo<MadaniBastaPlace> MadaniBastaPlaces => _madaniBastaPlaces ??= new GenericRepo<MadaniBastaPlace>(_context);
 
     public void Dispose()
     {

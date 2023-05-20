@@ -56,13 +56,13 @@ namespace ProjectName.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "56cad2c0-8f29-464e-b16e-646cf896dd59",
+                            Id = "74f8fc03-ecee-4212-acf1-cba7474ff83f",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "a4a1abaf-b966-4a6d-8a00-9f002586b169",
+                            Id = "fc871e6b-f85f-44db-a8d1-a5b8b47c382d",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -273,18 +273,18 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9924),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8189),
                             Description = "BG 1 Description",
                             Title = "BG 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9926)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8190)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9930),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8191),
                             Description = "BG 2 Description",
                             Title = "BG 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9931)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8192)
                         });
                 });
 
@@ -322,19 +322,19 @@ namespace ProjectName.Infra.Migrations
                         {
                             Id = 1,
                             BGId = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(303),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8360),
                             Description = "LE 1 Description",
                             Title = "LE 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(304)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8361)
                         },
                         new
                         {
                             Id = 2,
                             BGId = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(312),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8363),
                             Description = "LE 2 Description",
                             Title = "LE 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(312)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8364)
                         });
                 });
 
@@ -371,20 +371,20 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(684),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8542),
                             Description = "OU 1 Description",
                             LEId = 1,
                             Title = "OU 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(685)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8542)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(690),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8544),
                             Description = "OU 2 Description",
                             LEId = 2,
                             Title = "OU 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(691)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8545)
                         });
                 });
 
@@ -416,18 +416,18 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9121),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(7817),
                             Description = "Org 1 Description",
                             Title = "Org 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9131)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(7819)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9138),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(7822),
                             Description = "Org 2 Description",
                             Title = "Org 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9139)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(7822)
                         });
                 });
 
@@ -464,20 +464,20 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(1188),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8715),
                             Description = "SU 1 Description",
                             OUId = 1,
                             Title = "SU 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(1189)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8716)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(1193),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8718),
                             Description = "SU 2 Description",
                             OUId = 2,
                             Title = "SU 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 621, DateTimeKind.Utc).AddTicks(1194)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8719)
                         });
                 });
 
@@ -514,20 +514,199 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9527),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8005),
                             Description = "Systemz 1 Description",
                             OrgId = 1,
                             Title = "Systemz 1",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9528)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8005)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9534),
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8008),
                             Description = "Systemz 2 Description",
                             OrgId = 2,
                             Title = "Systemz 2",
-                            UpdatedAt = new DateTime(2023, 4, 29, 3, 32, 22, 620, DateTimeKind.Utc).AddTicks(9535)
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8009)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.MadaniBastaEntity.MadaniBasta", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MadaniBastas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8891),
+                            Description = "Madani Basta 1 Description",
+                            Title = "Madani Basta 1",
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8892)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8893),
+                            Description = "Madani Basta 2 Description",
+                            Title = "Madani Basta 2",
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(8894)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.MadaniBastaEntity.MadaniBastaEvent", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MadaniBastaEvents");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9252),
+                            Description = "Madani Basta Event 1 Description",
+                            Title = "Madani Basta Event 1",
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9253)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9254),
+                            Description = "Madani Basta Event 2 Description",
+                            Title = "Madani Basta Event 2",
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9255)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.MadaniBastaEntity.MadaniBastaPlace", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MadaniBastaPlaces");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9436),
+                            Description = "Madani Basta Place 1 Description",
+                            Title = "Madani Basta Place 1",
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9436)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9437),
+                            Description = "Madani Basta Place 2 Description",
+                            Title = "Madani Basta Place 2",
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9438)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.MadaniBastaEntity.MadaniBastaSubCategory", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MadaniBastaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MadaniBastaId");
+
+                    b.ToTable("MadaniBastaSubCategorys");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9058),
+                            Description = "Madani Basta Sub Category 1 Description",
+                            MadaniBastaId = 1,
+                            Title = "Madani Basta Sub Category 1",
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9058)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9061),
+                            Description = "Madani Basta Sub Category 2 Description",
+                            MadaniBastaId = 2,
+                            Title = "Madani Basta Sub Category 2",
+                            UpdatedAt = new DateTime(2023, 5, 20, 6, 20, 41, 271, DateTimeKind.Utc).AddTicks(9062)
                         });
                 });
 
@@ -633,6 +812,17 @@ namespace ProjectName.Infra.Migrations
                     b.Navigation("Org");
                 });
 
+            modelBuilder.Entity("ProjectName.Infra.Entity.MadaniBastaEntity.MadaniBastaSubCategory", b =>
+                {
+                    b.HasOne("ProjectName.Infra.Entity.MadaniBastaEntity.MadaniBasta", "MadaniBasta")
+                        .WithMany("MadaniBastaSubCategorys")
+                        .HasForeignKey("MadaniBastaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MadaniBasta");
+                });
+
             modelBuilder.Entity("ProjectName.Infra.Entity.ApiUser", b =>
                 {
                     b.Navigation("Roles");
@@ -646,6 +836,11 @@ namespace ProjectName.Infra.Migrations
             modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.Org", b =>
                 {
                     b.Navigation("Systemzs");
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.MadaniBastaEntity.MadaniBasta", b =>
+                {
+                    b.Navigation("MadaniBastaSubCategorys");
                 });
 #pragma warning restore 612, 618
         }

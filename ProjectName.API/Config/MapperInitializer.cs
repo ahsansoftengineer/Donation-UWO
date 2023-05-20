@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using ProjectName.Domain.Base;
+using ProjectName.Domain.DTOs.MadaniBastaDTOz;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
+using ProjectName.Infra.Entity.MadaniBastaEntity;
 using System.Net;
 using X.PagedList;
 
@@ -32,6 +34,7 @@ namespace ProjectName.API.Config
       CreateMapAll<LE, LEDto, LEDtoCreate, LEDtoSearch>();
       CreateMapAll<OU, OUDto, OUDtoCreate, OUDtoSearch>();
       CreateMapAll<SU, SUDto, SUDtoCreate, SUDtoSearch>();
+      CreateMapAll<MadaniBasta, MadaniBastaDto, MadaniBastaDtoCreate, MadaniBastaDtoSearch>();
     }
     private void CreateMapAllWithChild<Entity, Dto, Create, Search, Child>() // Relation
     {
