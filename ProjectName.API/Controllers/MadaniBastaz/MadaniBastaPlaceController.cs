@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.Base;
+using ProjectName.Domain.Common;
 using ProjectName.Domain.DTOs.MadaniBastaDTOz;
 using ProjectName.Infra.Entity.MadaniBastaEntity;
 using ProjectName.Infra.Repo;
@@ -20,12 +21,12 @@ namespace ProjectName.API.Controllers.MadaniBastaz
     { }
 
     [HttpGet]
-    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<MadaniBastaPlace, MadaniBastaPlaceDtoSearch?> filter)
+    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<MadaniBastaPlace, CommonDtoSearch?> filter)
     {
       try
       {
         var list = await UnitOfWork.MadaniBastaPlaces.Gets(filter);
-        var result = Mapper.Map<IPagedList<MadaniBastaPlace>, PaginateResponse<MadaniBastaPlaceDto>>(list);
+        var result = Mapper.Map<IPagedList<MadaniBastaPlace>, PaginateResponse<CommonDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -41,12 +42,12 @@ namespace ProjectName.API.Controllers.MadaniBastaz
         q => q.Id == id
      //, new List<string> { "Org" }
      );
-      var result = Mapper.Map<BaseDTOSingle<MadaniBastaPlaceDto>>(single);
+      var result = Mapper.Map<BaseDtoSingle<CommonDto>>(single);
       return Ok(result);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] MadaniBastaPlaceDtoCreate data)
+    public async Task<IActionResult> Create([FromBody] CommonDtoCreate data)
     {
       if (!ModelState.IsValid) return CreateInvalid();
       try
@@ -63,7 +64,7 @@ namespace ProjectName.API.Controllers.MadaniBastaz
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody] MadaniBastaPlaceDtoCreate data)
+    public async Task<IActionResult> Update(int id, [FromBody] CommonDtoCreate data)
     {
       if (!ModelState.IsValid || id < 1) return UpdateInvalid();
       try

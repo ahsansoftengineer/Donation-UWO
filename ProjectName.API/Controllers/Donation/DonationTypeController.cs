@@ -3,30 +3,29 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.Base;
 using ProjectName.Domain.Common;
-using ProjectName.Domain.DTOs.MadaniBastaDTOz;
-using ProjectName.Infra.Entity.MadaniBastaEntity;
+using ProjectName.Infra.Entity.Donationz;
 using ProjectName.Infra.Repo;
 using X.PagedList;
 
-namespace ProjectName.API.Controllers.MadaniBastaz
+namespace ProjectName.API.Controllers.Donation
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class MadaniBastaController : BaseController<MadaniBastaController>
+  public class DonationTypeController : BaseController<DonationTypeController>
   {
-    public MadaniBastaController(
-      ILogger<MadaniBastaController> logger,
+    public DonationTypeController(
+      ILogger<DonationTypeController> logger,
       IMapper mapper,
       IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
     { }
 
     [HttpGet]
-    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<MadaniBasta, CommonDtoSearch?> filter)
+    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<DonationType, CommonDtoSearch?> filter)
     {
       try
       {
-        var list = await UnitOfWork.MadaniBastas.Gets(filter);
-        var result = Mapper.Map<IPagedList<MadaniBasta>, PaginateResponse<CommonDto>>(list);
+        var list = await UnitOfWork.DonationTypes.Gets(filter);
+        var result = Mapper.Map<IPagedList<DonationType>, PaginateResponse<CommonDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -38,7 +37,7 @@ namespace ProjectName.API.Controllers.MadaniBastaz
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
-      var single = await UnitOfWork.MadaniBastas.Get(
+      var single = await UnitOfWork.DonationTypes.Get(
         q => q.Id == id
      //, new List<string> { "Org" }
      );
@@ -52,8 +51,8 @@ namespace ProjectName.API.Controllers.MadaniBastaz
       if (!ModelState.IsValid) return CreateInvalid();
       try
       {
-        var result = Mapper.Map<MadaniBasta>(data);
-        await UnitOfWork.MadaniBastas.Insert(result);
+        var result = Mapper.Map<DonationType>(data);
+        await UnitOfWork.DonationTypes.Insert(result);
         await UnitOfWork.Save();
         return Ok(result);
       }
@@ -69,12 +68,12 @@ namespace ProjectName.API.Controllers.MadaniBastaz
       if (!ModelState.IsValid || id < 1) return UpdateInvalid();
       try
       {
-        var item = await UnitOfWork.MadaniBastas.Get(q => q.Id == id);
+        var item = await UnitOfWork.DonationTypes.Get(q => q.Id == id);
 
         if (item == null) return UpdateNull();
 
         var result = Mapper.Map(data, item);
-        UnitOfWork.MadaniBastas.Update(item);
+        UnitOfWork.DonationTypes.Update(item);
         await UnitOfWork.Save();
         return Ok(result);
       }
@@ -89,12 +88,12 @@ namespace ProjectName.API.Controllers.MadaniBastaz
     {
       if (id < 1) return DeleteInvalid();
 
-      var search = await UnitOfWork.MadaniBastas.Get(q => q.Id == id);
+      var search = await UnitOfWork.DonationTypes.Get(q => q.Id == id);
       if (search == null) return DeleteNull();
 
       try
       {
-        await UnitOfWork.MadaniBastas.Delete(id);
+        await UnitOfWork.DonationTypes.Delete(id);
         await UnitOfWork.Save();
       }
       catch (Exception ex)

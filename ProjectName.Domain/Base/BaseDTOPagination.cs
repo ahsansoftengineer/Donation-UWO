@@ -2,7 +2,7 @@
 
 namespace ProjectName.Domain.Base
 {
-  public class BaseDTOPagination
+  public class BaseDtoPagination
   {
     const int maxPageSize = 50;
     public int? PageNo { get; set; } = 1;
@@ -15,21 +15,20 @@ namespace ProjectName.Domain.Base
       }
       set
       {
-        if (value == null) pageSize = 10;
-        else pageSize = value > maxPageSize ? maxPageSize : value;
+        pageSize = value > maxPageSize ? maxPageSize : value;
       }
     }
   }
-  public class PaginateResponse<T> : BaseDTOPagination
+  public class PaginateResponse<T> : BaseDtoPagination
   {
-    public List<T> Records { get; set; }
+    public List<T>? Records { get; set; }
     public int Count { get; set; }
     public HttpStatusCode Status { get; set; }
     // public bool HasNextPage { get; set; } //
 
   }
 
-  public class PaginateRequestFilter<T, TDto> : BaseDTOPagination
+  public class PaginateRequestFilter<T, TDto> : BaseDtoPagination
     where T : class
   {
     public TDto? Search { get; set; }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ProjectName.Domain.Base;
+using ProjectName.Domain.Common;
 using ProjectName.Domain.DTOs.MadaniBastaDTOz;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
@@ -28,19 +29,25 @@ namespace ProjectName.API.Config
 
       CreateMap(typeof(PagedList<>), typeof(PagedList<>));
 
-      CreateMapAllWithChild<Org, OrgDto, BaseDtoCreate, OrgDtoSearch, OrgDtoWithSystemzs>();
+      //CreateMapAllWithChild<Org, CommonDto, BaseDtoCreate, CommonDtoSearch, OrgDtoWithSystemzs>();
+      CreateMapCommon<Org>();
       CreateMapAll<Systemz, SystemzDto, SystemzDtoCreate, SystemzDtoSearch>();
-      CreateMapAll<BG, BGDto, BGDtoCreate, BGDtoSearch>();
+
+      CreateMapCommon<BG>();
       CreateMapAll<LE, LEDto, LEDtoCreate, LEDtoSearch>();
       CreateMapAll<OU, OUDto, OUDtoCreate, OUDtoSearch>();
       CreateMapAll<SU, SUDto, SUDtoCreate, SUDtoSearch>();
-      CreateMapAll<MadaniBasta, MadaniBastaDto, MadaniBastaDtoCreate, MadaniBastaDtoSearch>();
+      CreateMapCommon<MadaniBasta>();
+      CreateMapCommon<MadaniBastaEvent>();
+      CreateMapCommon<MadaniBastaPlace>();
       CreateMapAll<MadaniBastaSubCategory, 
         MadaniBastaSubCategoryDto, 
         MadaniBastaSubCategoryDtoCreate, 
         MadaniBastaSubCategoryDtoSearch>();
-      CreateMapAll<MadaniBastaEvent, MadaniBastaEventDto, MadaniBastaEventDtoCreate, MadaniBastaEventDtoSearch>();
-      CreateMapAll<MadaniBastaPlace, MadaniBastaPlaceDto, MadaniBastaPlaceDtoCreate, MadaniBastaPlaceDtoSearch>();
+    }
+    private void CreateMapCommon<Entity>()
+    {
+      this.CreateMapAll<Entity, CommonDto, CommonDtoCreate, CommonDtoSearch>();
     }
     private void CreateMapAllWithChild<Entity, Dto, Create, Search, Child>() // Relation
     {
@@ -58,7 +65,7 @@ namespace ProjectName.API.Config
     }
     private void CreateMapSingle<Src, Dest>()
     {
-      CreateMap<Src, BaseDTOSingle<Dest>>()
+      CreateMap<Src, BaseDtoSingle<Dest>>()
         .ForMember(d => d.Record, c => c.MapFrom(y => y))
         .ForMember(d => d.Status, c => c.MapFrom(y => HttpStatusCode.OK));
     }

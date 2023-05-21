@@ -41,7 +41,7 @@ namespace ProjectName.API.Controllers.MadaniBastaz
         q => q.Id == id
      //, new List<string> { "Org" }
      );
-      var result = Mapper.Map<BaseDTOSingle<MadaniBastaSubCategoryDto>>(single);
+      var result = Mapper.Map<BaseDtoSingle<MadaniBastaSubCategoryDto>>(single);
       return Ok(result);
     }
 

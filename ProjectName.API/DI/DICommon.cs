@@ -74,6 +74,23 @@ namespace ProjectName.API.DI
               .AllowAnyHeader()
         );
       });
+      services.AddHttpsRedirection(options =>
+      {
+        options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+        options.HttpsPort = 443; // Replace with your HTTPS port number if different
+      });
+      //services.AddCors(options =>
+      //{
+      //  options.AddPolicy(MyAllowSpecificOrigins,
+      //                        policy =>
+      //                        {
+      //                          policy.WithOrigins("http://example.com",
+      //                                          "http://www.contoso.com")
+      //                                          .AllowAnyHeader()
+      //                                          .AllowAnyMethod();
+      //                        });
+      //});
+
     }
   }
 }

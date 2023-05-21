@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
-namespace ProjectName.Infra.Configuration
+namespace ProjectName.Infra.Config
 {
   public class RoleConfig : IEntityTypeConfiguration<IdentityRole>
   {

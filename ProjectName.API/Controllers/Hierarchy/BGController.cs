@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.Base;
-using ProjectName.Domain.Model.Hierarchy;
+using ProjectName.Domain.Common;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
 using X.PagedList;
@@ -20,12 +20,12 @@ namespace ProjectName.API.Controllers.Hierarchy
     { }
 
     [HttpGet]
-    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<BG, BGDtoSearch?> filter)
+    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<BG, CommonDtoSearch?> filter)
     {
       try
       {
         var list = await UnitOfWork.BGs.Gets(filter);
-        var result = Mapper.Map<IPagedList<BG>, PaginateResponse<BGDto>>(list);
+        var result = Mapper.Map<IPagedList<BG>, PaginateResponse<CommonDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -41,12 +41,12 @@ namespace ProjectName.API.Controllers.Hierarchy
         q => q.Id == id
      //, new List<string> { "Org" }
      );
-      var result = Mapper.Map< BaseDTOSingle<BGDto>>(single);
+      var result = Mapper.Map< BaseDtoSingle<CommonDto>>(single);
       return Ok(result);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] BGDtoCreate data)
+    public async Task<IActionResult> Create([FromBody] CommonDtoCreate data)
     {
       if (!ModelState.IsValid) return CreateInvalid();
       try
@@ -63,7 +63,7 @@ namespace ProjectName.API.Controllers.Hierarchy
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody] BGDtoCreate data)
+    public async Task<IActionResult> Update(int id, [FromBody] CommonDtoCreate data)
     {
       if (!ModelState.IsValid || id < 1) return UpdateInvalid();
       try

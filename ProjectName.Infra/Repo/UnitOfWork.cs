@@ -3,45 +3,44 @@ using ProjectName.Infra.Context;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.Base;
 using ProjectName.Infra.Entity.MadaniBastaEntity;
+using ProjectName.Infra.Entity.Extraz;
+using ProjectName.Infra.Entity.Donationz;
 
 namespace ProjectName.Infra.Repo
 {
-    public class UnitOfWork : IUnitOfWork
+  public partial class UnitOfWork
   {
     private readonly DBCntxt _context;
+    public UnitOfWork(DBCntxt context)
+    {
+      _context = context;
+    }
+    // Hierarchy
     private IGenericRepo<Org>? _orgs;
     private IGenericRepo<Systemz>? _systemz;
     private IGenericRepo<BG>? _bgs;
     private IGenericRepo<LE>? _les;
     private IGenericRepo<OU>? _ous;
     private IGenericRepo<SU>? _sus;
+
+    // MadaniBasta
     private IGenericRepo<MadaniBasta>? _madaniBastas;
     private IGenericRepo<MadaniBastaSubCategory>? _madaniBastaSubCategorys;
     private IGenericRepo<MadaniBastaEvent>? _madaniBastaEvents;
     private IGenericRepo<MadaniBastaPlace>? _madaniBastaPlaces;
 
-    public UnitOfWork(DBCntxt context)
-    {
-      _context = context;
-    }
-    // ??= C# 9 Short-hand Syntax
-    public IGenericRepo<Org> Orgs => _orgs ??= new GenericRepo<Org>(_context);
-    public IGenericRepo<Systemz> Systemzs => _systemz ??= new GenericRepo<Systemz>(_context);
-    public IGenericRepo<BG> BGs => _bgs ??= new GenericRepo<BG>(_context);
-    public IGenericRepo<LE> LEs => _les ??= new GenericRepo<LE>(_context);
-    public IGenericRepo<OU> OUs => _ous ??= new GenericRepo<OU>(_context);
-    public IGenericRepo<SU> SUs => _sus ??= new GenericRepo<SU>(_context);
-    public IGenericRepo<MadaniBasta> MadaniBastas => _madaniBastas ??= new GenericRepo<MadaniBasta>(_context);
-    public IGenericRepo<MadaniBastaSubCategory> MadaniBastaSubCategorys => _madaniBastaSubCategorys ??= new GenericRepo<MadaniBastaSubCategory>(_context);
-    public IGenericRepo<MadaniBastaEvent> MadaniBastaEvents => _madaniBastaEvents ??= new GenericRepo<MadaniBastaEvent>(_context);
-    public IGenericRepo<MadaniBastaPlace> MadaniBastaPlaces => _madaniBastaPlaces ??= new GenericRepo<MadaniBastaPlace>(_context);
+    // Extra
+    private IGenericRepo<COA>? _cOAs;
+    private IGenericRepo<Locationz>? _locations;
+    private IGenericRepo<Majlis>? _majliss;
+    private IGenericRepo<SysmanAccount>? _sysmanAccounts;
 
-    public void Dispose()
-    {
-      _context.Dispose();
-      GC.SuppressFinalize(this);
-    }
+    // Donation
 
+    private IGenericRepo<DonationCategory>? _donationCategory;
+    public IGenericRepo<DonationCellMaster>? _donationCellMaster;
+    public IGenericRepo<DonationSubType>? _donationSubType;
+    public IGenericRepo<DonationType>? _donationType;
     public async Task Save()
     {
       AddTimestamps();
@@ -60,10 +59,15 @@ namespace ProjectName.Infra.Repo
         if (entity.State == EntityState.Added)
         {
           ((BaseEntity)entity.Entity).CreatedAt = now;
-        } 
+        }
         //EntityState.Detached, EntityState.Deleted, EntityState.Unchanged
         ((BaseEntity)entity.Entity).UpdatedAt = now;
       }
+    }
+    public void Dispose()
+    {
+      _context.Dispose();
+      GC.SuppressFinalize(this);
     }
   }
 }

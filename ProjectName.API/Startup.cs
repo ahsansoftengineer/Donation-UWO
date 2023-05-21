@@ -1,6 +1,4 @@
-﻿using AspNetCoreRateLimit;
-using Microsoft.AspNetCore.Mvc;
-using ProjectName.API.Config;
+﻿using ProjectName.API.Config;
 using ProjectName.API.DI;
 using ProjectName.Infra;
 
@@ -26,8 +24,8 @@ namespace ProjectName.API
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
       app.AddExternalConfiguration(env);
+      app.UseCors("CorsPolicyAllowAll");
+      app.UseHttpsRedirection();
     }
-
-
   }
 }

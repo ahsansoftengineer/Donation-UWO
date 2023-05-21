@@ -11,6 +11,6 @@ namespace ProjectName.Infra.Entity
     [DataType(DataType.PhoneNumber)]
     public override string? PhoneNumber { get; set; }
 
-    public List<IdentityRole> Roles { get; set; }
+    public List<IdentityRole>? Roles { get; set; }
   }
 }

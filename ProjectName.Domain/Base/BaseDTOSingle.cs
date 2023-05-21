@@ -2,9 +2,9 @@
 
 namespace ProjectName.Domain.Base
 {
-  public class BaseDTOSingle<T>
+  public class BaseDtoSingle<T>
   {
-    public T Record { get; set; }
+    public T? Record { get; set; }
     public HttpStatusCode Status { get; set; }
   }
 }

@@ -41,7 +41,7 @@ namespace ProjectName.API.Controllers.Hierarchy
       var single = await UnitOfWork.Systemzs.Get(
         q => q.Id == id //, new List<string> { "Org" }
      );
-      var result = Mapper.Map<BaseDTOSingle<SystemzDto>>(single);
+      var result = Mapper.Map<BaseDtoSingle<SystemzDto>>(single);
       return Ok(result);
     }
 

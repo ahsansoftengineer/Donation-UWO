@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.Base;
+using ProjectName.Domain.Common;
 using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
@@ -61,12 +62,12 @@ namespace ProjectName.API.Controllers.Hierarchy
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<Org, OrgDtoSearch?> filter)
+    public async Task<IActionResult> Gets([FromQuery] PaginateRequestFilter<Org, CommonDtoSearch?> filter)
     {
       try
       {
         var list = await UnitOfWork.Orgs.Gets(filter);
-        var result = Mapper.Map<IPagedList<Org>, PaginateResponse<OrgDto>>(list);
+        var result = Mapper.Map<IPagedList<Org>, PaginateResponse<CommonDto>>(list);
         return Ok(result);
       }
       catch (Exception ex)
@@ -81,7 +82,7 @@ namespace ProjectName.API.Controllers.Hierarchy
         q => q.Id == id
         // ,new List<string> { "Systemz" }
      );
-      var result = Mapper.Map<BaseDTOSingle<OrgDto>>(single);
+      var result = Mapper.Map<BaseDtoSingle<CommonDto>>(single);
       //result.Systemz.Hotels = null; //
       return Ok(result);
     }
@@ -91,7 +92,7 @@ namespace ProjectName.API.Controllers.Hierarchy
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> Create([FromBody] OrgDtoCreate data)
+    public async Task<IActionResult> Create([FromBody] CommonDtoCreate data)
     {
       if (!ModelState.IsValid) return CreateInvalid();
       try
@@ -116,7 +117,7 @@ namespace ProjectName.API.Controllers.Hierarchy
 
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<IActionResult> Update(int id, [FromBody] OrgDtoCreate data)
+    public async Task<IActionResult> Update(int id, [FromBody] CommonDtoCreate data)
     {
       if (!ModelState.IsValid || id < 1) return UpdateInvalid();
       try

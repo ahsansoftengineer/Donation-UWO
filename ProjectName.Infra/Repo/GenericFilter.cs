@@ -7,13 +7,13 @@ namespace ProjectName.Infra.Repo
 {
   public static class GenericFilter
   {
-    public static IQueryable<T> FilterByGeneric<T, TDto>(this IQueryable<T> source, TDto searchObject)
+    public static IQueryable<T> FilterByGeneric<T, TDto>(this IQueryable<T> source, TDto? searchObject)
       where T : class
       where TDto : class
     {
       if (searchObject == null) return source;
 
-      //var dtoParam = Expression.Parameter(typeof(TDto), "TDto");
+      //var dtoParam = Expression.Parameter(typeof(TDto), "TDto"); //
       var entityParam = Expression.Parameter(typeof(T), "TEntity");
       var dtoPropInfos = searchObject.GetType()
           .GetProperties(BindingFlags.Public | BindingFlags.Instance)
@@ -26,7 +26,7 @@ namespace ProjectName.Infra.Repo
         //var dtoProp = Expression.Property(dtoParam, dtoPropInfo.Name); //
         //var dtoValue = dtoPropInfo.GetValue(searchObject); //
 
-        MemberExpression entityProp = null;
+        MemberExpression? entityProp = null;
 
         if(dtoPropInfo.Name == "DateFrom" || dtoPropInfo.Name == "DateTo")
         {
@@ -58,7 +58,7 @@ namespace ProjectName.Infra.Repo
             if (dtoPropInfo.Name == "DateFrom" || dtoPropInfo.Name == "DateTo")
             {
 
-              BinaryExpression comparison = null;
+              BinaryExpression? comparison = null;
               if (dtoPropInfo.Name == "DateFrom")
                 comparison = Expression.GreaterThanOrEqual(entityProp, constant);
               else

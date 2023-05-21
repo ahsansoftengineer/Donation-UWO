@@ -5,7 +5,7 @@ namespace ProjectName.Infra.Repo
 {
     internal static class GenericSort
   {
-    public static IQueryable<T> OrderByGeneric<T>(this IQueryable<T> query, Sort sort)
+    public static IQueryable<T> OrderByGeneric<T>(this IQueryable<T> query, Sort? sort)
       where T : class
     {
       if (sort == null || 

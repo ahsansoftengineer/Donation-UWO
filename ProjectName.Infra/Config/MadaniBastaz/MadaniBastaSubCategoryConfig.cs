@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectName.Infra.Entity.MadaniBastaEntity;
 
-namespace ProjectName.Infra.Config.MadaniBastaConfiguration
+namespace ProjectName.Infra.Config.MadaniBastaz
 {
   internal class MadaniBastaSubCategoryConfig : IEntityTypeConfiguration<MadaniBastaSubCategory>
   {

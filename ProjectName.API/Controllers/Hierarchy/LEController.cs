@@ -39,7 +39,7 @@ namespace ProjectName.API.Controllers.Hierarchy
       var single = await UnitOfWork.LEs.Get(
         q => q.Id == id //, new List<string> { "Org" }
      );
-      var result = Mapper.Map< BaseDTOSingle<LEDto>>(single);
+      var result = Mapper.Map< BaseDtoSingle<LEDto>>(single);
       return Ok(result);
     }
 
