@@ -15,7 +15,7 @@ namespace ProjectName.Infra.Config.Donationz
           Id = 1,
           Title = "DonationSubType 1",
           Description = "DonationSubType 1 Description",
-          DonationCategoryId = 1,
+          //DonationCategoryId = 1,
           DonationTypeId = 1,
         },
          new DonationSubType
@@ -23,7 +23,7 @@ namespace ProjectName.Infra.Config.Donationz
            Id = 2,
            Title = "DonationSubType 2",
            Description = "DonationSubType 2 Description",
-           DonationCategoryId = 2,
+           //DonationCategoryId = 2,
            DonationTypeId = 2,
          }
       );

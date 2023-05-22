@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProjectName.Domain.Base;
 using ProjectName.Infra.Context;
 using System.Linq.Expressions;

@@ -18,9 +18,9 @@ namespace ProjectName.Infra.Config.Donationz
           Address = "",
           LocationzId = 1,
           MajlisId = 1,
-          BGId = 1,
-          LEId = 1,
-          OUId = 1,
+          //BGId = 1,
+          //LEId = 1,
+          //OUId = 1,
           SUId = 1
 
         },
@@ -32,9 +32,9 @@ namespace ProjectName.Infra.Config.Donationz
            Address = "",
            LocationzId = 2,
            MajlisId = 2,
-           BGId = 2,
-           LEId = 2,
-           OUId = 2,
+           //BGId = 2,
+           //LEId = 2,
+           //OUId = 2,
            SUId = 2
 
          }
