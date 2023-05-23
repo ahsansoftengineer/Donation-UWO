@@ -8,20 +8,21 @@ namespace ProjectName.Infra.Config.Hierarchy
   {
     public void Configure(EntityTypeBuilder<Systemz> builder)
     {
+      string name = typeof(SU).Name; // type.Name
       builder.HasData(
         new Systemz
         {
           Id = 1,
-          Title = "Systemz 1",
+          Title = name + " 1",
           OrgId = 1,
-          Description = "Systemz 1 Description",
+          Description = name + " 1 Description",
         },
          new Systemz
          {
            Id = 2,
-           Title = "Systemz 2",
+           Title = name + " 2",
            OrgId = 2,
-           Description = "Systemz 2 Description",
+           Description = name + " 2 Description",
          }
       );
     }

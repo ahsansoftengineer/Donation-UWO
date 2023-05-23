@@ -9,12 +9,13 @@ namespace ProjectName.Infra.Config.Donationz
   {
     public void Configure(EntityTypeBuilder<DonationCellMaster> builder)
     {
+      string name = typeof(DonationCellMaster).Name; // type.Name
       builder.HasData(
         new DonationCellMaster
         {
           Id = 1,
-          Title = "DonationCellMaster 1",
-          Description = "DonationCellMaster 1 Description",
+          Title = name + " 1",
+          Description = name + " 1 Description",
           Address = "",
           LocationzId = 1,
           MajlisId = 1,
@@ -27,8 +28,8 @@ namespace ProjectName.Infra.Config.Donationz
          new DonationCellMaster
          {
            Id = 2,
-           Title = "DonationCellMaster 2",
-           Description = "DonationCellMaster 2 Description",
+           Title = name + " 2",
+           Description = name + " 2 Description",
            Address = "",
            LocationzId = 2,
            MajlisId = 2,

@@ -8,20 +8,21 @@ namespace ProjectName.Infra.Config.Hierarchy
   {
     public void Configure(EntityTypeBuilder<OU> builder)
     {
+      string name = typeof(OU).Name; // type.Name
       builder.HasData(
         new OU
         {
           Id = 1,
-          Title = "OU 1",
+          Title = name + " 1",
           LEId = 1,
-          Description = "OU 1 Description",
+          Description = name + " 1 Description",
         },
          new OU
          {
            Id = 2,
-           Title = "OU 2",
+           Title = name + " 2",
            LEId = 2,
-           Description = "OU 2 Description",
+           Description = name + " 2 Description",
          }
       );
     }

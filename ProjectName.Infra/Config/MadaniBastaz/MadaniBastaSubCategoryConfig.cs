@@ -8,19 +8,20 @@ namespace ProjectName.Infra.Config.MadaniBastaz
   {
     public void Configure(EntityTypeBuilder<MadaniBastaSubCategory> builder)
     {
+      string name = typeof(MadaniBastaSubCategory).Name; // type.Name
       builder.HasData(
         new MadaniBastaSubCategory
         {
           Id = 1,
-          Title = "Madani Basta Sub Category 1",
-          Description = "Madani Basta Sub Category 1 Description",
+          Title = name + " 1",
+          Description = name + " 1 Description",
           MadaniBastaId = 1,
         },
          new MadaniBastaSubCategory
          {
            Id = 2,
-           Title = "Madani Basta Sub Category 2",
-           Description = "Madani Basta Sub Category 2 Description",
+           Title = name + " 2",
+           Description = name + " 2 Description",
            MadaniBastaId = 2,
          }
       );

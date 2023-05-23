@@ -9,12 +9,13 @@ namespace ProjectName.Infra.Config.Donationz
   {
     public void Configure(EntityTypeBuilder<DonationType> builder)
     {
+      string name = typeof(DonationType).Name; // type.Name
       builder.HasData(
         new DonationType
         {
           Id = 1,
-          Title = "DonationType 1",
-          Description = "DonationType 1 Description",
+          Title = name + " 1",
+          Description = name + " 1 Description",
           DonationCategoryId = 1,
           SysmanAccountId = 1,
           COAId= 1,
@@ -22,8 +23,8 @@ namespace ProjectName.Infra.Config.Donationz
          new DonationType
          {
            Id = 2,
-           Title = "DonationType 2",
-           Description = "DonationType 2 Description",
+           Title = name + " 2",
+           Description = name + " Description",
            DonationCategoryId = 2,
            SysmanAccountId = 2,
            COAId = 2,

@@ -8,20 +8,21 @@ namespace ProjectName.Infra.Config.Hierarchy
   {
     public void Configure(EntityTypeBuilder<LE> builder)
     {
+      string name = typeof(LE).Name; // type.Name
       builder.HasData(
         new LE
         {
           Id = 1,
-          Title = "LE 1",
+          Title = name + " 1",
           BGId = 1,
-          Description = "LE 1 Description",
+          Description = name + " 1 Description",
         },
          new LE
          {
            Id = 2,
-           Title = "LE 2",
+           Title = name + " 2",
            BGId = 2,
-           Description = "LE 2 Description",
+           Description = name + " 2 Description",
          }
       );
     }

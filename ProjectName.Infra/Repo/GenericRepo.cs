@@ -28,6 +28,7 @@ namespace ProjectName.Infra.Repo
     public async Task Insert(T entity)
     {
       await _db.AddAsync(entity);
+      //await _context.SaveChangesAsync();
     }
 
     public async Task InsertRange(IEnumerable<T> entities)

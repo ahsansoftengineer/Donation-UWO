@@ -9,20 +9,21 @@ namespace ProjectName.Infra.Config.Donationz
   {
     public void Configure(EntityTypeBuilder<DonationSubType> builder)
     {
+      string name = typeof(DonationCellMaster).Name; // type.Name
       builder.HasData(
         new DonationSubType
         {
           Id = 1,
-          Title = "DonationSubType 1",
-          Description = "DonationSubType 1 Description",
+          Title = name + " 1",
+          Description = name + " 1 Description",
           //DonationCategoryId = 1,
           DonationTypeId = 1,
         },
          new DonationSubType
          {
            Id = 2,
-           Title = "DonationSubType 2",
-           Description = "DonationSubType 2 Description",
+           Title = name + " 2",
+           Description = name + " 2 Description",
            //DonationCategoryId = 2,
            DonationTypeId = 2,
          }
