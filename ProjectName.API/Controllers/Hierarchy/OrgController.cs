@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.Base;
 using ProjectName.Domain.Common;
-using ProjectName.Domain.Model.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
 using X.PagedList;

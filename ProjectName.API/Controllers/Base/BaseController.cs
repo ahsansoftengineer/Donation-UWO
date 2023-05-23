@@ -3,9 +3,10 @@ using ProjectName.Infra.Repo;
 
 namespace ProjectName.API.Controllers.Base
 {
-  public abstract class BaseController<TEntity> : AlphaController<TEntity>
+  // It Remains Because I don't want to break Exsisting Functionality
+  public abstract class BaseController<TController> : AlphaController<TController>
   {
-    public BaseController(ILogger<TEntity> logger, IMapper mapper, IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
+    public BaseController(ILogger<TController> logger, IMapper mapper, IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
     {
     }
   }
