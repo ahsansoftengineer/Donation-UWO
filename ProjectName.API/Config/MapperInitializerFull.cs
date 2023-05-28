@@ -6,6 +6,8 @@ using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.MadaniBastaEntity;
 using ProjectName.Infra.Entity.Regionz;
 using ProjectName.Domain.DTOs.Regionz;
+using ProjectName.Infra.Entity.Donor;
+using ProjectName.Domain.DTOs.Donor;
 
 namespace ProjectName.API.Config
 {
@@ -48,6 +50,11 @@ namespace ProjectName.API.Config
         CityDto,
         CityDtoCreate,
         CityDtoSearch>();
+
+      CreateMapAll<DonorBasic,
+        DonorBasicDto,
+        DonorBasicDtoCreate,
+        DonorBasicDtoSearch>();
     }
   }
 
