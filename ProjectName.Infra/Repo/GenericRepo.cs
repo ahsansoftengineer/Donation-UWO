@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectName.Domain.Base;
 using ProjectName.Infra.Context;
+using ProjectName.Infra.Repo.Operationz;
 using System.Linq.Expressions;
 using X.PagedList;
 
 namespace ProjectName.Infra.Repo
 {
-  public class GenericRepo<T> : IGenericRepo<T> where T : class
+    public class GenericRepo<T> : IGenericRepo<T> where T : class
   {
     private readonly DBCntxt _context;
     private readonly DbSet<T> _db;
@@ -82,31 +83,6 @@ namespace ProjectName.Infra.Repo
       }
       return await query.AsNoTracking().ToListAsync();
     }
-
-    public async Task<IPagedList<T>> Gets(
-      BaseDtoPagination req,
-      List<string>? includes = null)
-    {
-      if (req == null)
-      {
-        req = new BaseDtoPagination()
-        {
-          PageNo = 1,
-          PageSize = 2
-        };
-      }
-      IQueryable<T> query = _db;
-      if (includes != null)
-      {
-        foreach (var item in includes)
-        {
-          query = query.Include(item);
-        }
-      }
-      return await query.AsNoTracking()
-        .ToPagedListAsync(req.PageNo ?? 1, req.PageSize);
-    }
-
     public async Task<IPagedList<T>> Gets<TDto>(PaginateRequestFilter<T, TDto>? req)
       where TDto : class
     {
@@ -122,17 +98,13 @@ namespace ProjectName.Infra.Repo
       }
 
       IQueryable<T> query = _db;
-      query = query.FilterByGeneric<T, TDto>(req.Search);
-      query = query.OrderByGeneric<T>(req.Sort);
-      /*
-        if (query.includes != null)
-        {
-          foreach (var item in includes)
-          {
-            query = query.Include(item);
-          }
-        }
-      */
+      //query = query.FilterByGeneric<T, TDto>(req.Search);
+      //query = query.OrderByGeneric<T>(req.Sort);
+      // Simplified Form
+      query = query.FilterByGeneric(req.Search);
+      query = query.OrderByGeneric(req.Sort);
+      query = query.IncluesByGeneric(req.includes);
+     
       return await query
         .AsNoTracking()
         .ToPagedListAsync(req.PageNo, req.PageSize);

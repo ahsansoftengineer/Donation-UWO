@@ -10,6 +10,7 @@ namespace ProjectName.Domain.DTOs.Regionz
   {
     public int CountryId { get; set; }
     public BaseDtoRelation? Country { get; set; }
+    public List<BaseDtoRelation>? Citys { get; set; }
   }
   public class StateDtoSearch : BaseDtoSearchFull
   {

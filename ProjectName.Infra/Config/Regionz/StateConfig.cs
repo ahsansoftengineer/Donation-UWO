@@ -9,7 +9,7 @@ namespace ProjectName.Infra.Config.Regionz
   {
     public void Configure(EntityTypeBuilder<State> builder)
     {
-      string name = typeof(SU).Name; // type.Name
+      string name = typeof(State).Name; // type.Name
       builder.HasData(
         new State
         {

@@ -1,5 +1,5 @@
-﻿using ProjectName.Infra.Entity.Base;
-using ProjectName.Infra.Entity.MadaniBastaEntity;
+﻿using ProjectName.Infra.Entity.Attributez;
+using ProjectName.Infra.Entity.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectName.Infra.Entity.Regionz
@@ -8,6 +8,9 @@ namespace ProjectName.Infra.Entity.Regionz
   {
     [ForeignKey(nameof(Country))]
     public int CountryId { get; set; } 
+    [Relate]
     public virtual Country? Country { get; set; }
+    [Relate]
+    public virtual IList<City>? Citys { get; set; }
   }
 }

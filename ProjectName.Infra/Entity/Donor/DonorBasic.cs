@@ -1,4 +1,5 @@
 ﻿using ProjectName.Domain.Enums;
+using ProjectName.Infra.Entity.Attributez;
 using ProjectName.Infra.Entity.Base;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.Regionz;
@@ -16,6 +17,7 @@ namespace ProjectName.Infra.Entity.Donor
 
     [ForeignKey(nameof(DonorType))]
     public int DonorTypeId { get; set; }
+    [Relate]
     public DonorType? DonorType { get; set; }
 
     [ForeignKey(nameof(Org))]

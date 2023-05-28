@@ -2,6 +2,19 @@
 
 namespace ProjectName.Domain.Base
 {
+
+  public enum Order
+  {
+    Unspecified = -1,
+    Ascending,
+    Descending
+  }
+  public class Sort
+  {
+    public string? By { get; set; }
+    public Order? Order { get; set; } = Base.Order.Unspecified;
+
+  }
   public class BaseDtoPagination
   {
     const int maxPageSize = 50;
@@ -27,24 +40,11 @@ namespace ProjectName.Domain.Base
     // public bool HasNextPage { get; set; } //
 
   }
-
   public class PaginateRequestFilter<T, TDto> : BaseDtoPagination
     where T : class
   {
     public TDto? Search { get; set; }
     public Sort? Sort { get; set; }
+    public List<string>? includes { get; set; }
   }
-  public enum Order
-  {
-    Unspecified = -1,
-    Ascending,
-    Descending
-  }
-  public class Sort
-  {
-    public string? By { get; set; }
-    public Order? Order { get; set; } = Base.Order.Unspecified;
-
-  }
-
 }

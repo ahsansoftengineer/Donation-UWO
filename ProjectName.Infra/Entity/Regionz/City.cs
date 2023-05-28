@@ -1,4 +1,5 @@
-﻿using ProjectName.Infra.Entity.Base;
+﻿using ProjectName.Infra.Entity.Attributez;
+using ProjectName.Infra.Entity.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectName.Infra.Entity.Regionz
@@ -7,6 +8,7 @@ namespace ProjectName.Infra.Entity.Regionz
   {
     [ForeignKey(nameof(State))]
     public int StateId { get; set; }
+    [Relate]
     public virtual State? State { get; set; }
   }
 }
