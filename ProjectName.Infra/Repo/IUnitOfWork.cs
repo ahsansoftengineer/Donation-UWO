@@ -1,7 +1,9 @@
 ﻿using ProjectName.Infra.Entity.Donationz;
+using ProjectName.Infra.Entity.Donor;
 using ProjectName.Infra.Entity.Extraz;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.MadaniBastaEntity;
+using ProjectName.Infra.Entity.Regionz;
 
 namespace ProjectName.Infra.Repo
 {
@@ -16,24 +18,32 @@ namespace ProjectName.Infra.Repo
     IGenericRepo<OU> OUs { get; }
     IGenericRepo<SU> SUs { get; }
 
+    // EXTRAS
+    IGenericRepo<COA> COAs { get; }
+    IGenericRepo<Locationz> Locationzs { get; }
+    IGenericRepo<Majlis> Majliss { get; }
+    IGenericRepo<SysmanAccount> SysmanAccounts { get; }
+    // Regionz
+    IGenericRepo<Country> Countrys { get; }
+    IGenericRepo<State> States { get; }
+    IGenericRepo<City> Citys { get; }
+
     // MADNI BASTA
     IGenericRepo<MadaniBasta> MadaniBastas { get; }
     IGenericRepo<MadaniBastaSubCategory> MadaniBastaSubCategorys { get; }
     IGenericRepo<MadaniBastaEvent> MadaniBastaEvents { get; }
     IGenericRepo<MadaniBastaPlace> MadaniBastaPlaces { get; }
 
-
-    // EXTRAS
-    IGenericRepo<COA> COAs { get; }
-    IGenericRepo<Locationz> Locationzs { get; }
-    IGenericRepo<Majlis> Majliss { get; }
-    IGenericRepo<SysmanAccount> SysmanAccounts { get; }
-
     // Donation
     IGenericRepo<DonationCategory> DonationCategorys { get; }
     IGenericRepo<DonationCellMaster> DonationCellMasters { get; }
     IGenericRepo<DonationSubType> DonationSubTypes { get; }
     IGenericRepo<DonationType> DonationTypes { get; }
+    IGenericRepo<TargetAssignment> TargetAssignments { get; }
+
+    // Donor
+    IGenericRepo<DonorType> DonorTypes { get; }
+    IGenericRepo<DonorBasic> DonorBasics { get; }
 
   }
 }

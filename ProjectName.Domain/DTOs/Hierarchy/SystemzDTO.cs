@@ -1,6 +1,6 @@
 ﻿using ProjectName.Domain.Base;
 
-namespace ProjectName.Domain.Model.Hierarchy
+namespace ProjectName.Domain.DTOs.Hierarchy
 {
   public class SystemzDto : BaseDtoFull
   {

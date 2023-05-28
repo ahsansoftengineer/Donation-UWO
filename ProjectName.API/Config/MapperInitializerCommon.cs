@@ -1,7 +1,9 @@
 ﻿using ProjectName.Infra.Entity.Donationz;
+using ProjectName.Infra.Entity.Donor;
 using ProjectName.Infra.Entity.Extraz;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.MadaniBastaEntity;
+using ProjectName.Infra.Entity.Regionz;
 
 namespace ProjectName.API.Config
 {
@@ -20,6 +22,8 @@ namespace ProjectName.API.Config
       CreateMapCommon<Majlis>();
       CreateMapCommon<COA>();
       CreateMapCommon<SysmanAccount>();
+      CreateMapCommon<Country>();
+      CreateMapCommonStatus<DonorType>();
 
     }
   }

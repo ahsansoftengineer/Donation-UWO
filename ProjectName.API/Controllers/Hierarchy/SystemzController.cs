@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
-using ProjectName.Domain.Model.Hierarchy;
+using ProjectName.Domain.DTOs.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Repo;
 
@@ -9,7 +9,7 @@ namespace ProjectName.API.Controllers.Hierarchy
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class SystemzController : CharlieController<SystemzController, Systemz, SystemzDtoSearch, SystemzDto, SystemzDtoCreate>
+  public class SystemzController : BaseController<SystemzController, Systemz, SystemzDtoSearch, SystemzDto, SystemzDtoCreate>
   {
     public SystemzController(
       ILogger<SystemzController> logger,

@@ -11,7 +11,7 @@ namespace ProjectName.API.Controllers.Hierarchy
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class OrgController : BaseController<OrgController>
+  public class OrgController : AlphaController<OrgController>
   {
     public OrgController(
       ILogger<OrgController> logger,

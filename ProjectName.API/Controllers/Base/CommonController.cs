@@ -8,7 +8,7 @@ namespace ProjectName.API.Controllers.Base
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class CommonController<TController, TEntity> : CharlieController<TController, TEntity, CommonDtoSearch, CommonDto, CommonDtoCreate>
+  public class CommonController<TController, TEntity> : BaseController<TController, TEntity, CommonDtoSearch, CommonDto, CommonDtoCreate>
     where TController : class
     where TEntity : BaseEntity
   {

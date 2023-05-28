@@ -35,6 +35,11 @@ namespace ProjectName.API.Controllers.Base
       Logger.LogError($"Invalid UPDATE attempt in Update");
       return BadRequest(ModelState);
     }
+    protected ObjectResult StatusInvalid()
+    {
+      Logger.LogError($"Invalid STATUS attempt in Update");
+      return BadRequest(ModelState);
+    }
     protected ObjectResult UpdateNull()
     {
       Logger.LogError($"Invalid UPDATE attempt in Update");

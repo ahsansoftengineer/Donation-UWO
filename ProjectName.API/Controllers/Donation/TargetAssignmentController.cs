@@ -9,14 +9,14 @@ namespace ProjectName.API.Controllers.Donation
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class DonationSubTypeController : BaseController<DonationSubTypeController, DonationSubType, DonationSubTypeDtoSearch, DonationSubTypeDto, DonationSubTypeDtoCreate>
+  public class TargetAssignmentController : BaseController<TargetAssignmentController, TargetAssignment, TargetAssignmenteDtoSearch, TargetAssignmentDto, TargetAssignmenteDtoSearch>
   {
-    public DonationSubTypeController(
-      ILogger<DonationSubTypeController> logger,
+    public TargetAssignmentController(
+      ILogger<TargetAssignmentController> logger,
       IMapper mapper,
       IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
     {
-      Repo = unitOfWork.DonationSubTypes;
+      Repo = unitOfWork.TargetAssignments;
 
     }
   }

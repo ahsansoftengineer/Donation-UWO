@@ -16,7 +16,7 @@ namespace ProjectName.API
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddDICommon();
-      services.AddAutoMapper(typeof(MapperInitializer));
+      services.AddAutoMapper(typeof(MapperInitializerFull));
       services.AddExternalServices();
       services.AddInfrastructure(Configuration);
 

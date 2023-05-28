@@ -9,7 +9,7 @@ namespace ProjectName.API.Controllers.MadaniBastaz
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class MadaniBastaSubCategoryController : CharlieController<MadaniBastaSubCategoryController, MadaniBastaSubCategory, MadaniBastaSubCategoryDtoSearch, MadaniBastaSubCategoryDto, MadaniBastaSubCategoryDtoCreate>
+  public class MadaniBastaSubCategoryController : BaseController<MadaniBastaSubCategoryController, MadaniBastaSubCategory, MadaniBastaSubCategoryDtoSearch, MadaniBastaSubCategoryDto, MadaniBastaSubCategoryDtoCreate>
   {
     public MadaniBastaSubCategoryController(
       ILogger<MadaniBastaSubCategoryController> logger,

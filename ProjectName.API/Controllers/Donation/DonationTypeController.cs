@@ -9,7 +9,7 @@ namespace ProjectName.API.Controllers.Donation
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class DonationTypeController : CharlieController<DonationTypeController, DonationType, DonationTypeDtoSearch, DonationTypeDto, DonationTypeDtoCreate>
+  public class DonationTypeController : BaseController<DonationTypeController, DonationType, DonationTypeDtoSearch, DonationTypeDto, DonationTypeDtoCreate>
   {
     public DonationTypeController(
       ILogger<DonationTypeController> logger,

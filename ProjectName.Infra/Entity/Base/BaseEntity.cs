@@ -1,4 +1,7 @@
-﻿namespace ProjectName.Infra.Entity.Base
+﻿using ProjectName.Domain.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ProjectName.Infra.Entity.Base
 {
   public abstract class BaseEntity
   {
@@ -7,6 +10,10 @@
     public string? Description { get; set; }
     public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; } = DateTime.UtcNow;
-    //public virtual IList<Hotel> Hotels { get; set; } // This Property Nothing to do with db it just if you want to access the Child will be handle through this property
+  }
+  public abstract class BaseStatusEntity : BaseEntity
+  {
+    //[NotMapped]
+    public Status? Status { get; set; } // = Status.None;
   }
 }

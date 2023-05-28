@@ -31,6 +31,10 @@ namespace ProjectName.API.Config
     {
       this.CreateMapAll<Entity, CommonDto, CommonDtoCreate, CommonDtoSearch>();
     }
+    protected void CreateMapCommonStatus<Entity>()
+    {
+      this.CreateMapAll<Entity, CommonStatusDto, CommonStatusDtoCreate, CommonStatusDtoSearch>();
+    }
     protected void CreateMapAllWithChild<Entity, Dto, Create, Search, Child>() // Relation
     {
       CreateMapAll<Entity, Dto, Create, Search>();
