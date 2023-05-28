@@ -17,16 +17,15 @@ namespace ProjectName.Infra.Entity.Donor
 
     [ForeignKey(nameof(DonorType))]
     public int DonorTypeId { get; set; }
-    [Relate]
-    public DonorType? DonorType { get; set; }
+    public virtual DonorType? DonorType { get; set; }
 
     [ForeignKey(nameof(Org))]
     public int OrgId { get; set; }
-    public Org? Org { get; set; }
+    public virtual Org? Org { get; set; }
 
     [ForeignKey(nameof(City))]
     public int CityId { get; set; }
-    public City? City { get; set; }
+    public virtual City? City { get; set; }
 
   }
 }

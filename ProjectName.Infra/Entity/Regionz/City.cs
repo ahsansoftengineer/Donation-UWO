@@ -8,7 +8,6 @@ namespace ProjectName.Infra.Entity.Regionz
   {
     [ForeignKey(nameof(State))]
     public int StateId { get; set; }
-    [Relate]
     public virtual State? State { get; set; }
   }
 }

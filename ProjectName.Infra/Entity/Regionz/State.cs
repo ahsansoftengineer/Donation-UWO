@@ -8,9 +8,7 @@ namespace ProjectName.Infra.Entity.Regionz
   {
     [ForeignKey(nameof(Country))]
     public int CountryId { get; set; } 
-    [Relate]
     public virtual Country? Country { get; set; }
-    [Relate]
     public virtual IList<City>? Citys { get; set; }
   }
 }

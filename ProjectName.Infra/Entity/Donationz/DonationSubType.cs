@@ -1,4 +1,5 @@
-﻿using ProjectName.Infra.Entity.Base;
+﻿using ProjectName.Infra.Entity.Attributez;
+using ProjectName.Infra.Entity.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectName.Infra.Entity.Donationz
@@ -11,6 +12,7 @@ namespace ProjectName.Infra.Entity.Donationz
 
     [ForeignKey(nameof(DonationType))]
     public int DonationTypeId { get; set; }
+    [Relate]
     public virtual DonationType? DonationType { get; set; }
   }
 }

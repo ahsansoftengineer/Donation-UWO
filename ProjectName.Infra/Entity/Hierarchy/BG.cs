@@ -1,4 +1,5 @@
-﻿using ProjectName.Infra.Entity.Base;
+﻿using ProjectName.Infra.Entity.Attributez;
+using ProjectName.Infra.Entity.Base;
 
 namespace ProjectName.Infra.Entity.Hierarchy
 {

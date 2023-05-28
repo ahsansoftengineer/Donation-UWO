@@ -1,13 +1,7 @@
 ﻿
-using LinqKit;
 using Microsoft.EntityFrameworkCore;
 using ProjectName.Infra.Entity.Attributez;
-using ProjectName.Infra.Entity.Donor;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ProjectName.Infra.Repo.Operationz
 {
@@ -20,7 +14,10 @@ namespace ProjectName.Infra.Repo.Operationz
 
       Type entityType = typeof(T);
       IEnumerable<PropertyInfo> navigationProperty = entityType.GetProperties()
-         .Where(property => Attribute.IsDefined(property, typeof(RelateAttribute)));
+         .Where(property => 
+           Attribute.IsDefined(property, typeof(RelateAttribute)) || 
+           property.GetAccessors().Any(a => a.IsVirtual)
+         );
       IEqualityComparer<string> comparer = new CustomStringEqualityComparer();
       var matchingProperties = navigationProperty.Select(x => x.Name).Intersect(includes, comparer);
 

@@ -1,4 +1,5 @@
-﻿using ProjectName.Infra.Entity.Base;
+﻿using ProjectName.Infra.Entity.Attributez;
+using ProjectName.Infra.Entity.Base;
 using ProjectName.Infra.Entity.Extraz;
 using ProjectName.Infra.Entity.Hierarchy;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,10 +14,12 @@ namespace ProjectName.Infra.Entity.Donationz
 
     [ForeignKey(nameof(Locationz))]
     public int SystemzId { get; set; }
+    [Relate]
     public virtual Systemz? Systemz { get; set; }
 
     [ForeignKey(nameof(Majlis))]
     public int MajlisId { get; set; }
+    [Relate]
     public virtual Majlis? Majlis { get; set; }
 
     //[ForeignKey(nameof(BG))]
@@ -33,6 +36,7 @@ namespace ProjectName.Infra.Entity.Donationz
 
     [ForeignKey(nameof(SU))]
     public int SUId { get; set; }
+    [Relate]
     public virtual SU? SU { get; set; }
   }
 }
