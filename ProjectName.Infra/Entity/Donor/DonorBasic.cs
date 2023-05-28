@@ -27,5 +27,8 @@ namespace ProjectName.Infra.Entity.Donor
     public int CityId { get; set; }
     public virtual City? City { get; set; }
 
+    [ForeignKey(nameof(DonorGSB))]
+    public int? DonorGSBId { get; set; }
+    public virtual DonorGSB? DonorGSB { get; set; }
   }
 }
