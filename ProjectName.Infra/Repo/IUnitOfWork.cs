@@ -44,6 +44,8 @@ namespace ProjectName.Infra.Repo
     // Donor
     IGenericRepo<DonorType> DonorTypes { get; }
     IGenericRepo<DonorBasic> DonorBasics { get; }
+    IGenericRepo<DonorGSB> DonorGSBs { get; }
+    IGenericRepo<Branch> Branchs { get; }
 
   }
 }

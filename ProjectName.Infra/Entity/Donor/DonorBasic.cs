@@ -1,5 +1,4 @@
 ﻿using ProjectName.Domain.Enums;
-using ProjectName.Infra.Entity.Attributez;
 using ProjectName.Infra.Entity.Base;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.Regionz;

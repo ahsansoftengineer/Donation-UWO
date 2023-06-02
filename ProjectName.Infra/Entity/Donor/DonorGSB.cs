@@ -19,6 +19,8 @@ namespace ProjectName.Infra.Entity.Donor
     public int? SubUnitId { get; set; }
     public virtual SU? SU { get; set; }
 
+    public YesNo? WillingToJoinDI { get; set; }
+
     [ForeignKey(nameof(Majlis))]
     public int? DepartmentId { get; set; }
     public virtual Majlis? Department { get; set; }

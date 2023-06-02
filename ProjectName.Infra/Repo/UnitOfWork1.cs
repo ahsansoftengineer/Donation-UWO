@@ -22,6 +22,7 @@ namespace ProjectName.Infra.Repo
     private IGenericRepo<Locationz>? _locations;
     private IGenericRepo<Majlis>? _majliss;
     private IGenericRepo<SysmanAccount>? _sysmanAccounts;
+    private IGenericRepo<Branch>? _branch;
 
     // Regionz
     private IGenericRepo<Country>? _countrys;
@@ -44,5 +45,6 @@ namespace ProjectName.Infra.Repo
     // Donor
     private IGenericRepo<DonorType>? _donorTypes;
     private IGenericRepo<DonorBasic>? _donorBasics;
+    private IGenericRepo<DonorGSB>? _donorGsbs;
   }
 }

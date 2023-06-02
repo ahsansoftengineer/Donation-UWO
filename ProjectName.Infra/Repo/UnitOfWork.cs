@@ -36,6 +36,10 @@ namespace ProjectName.Infra.Repo
         ((BaseEntity)entity.Entity).UpdatedAt = now;
       }
     }
+    private GenericRepo<T> Got<T>() where T : class
+    {
+      return new GenericRepo<T>(_context);
+    }
     public void Dispose()
     {
       _context.Dispose();

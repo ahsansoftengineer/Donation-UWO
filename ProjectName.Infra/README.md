@@ -33,3 +33,7 @@ dotnet ef database update -p ProjectName.Infra -s ProjectName.Api --connection "
 
 dotnet run --project ProjectName.Api
 ```
+
+```c#
+ngrok http --host-header=rewrite https://localhost:5001/
+```

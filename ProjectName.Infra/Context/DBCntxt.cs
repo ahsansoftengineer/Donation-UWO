@@ -9,7 +9,6 @@ using ProjectName.Infra.Entity.Extraz;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.MadaniBastaEntity;
 using ProjectName.Infra.Entity.Regionz;
-using System.Reflection.Emit;
 
 namespace ProjectName.Infra.Context
 {
@@ -27,6 +26,7 @@ namespace ProjectName.Infra.Context
     public DbSet<Majlis> Majliss { get; set; }
     public DbSet<SysmanAccount> SysmanAccounts { get; set; }
     public DbSet<COA> COAs { get; set; }
+    public DbSet<Branch> Branchs { get; set; }
 
     public DbSet<MadaniBasta> MadaniBastas { get; set; }
     public DbSet<MadaniBastaSubCategory> MadaniBastaSubCategorys { get; set; }
@@ -45,6 +45,7 @@ namespace ProjectName.Infra.Context
 
     public DbSet<DonorType> DonorTypes { get; set; }
     public DbSet<DonorBasic> DonorBasics { get; set; }
+    public DbSet<DonorGSB> DonorGSB { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

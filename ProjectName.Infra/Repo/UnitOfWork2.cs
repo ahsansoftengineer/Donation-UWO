@@ -9,10 +9,7 @@ namespace ProjectName.Infra.Repo
 {
   public partial class UnitOfWork : IUnitOfWork
   {
-    private GenericRepo<T> Got<T>() where T : class
-    {
-      return new GenericRepo<T>(_context);
-    }
+
     // ??= C# 9 Short-hand Syntax
     // Hierarchy
     public IGenericRepo<Org> Orgs => _orgs ??= new GenericRepo<Org>(_context);
@@ -27,6 +24,7 @@ namespace ProjectName.Infra.Repo
     public IGenericRepo<Locationz> Locationzs => _locations ??= Got<Locationz>();
     public IGenericRepo<Majlis> Majliss => _majliss ??= Got<Majlis>();
     public IGenericRepo<SysmanAccount> SysmanAccounts => _sysmanAccounts ??= Got<SysmanAccount>();
+    public IGenericRepo<Branch> Branchs => _branch ??= Got<Branch>();
 
     // Regionz
     public IGenericRepo<Country> Countrys => _countrys ??= Got<Country>();
@@ -50,5 +48,6 @@ namespace ProjectName.Infra.Repo
     // Donor
     public IGenericRepo<DonorType> DonorTypes => _donorTypes ??= Got<DonorType>();
     public IGenericRepo<DonorBasic> DonorBasics => _donorBasics ??= Got<DonorBasic>();
+    public IGenericRepo<DonorGSB> DonorGSBs => _donorGsbs ??= Got<DonorGSB>();
   }
 }
