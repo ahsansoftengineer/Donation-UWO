@@ -33,9 +33,6 @@ namespace ProjectName.Infra.Config.Donationz
            Address = "",
            LocationzId = 2,
            MajlisId = 2,
-           //BGId = 2,
-           //LEId = 2,
-           //OUId = 2,
            SUId = 2
 
          }

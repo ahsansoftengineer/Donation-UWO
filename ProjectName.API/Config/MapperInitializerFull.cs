@@ -31,6 +31,11 @@ namespace ProjectName.API.Config
         DonationCellMasterDtoCreate,
         DonationCellMasterDtoSearch>();
 
+      CreateMapAll<DonationType,
+        DonationTypeDto,
+        DonationTypeDtoCreate,
+        DonationTypeDtoSearch>();
+
       CreateMapAll<DonationSubType,
         DonationSubTypeDto,
         DonationSubTypeDtoCreate,

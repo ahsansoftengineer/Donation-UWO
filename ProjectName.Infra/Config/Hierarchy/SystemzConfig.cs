@@ -8,7 +8,7 @@ namespace ProjectName.Infra.Config.Hierarchy
   {
     public void Configure(EntityTypeBuilder<Systemz> builder)
     {
-      string name = typeof(SU).Name; // type.Name
+      string name = typeof(Systemz).Name; // type.Name
       builder.HasData(
         new Systemz
         {

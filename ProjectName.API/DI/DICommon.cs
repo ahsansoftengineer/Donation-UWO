@@ -42,7 +42,7 @@ namespace ProjectName.API.DI
           //config.Filters<Filters>();
           config.CacheProfiles.Add("120SecondsDuration", new CacheProfile
           {
-            Duration = 2
+            Duration = 100
             //,Location = ResponseCacheLocation.Client
             //,NoStore = true
             //,VaryByHeader = "I don't know which string"
@@ -77,6 +77,7 @@ namespace ProjectName.API.DI
               .AllowAnyOrigin()
               .AllowAnyMethod()
               .AllowAnyHeader()
+              //.AllowCredentials()
         );
       });
       services.AddHttpsRedirection(options =>
