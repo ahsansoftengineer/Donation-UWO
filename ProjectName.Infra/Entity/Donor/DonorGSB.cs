@@ -6,11 +6,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectName.Infra.Entity.Donor
 {
-  public class DonorGSB
+  public class DonorGSB : DonorBasic
   {
-    [ForeignKey(nameof(DonorBasic))]
-    public int Id { get; set; }
-    public virtual DonorBasic? DonorBasic { get; set; }
+    //[ForeignKey(nameof(DonorBasic))]
+    //public int Id { get; set; }
+    //public virtual DonorBasic? DonorBasic { get; set; }
 
     public string? Area { get; set; }
     public string? NearBy { get; set; }
@@ -38,10 +38,5 @@ namespace ProjectName.Infra.Entity.Donor
     public string DonationOptionData { get; set; }
     //public int? AmountSelf { get; set; }
     //public virtual IList<DonorMarhoom>? DonorMarhooms { get; set; }
-
-
-
-
-
   }
 }

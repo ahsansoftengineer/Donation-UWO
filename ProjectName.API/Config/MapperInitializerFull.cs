@@ -55,6 +55,11 @@ namespace ProjectName.API.Config
         DonorBasicDto,
         DonorBasicDtoCreate,
         DonorBasicDtoSearch>();
+
+      CreateMapAll<DonorGSB,
+       DonorGSBDto,
+       DonorGSBDtoCreate,
+       DonorGSBDtoSearch>();
     }
   }
 

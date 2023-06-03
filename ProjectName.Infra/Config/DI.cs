@@ -49,11 +49,6 @@ namespace ProjectName.Infra.Config
       builder.ApplyConfiguration(new CommonStatusConfigz<DonorType>());
       builder.ApplyConfiguration(new DonorBasicConfig());
       builder.ApplyConfiguration(new DonorGSBConfig());
-
-      
-
-
-
       return builder;
     }
   }
