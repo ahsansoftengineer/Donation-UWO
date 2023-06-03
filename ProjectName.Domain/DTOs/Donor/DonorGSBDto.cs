@@ -15,29 +15,38 @@ namespace ProjectName.Domain.DTOs.Donor
     public YesNo Followup { get; set; }
     public int? FollowupDate { get; set; }
     public DonationOption DonationOption { get; set; }
-    protected string? DonationOptionData { get; set; }
+    public string? DonationOptionData { get; set; }
     public List<DonorGSBOptionMarhoom>? donorGSBOptionMarhooms
     {
       get
       {
-        return JsonConvert.DeserializeObject
-          <List<DonorGSBOptionMarhoom>>(DonationOptionData);
+        if (!string.IsNullOrEmpty(DonationOptionData))
+        {
+          if(DonationOptionData.IndexOf("name") != -1)
+          {
+            return JsonConvert.DeserializeObject
+              <List<DonorGSBOptionMarhoom>>(DonationOptionData);
+          }
+        
+        }
+        return null;
+
       }
       set
       {
-        DonationOptionData = JsonConvert.SerializeObject(value);
+        if (value != null) DonationOptionData = JsonConvert.SerializeObject(value);
       }
     }
-    public DonorGSBOptionSelf? donorGSBOptionSelf
+    public int? donorGSBOptionSelf
     {
       get
       {
-        return JsonConvert.DeserializeObject
-          <DonorGSBOptionSelf>(DonationOptionData);
+        int.TryParse(DonationOptionData, out int result);
+        return result;
       }
       set
       {
-        DonationOptionData = JsonConvert.SerializeObject(value);
+        if (value != null) DonationOptionData = JsonConvert.SerializeObject(value);
       }
     }
     public virtual BaseDtoRelation? SU { get; set; }
@@ -55,29 +64,38 @@ namespace ProjectName.Domain.DTOs.Donor
     public YesNo Followup { get; set; }
     public int? FollowupDate { get; set; }
     public DonationOption DonationOption { get; set; }
-    protected string? DonationOptionData { get; set; }
+    public string? DonationOptionData { get; set; }
     public List<DonorGSBOptionMarhoom>? donorGSBOptionMarhooms
     {
       get
       {
-        return JsonConvert.DeserializeObject
-          <List<DonorGSBOptionMarhoom>>(DonationOptionData);
+        if (!string.IsNullOrEmpty(DonationOptionData))
+        {
+          if (DonationOptionData.IndexOf("name") != -1)
+          {
+            return JsonConvert.DeserializeObject
+              <List<DonorGSBOptionMarhoom>>(DonationOptionData);
+          }
+
+        }
+        return null;
+
       }
       set
       {
-        DonationOptionData = JsonConvert.SerializeObject(value);
+        if (value != null) DonationOptionData = JsonConvert.SerializeObject(value);
       }
     }
-    public DonorGSBOptionSelf? donorGSBOptionSelf
+    public int? donorGSBOptionSelf
     {
       get
       {
-        return JsonConvert.DeserializeObject
-          <DonorGSBOptionSelf>(DonationOptionData);
+        int.TryParse(DonationOptionData, out int result);
+        return result;
       }
       set
       {
-        DonationOptionData = JsonConvert.SerializeObject(value);
+        if (value != null) DonationOptionData = JsonConvert.SerializeObject(value);
       }
     }
   }
@@ -92,29 +110,38 @@ namespace ProjectName.Domain.DTOs.Donor
     public YesNo? Followup { get; set; }
     public int? FollowupDate { get; set; }
     public DonationOption? DonationOption { get; set; }
-    protected string? DonationOptionData { get; set; }
+    public string? DonationOptionData { get; set; }
     public List<DonorGSBOptionMarhoom>? donorGSBOptionMarhooms
     {
       get
       {
-        return JsonConvert.DeserializeObject
-          <List<DonorGSBOptionMarhoom>>(DonationOptionData);
+        if (!string.IsNullOrEmpty(DonationOptionData))
+        {
+          if (DonationOptionData.IndexOf("name") != -1)
+          {
+            return JsonConvert.DeserializeObject
+              <List<DonorGSBOptionMarhoom>>(DonationOptionData);
+          }
+
+        }
+        return null;
+
       }
       set
       {
-        DonationOptionData = JsonConvert.SerializeObject(value);
+        if (value != null) DonationOptionData = JsonConvert.SerializeObject(value);
       }
     }
-    public DonorGSBOptionSelf? donorGSBOptionSelf
+    public int? donorGSBOptionSelf
     {
       get
       {
-        return JsonConvert.DeserializeObject
-          <DonorGSBOptionSelf>(DonationOptionData);
+        int.TryParse(DonationOptionData, out int result);
+        return result;
       }
       set
       {
-        DonationOptionData = JsonConvert.SerializeObject(value);
+        if (value != null) DonationOptionData = JsonConvert.SerializeObject(value);
       }
     }
   }

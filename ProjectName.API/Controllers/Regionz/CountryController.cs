@@ -5,11 +5,11 @@ using ProjectName.API.Controllers.Base;
 using ProjectName.API.Controllers.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.Regionz;
-using ProjectName.Infra.Repo;
+using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Regionz
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
   [ApiController]
   public class CountryController : CommonController<CountryController, Country>
   {

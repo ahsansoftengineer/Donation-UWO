@@ -6,8 +6,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectName.Infra.Entity.Donor
 {
+  [Table("DonorBasic")]
   public class DonorBasic : BaseEntity
   {
+    //[ForeignKey(nameof(DonorGSB))]
+    //public int? Id { get; set; }
+    //public virtual DonorGSB? DonorGSB { get; set; }
+
     public string? Mobile { get; set; }
     public string? Email { get; set; }
     public string? Address { get; set; }
@@ -25,9 +30,5 @@ namespace ProjectName.Infra.Entity.Donor
     [ForeignKey(nameof(City))]
     public int CityId { get; set; }
     public virtual City? City { get; set; }
-
-    [ForeignKey(nameof(DonorGSB))]
-    public int? DonorGSBId { get; set; }
-    public virtual DonorGSB? DonorGSB { get; set; }
   }
 }

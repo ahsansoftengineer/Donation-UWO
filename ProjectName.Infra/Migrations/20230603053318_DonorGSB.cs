@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectName.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class DonorGSB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -57,6 +57,22 @@ namespace ProjectName.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Branchs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Branchs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "COAs",
                 columns: table => new
                 {
@@ -73,6 +89,22 @@ namespace ProjectName.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Countrys",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Countrys", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DonationCategorys",
                 columns: table => new
                 {
@@ -86,6 +118,23 @@ namespace ProjectName.Infra.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DonationCategorys", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DonorTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DonorTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -305,6 +354,29 @@ namespace ProjectName.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "States",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CountryId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_States", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_States_Countrys_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Countrys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MadaniBastaSubCategorys",
                 columns: table => new
                 {
@@ -439,6 +511,17 @@ namespace ProjectName.Infra.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LEId = table.Column<int>(type: "int", nullable: false),
+                    Law = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Deposit = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogoImg = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogoImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TopImg = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TopImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WarningImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WarningImg = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FooterImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FooterImg = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -451,6 +534,29 @@ namespace ProjectName.Infra.Migrations
                         name: "FK_OUs_LEs_LEId",
                         column: x => x.LEId,
                         principalTable: "LEs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Citys",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StateId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Citys", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Citys_States_StateId",
+                        column: x => x.StateId,
+                        principalTable: "States",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -502,6 +608,47 @@ namespace ProjectName.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DonorBasic",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Gender = table.Column<int>(type: "int", nullable: true),
+                    DonorTypeId = table.Column<int>(type: "int", nullable: false),
+                    OrgId = table.Column<int>(type: "int", nullable: false),
+                    CityId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DonorBasic", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DonorBasic_Citys_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Citys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DonorBasic_DonorTypes_DonorTypeId",
+                        column: x => x.DonorTypeId,
+                        principalTable: "DonorTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DonorBasic_Orgs_OrgId",
+                        column: x => x.OrgId,
+                        principalTable: "Orgs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DonationCellMasters",
                 columns: table => new
                 {
@@ -539,13 +686,96 @@ namespace ProjectName.Infra.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TargetAssignments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TargetFrom = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TargetFor = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IncreasePercentage = table.Column<int>(type: "int", nullable: true),
+                    SystemzId = table.Column<int>(type: "int", nullable: false),
+                    MajlisId = table.Column<int>(type: "int", nullable: false),
+                    SUId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TargetAssignments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TargetAssignments_Majliss_MajlisId",
+                        column: x => x.MajlisId,
+                        principalTable: "Majliss",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TargetAssignments_SUs_SUId",
+                        column: x => x.SUId,
+                        principalTable: "SUs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TargetAssignments_Systemzs_SystemzId",
+                        column: x => x.SystemzId,
+                        principalTable: "Systemzs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DonorGSB",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Area = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NearBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SubUnitId = table.Column<int>(type: "int", nullable: false),
+                    WillingToJoinDI = table.Column<int>(type: "int", nullable: true),
+                    DepartmentId = table.Column<int>(type: "int", nullable: true),
+                    BranchId = table.Column<int>(type: "int", nullable: true),
+                    Followup = table.Column<int>(type: "int", nullable: false),
+                    FollowupDate = table.Column<int>(type: "int", nullable: true),
+                    DonationOption = table.Column<int>(type: "int", nullable: false),
+                    DonationOptionData = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DonorGSB", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DonorGSB_Branchs_BranchId",
+                        column: x => x.BranchId,
+                        principalTable: "Branchs",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_DonorGSB_DonorBasic_Id",
+                        column: x => x.Id,
+                        principalTable: "DonorBasic",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DonorGSB_Majliss_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalTable: "Majliss",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_DonorGSB_SUs_SubUnitId",
+                        column: x => x.SubUnitId,
+                        principalTable: "SUs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ApiUserId", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "00ab7be4-5ab9-4311-9fd2-3062be3d913f", null, null, "Administrator", "ADMINISTRATOR" },
-                    { "0881f46b-99e7-40f8-806b-018a985be73c", null, null, "User", "USER" }
+                    { "712bbee9-98ca-46d2-af00-0cdf56b586cb", null, null, "User", "USER" },
+                    { "8297c67a-d517-4f2e-b206-86d5110e15fd", null, null, "Administrator", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
@@ -553,9 +783,19 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3513), "BG 1 Description", "BG 1 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3514) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3518), "BG 2 Description", "BG 2 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3519) },
-                    { 3, null, "BG 3 Description", "BG 3 Title", null }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1057), "BG 1 Description", "BG 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1057) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1062), "BG 2 Description", "BG 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1062) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1065), "BG 3 Description", "BG 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1065) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Branchs",
+                columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2482), "Branch 1 Description", "Branch 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2483) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2487), "Branch 2 Description", "Branch 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2488) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2490), "Branch 3 Description", "Branch 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2491) }
                 });
 
             migrationBuilder.InsertData(
@@ -563,9 +803,19 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7648), "COA 1 Description", "COA 1 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7649) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7654), "COA 2 Description", "COA 2 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7655) },
-                    { 3, null, "COA 3 Description", "COA 3 Title", null }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2369), "COA 1 Description", "COA 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2369) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2374), "COA 2 Description", "COA 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2374) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2377), "COA 3 Description", "COA 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2377) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Countrys",
+                columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2531), "Country 1 Description", "Country 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2532) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2536), "Country 2 Description", "Country 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2537) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2539), "Country 3 Description", "Country 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2539) }
                 });
 
             migrationBuilder.InsertData(
@@ -573,9 +823,19 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5948), "DonationCategory 1 Description", "DonationCategory 1 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5949) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5954), "DonationCategory 2 Description", "DonationCategory 2 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5955) },
-                    { 3, null, "DonationCategory 3 Description", "DonationCategory 3 Title", null }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3894), "DonationCategory 1 Description", "DonationCategory 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3894) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3899), "DonationCategory 2 Description", "DonationCategory 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3899) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3901), "DonationCategory 3 Description", "DonationCategory 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3902) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "DonorTypes",
+                columns: new[] { "Id", "CreatedAt", "Description", "Status", "Title", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5937), "DonorType 1 Description", 0, "DonorType 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5938) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5945), "DonorType 2 Description", 1, "DonorType 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5945) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5949), "DonorType 3 Description", 2, "DonorType 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5950) }
                 });
 
             migrationBuilder.InsertData(
@@ -583,9 +843,9 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7556), "Locationz 1 Description", "Locationz 1 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7557) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7563), "Locationz 2 Description", "Locationz 2 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7563) },
-                    { 3, null, "Locationz 3 Description", "Locationz 3 Title", null }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2285), "Locationz 1 Description", "Locationz 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2286) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2291), "Locationz 2 Description", "Locationz 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2292) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2294), "Locationz 3 Description", "Locationz 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2295) }
                 });
 
             migrationBuilder.InsertData(
@@ -593,9 +853,9 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5279), "MadaniBastaEvent 1 Description", "MadaniBastaEvent 1 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5280) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5313), "MadaniBastaEvent 2 Description", "MadaniBastaEvent 2 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5313) },
-                    { 3, null, "MadaniBastaEvent 3 Description", "MadaniBastaEvent 3 Title", null }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3415), "MadaniBastaEvent 1 Description", "MadaniBastaEvent 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3416) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3421), "MadaniBastaEvent 2 Description", "MadaniBastaEvent 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3422) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3423), "MadaniBastaEvent 3 Description", "MadaniBastaEvent 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3424) }
                 });
 
             migrationBuilder.InsertData(
@@ -603,9 +863,9 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5381), "MadaniBastaPlace 1 Description", "MadaniBastaPlace 1 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5382) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5387), "MadaniBastaPlace 2 Description", "MadaniBastaPlace 2 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5388) },
-                    { 3, null, "MadaniBastaPlace 3 Description", "MadaniBastaPlace 3 Title", null }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3456), "MadaniBastaPlace 1 Description", "MadaniBastaPlace 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3457) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3462), "MadaniBastaPlace 2 Description", "MadaniBastaPlace 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3462) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3464), "MadaniBastaPlace 3 Description", "MadaniBastaPlace 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3465) }
                 });
 
             migrationBuilder.InsertData(
@@ -613,9 +873,9 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5232), "MadaniBasta 1 Description", "MadaniBasta 1 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5233) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5241), "MadaniBasta 2 Description", "MadaniBasta 2 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5242) },
-                    { 3, null, "MadaniBasta 3 Description", "MadaniBasta 3 Title", null }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3376), "MadaniBasta 1 Description", "MadaniBasta 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3377) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3382), "MadaniBasta 2 Description", "MadaniBasta 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3382) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3384), "MadaniBasta 3 Description", "MadaniBasta 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3385) }
                 });
 
             migrationBuilder.InsertData(
@@ -623,9 +883,9 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7606), "Majlis 1 Description", "Majlis 1 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7607) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7612), "Majlis 2 Description", "Majlis 2 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7612) },
-                    { 3, null, "Majlis 3 Description", "Majlis 3 Title", null }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2325), "Majlis 1 Description", "Majlis 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2326) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2332), "Majlis 2 Description", "Majlis 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2332) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2335), "Majlis 3 Description", "Majlis 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2335) }
                 });
 
             migrationBuilder.InsertData(
@@ -633,9 +893,9 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(2876), "Org 1 Description", "Org 1 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(2887) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(2902), "Org 2 Description", "Org 2 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(2903) },
-                    { 3, null, "Org 3 Description", "Org 3 Title", null }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(520), "Org 1 Description", "Org 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(528) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(544), "Org 2 Description", "Org 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(544) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(588), "Org 3 Description", "Org 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(589) }
                 });
 
             migrationBuilder.InsertData(
@@ -643,9 +903,9 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7693), "SysmanAccount 1 Description", "SysmanAccount 1 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7694) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7698), "SysmanAccount 2 Description", "SysmanAccount 2 Title", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7699) },
-                    { 3, null, "SysmanAccount 3 Description", "SysmanAccount 3 Title", null }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2404), "SysmanAccount 1 Description", "SysmanAccount 1 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2405) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2409), "SysmanAccount 2 Description", "SysmanAccount 2 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2409) },
+                    { 3, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2411), "SysmanAccount 3 Description", "SysmanAccount 3 Title", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2412) }
                 });
 
             migrationBuilder.InsertData(
@@ -653,8 +913,8 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "COAId", "CreatedAt", "Description", "DonationCategoryId", "SysmanAccountId", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6451), "DonationType 1 Description", 1, 1, "DonationType 1", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6453) },
-                    { 2, 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6464), "DonationType Description", 2, 2, "DonationType 2", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6465) }
+                    { 1, 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4312), "DonationType 1 Description", 1, 1, "DonationType 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4313) },
+                    { 2, 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4325), "DonationType Description", 2, 2, "DonationType 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4325) }
                 });
 
             migrationBuilder.InsertData(
@@ -662,8 +922,8 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "BGId", "CreatedAt", "Description", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3969), "LE 1 Description", "LE 1", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3971) },
-                    { 2, 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3979), "LE 2 Description", "LE 2", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3980) }
+                    { 1, 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1433), "LE 1 Description", "LE 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1434) },
+                    { 2, 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1441), "LE 2 Description", "LE 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1441) }
                 });
 
             migrationBuilder.InsertData(
@@ -671,8 +931,17 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "MadaniBastaId", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5822), "MadaniBastaSubCategory 1 Description", 1, "MadaniBastaSubCategory 1", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5823) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5833), "MadaniBastaSubCategory 2 Description", 2, "MadaniBastaSubCategory 2", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5833) }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3821), "MadaniBastaSubCategory 1 Description", 1, "MadaniBastaSubCategory 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3822) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3830), "MadaniBastaSubCategory 2 Description", 2, "MadaniBastaSubCategory 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3830) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "States",
+                columns: new[] { "Id", "CountryId", "CreatedAt", "Description", "Title", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2924), "State 1 Description", "State 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2925) },
+                    { 2, 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2933), "State 2 Description", "State 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2933) }
                 });
 
             migrationBuilder.InsertData(
@@ -680,8 +949,17 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "OrgId", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3437), "SU 1 Description", 1, "SU 1", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3438) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3447), "SU 2 Description", 2, "SU 2", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3448) }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(993), "SU 1 Description", 1, "SU 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(995) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1002), "SU 2 Description", 2, "SU 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1002) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Citys",
+                columns: new[] { "Id", "CreatedAt", "Description", "StateId", "Title", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3315), "City 1 Description", 1, "City 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3317) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3323), "City 2 Description", 2, "City 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3324) }
                 });
 
             migrationBuilder.InsertData(
@@ -689,17 +967,30 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "DonationTypeId", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6935), "DonationCellMaster 1 Description", 1, "DonationCellMaster 1", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6936) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6945), "DonationCellMaster 2 Description", 2, "DonationCellMaster 2", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6945) }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4720), "DonationCellMaster 1 Description", 1, "DonationCellMaster 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4721) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4730), "DonationCellMaster 2 Description", 2, "DonationCellMaster 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4731) }
                 });
 
             migrationBuilder.InsertData(
                 table: "OUs",
-                columns: new[] { "Id", "CreatedAt", "Description", "LEId", "Title", "UpdatedAt" },
+                columns: new[] { "Id", "Address", "CreatedAt", "Deposit", "Description", "FooterImage", "FooterImg", "LEId", "Law", "LogoImage", "LogoImg", "Title", "TopImage", "TopImg", "UpdatedAt", "WarningImage", "WarningImg" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(4601), "OU 1 Description", 1, "OU 1", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(4603) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(4669), "OU 2 Description", 2, "OU 2", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(4670) }
+                    { 1, null, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1822), null, "OU 1 Description", null, null, 1, null, null, null, "OU 1", null, null, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1823), null, null },
+                    { 2, null, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1832), null, "OU 2 Description", null, null, 2, null, null, null, "OU 2", null, null, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1832), null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "DonorBasic",
+                columns: new[] { "Id", "Address", "CityId", "CreatedAt", "Description", "DonorTypeId", "Email", "Gender", "Mobile", "OrgId", "Title", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, "DonorBasic44 Address", 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6344), "DonorBasic 1 Description", 1, "DonorBasic44@gmail.com", 1, "3212824400", 1, "DonorBasic 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6345) },
+                    { 2, "DonorBasic55 Address", 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6355), "DonorBasic 2 Description", 2, "DonorBasic55@gmail.com", 1, "3212825500", 2, "DonorBasic 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6356) },
+                    { 3, "DonorBasic66 Address", 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6361), "DonorBasic 3 Description", 2, "DonorBasic66@gmail.com", 1, "3212826600", 2, "DonorBasic 3", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6362) },
+                    { 4, "DonorGSB44 Address", 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6765), "DonorGSB 4 Description", 1, "DonorGSB44@gmail.com", 1, "03444444444", 1, "DonorGSB 4", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6767) },
+                    { 5, "DonorGSB55 Address", 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6785), "DonorGSB 5 Description", 2, "DonorGSB55@gmail.com", 0, "03555555555", 2, "DonorGSB 5", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6786) },
+                    { 6, "DonorGSB33 Address", 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6794), "DonorGSB 6 Description", 1, "DonorGSB33@gmail.com", 2, "03666666666", 2, "DonorGSB 6", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6795) }
                 });
 
             migrationBuilder.InsertData(
@@ -707,8 +998,8 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "OUId", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5151), "SU 1 Description", 1, "SU 1", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5153) },
-                    { 2, new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5161), "SU 2 Description", 2, "SU 2", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5162) }
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2215), "SU 1 Description", 1, "SU 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2216) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2222), "SU 2 Description", 2, "SU 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2223) }
                 });
 
             migrationBuilder.InsertData(
@@ -716,8 +1007,27 @@ namespace ProjectName.Infra.Migrations
                 columns: new[] { "Id", "Address", "CreatedAt", "Description", "LocationzId", "MajlisId", "SUId", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7394), "DonationCellMaster 1 Description", 1, 1, 1, "DonationCellMaster 1", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7395) },
-                    { 2, "", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7429), "DonationCellMaster 2 Description", 2, 2, 2, "DonationCellMaster 2", new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7430) }
+                    { 1, "", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5126), "DonationCellMaster 1 Description", 1, 1, 1, "DonationCellMaster 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5127) },
+                    { 2, "", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5137), "DonationCellMaster 2 Description", 2, 2, 2, "DonationCellMaster 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5137) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "DonorGSB",
+                columns: new[] { "Id", "Area", "BranchId", "DepartmentId", "DonationOption", "DonationOptionData", "Followup", "FollowupDate", "NearBy", "SubUnitId", "WillingToJoinDI" },
+                values: new object[,]
+                {
+                    { 4, "44 Area", null, null, 0, null, 0, null, "44 Near By", 1, 0 },
+                    { 5, "55 Area", 2, 2, 1, "1000", 1, 5, "55 Near By", 2, 1 },
+                    { 6, "66 Area", 2, 2, 2, "[{\"name\":\"Nana\",\"amount\":1000},{\"name\":\"Dadi\",\"amount\":500}]", 1, 10, "66 Near By", 1, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TargetAssignments",
+                columns: new[] { "Id", "CreatedAt", "Description", "IncreasePercentage", "MajlisId", "SUId", "SystemzId", "TargetFor", "TargetFrom", "Title", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5517), "TargetAssignment 1 Description", 20, 1, 1, 1, new DateTime(2023, 7, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5525), new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5524), "TargetAssignment 1", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5518) },
+                    { 2, new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5541), "TargetAssignment 2 Description", 20, 2, 2, 2, new DateTime(2023, 7, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5544), new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5543), "TargetAssignment 2", new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5541) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -765,6 +1075,11 @@ namespace ProjectName.Infra.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Citys_StateId",
+                table: "Citys",
+                column: "StateId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DonationCellMasters_LocationzId",
                 table: "DonationCellMasters",
                 column: "LocationzId");
@@ -800,6 +1115,36 @@ namespace ProjectName.Infra.Migrations
                 column: "SysmanAccountId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DonorBasic_CityId",
+                table: "DonorBasic",
+                column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DonorBasic_DonorTypeId",
+                table: "DonorBasic",
+                column: "DonorTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DonorBasic_OrgId",
+                table: "DonorBasic",
+                column: "OrgId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DonorGSB_BranchId",
+                table: "DonorGSB",
+                column: "BranchId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DonorGSB_DepartmentId",
+                table: "DonorGSB",
+                column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DonorGSB_SubUnitId",
+                table: "DonorGSB",
+                column: "SubUnitId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_LEs_BGId",
                 table: "LEs",
                 column: "BGId");
@@ -815,6 +1160,11 @@ namespace ProjectName.Infra.Migrations
                 column: "LEId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_States_CountryId",
+                table: "States",
+                column: "CountryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SUs_OUId",
                 table: "SUs",
                 column: "OUId");
@@ -823,6 +1173,21 @@ namespace ProjectName.Infra.Migrations
                 name: "IX_Systemzs_OrgId",
                 table: "Systemzs",
                 column: "OrgId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TargetAssignments_MajlisId",
+                table: "TargetAssignments",
+                column: "MajlisId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TargetAssignments_SUId",
+                table: "TargetAssignments",
+                column: "SUId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TargetAssignments_SystemzId",
+                table: "TargetAssignments",
+                column: "SystemzId");
         }
 
         /// <inheritdoc />
@@ -850,6 +1215,9 @@ namespace ProjectName.Infra.Migrations
                 name: "DonationSubTypes");
 
             migrationBuilder.DropTable(
+                name: "DonorGSB");
+
+            migrationBuilder.DropTable(
                 name: "MadaniBastaEvents");
 
             migrationBuilder.DropTable(
@@ -859,7 +1227,7 @@ namespace ProjectName.Infra.Migrations
                 name: "MadaniBastaSubCategorys");
 
             migrationBuilder.DropTable(
-                name: "Systemzs");
+                name: "TargetAssignments");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -868,25 +1236,28 @@ namespace ProjectName.Infra.Migrations
                 name: "Locationzs");
 
             migrationBuilder.DropTable(
+                name: "DonationTypes");
+
+            migrationBuilder.DropTable(
+                name: "Branchs");
+
+            migrationBuilder.DropTable(
+                name: "DonorBasic");
+
+            migrationBuilder.DropTable(
+                name: "MadaniBastas");
+
+            migrationBuilder.DropTable(
                 name: "Majliss");
 
             migrationBuilder.DropTable(
                 name: "SUs");
 
             migrationBuilder.DropTable(
-                name: "DonationTypes");
-
-            migrationBuilder.DropTable(
-                name: "MadaniBastas");
-
-            migrationBuilder.DropTable(
-                name: "Orgs");
+                name: "Systemzs");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "OUs");
 
             migrationBuilder.DropTable(
                 name: "COAs");
@@ -898,7 +1269,25 @@ namespace ProjectName.Infra.Migrations
                 name: "SysmanAccounts");
 
             migrationBuilder.DropTable(
+                name: "Citys");
+
+            migrationBuilder.DropTable(
+                name: "DonorTypes");
+
+            migrationBuilder.DropTable(
+                name: "OUs");
+
+            migrationBuilder.DropTable(
+                name: "Orgs");
+
+            migrationBuilder.DropTable(
+                name: "States");
+
+            migrationBuilder.DropTable(
                 name: "LEs");
+
+            migrationBuilder.DropTable(
+                name: "Countrys");
 
             migrationBuilder.DropTable(
                 name: "BGs");

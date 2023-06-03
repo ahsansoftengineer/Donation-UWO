@@ -4,10 +4,11 @@ using ProjectName.Infra.Entity.Extraz;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.MadaniBastaEntity;
 using ProjectName.Infra.Entity.Regionz;
+using ProjectName.Infra.UOW;
 
 namespace ProjectName.Infra.Repo
 {
-  public partial class UnitOfWork : IUnitOfWork
+    public partial class UnitOfWork : IUnitOfWork
   {
 
     // ??= C# 9 Short-hand Syntax

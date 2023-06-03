@@ -30,6 +30,8 @@ namespace ProjectName.Infra.Config
       builder.ApplyConfiguration(new CommonConfigz<Majlis>());
       builder.ApplyConfiguration(new CommonConfigz<COA>());
       builder.ApplyConfiguration(new CommonConfigz<SysmanAccount>());
+      builder.ApplyConfiguration(new CommonConfigz<Branch>());
+
 
       builder.ApplyConfiguration(new CommonConfigz<Country>());
       builder.ApplyConfiguration(new StateConfig());

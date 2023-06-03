@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.DTOs.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
-using ProjectName.Infra.Repo;
+using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Hierarchy
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
   [ApiController]
   public class SystemzController : BaseController<SystemzController, Systemz, SystemzDtoSearch, SystemzDto, SystemzDtoCreate>
   {

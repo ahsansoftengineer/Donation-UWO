@@ -19,6 +19,7 @@ namespace ProjectName.API.Config
       CreateMapCommon<DonationType>();
       CreateMapCommon<DonationCategory>();
       CreateMapCommon<Locationz>();
+      CreateMapCommon<Branch>();
       CreateMapCommon<Majlis>();
       CreateMapCommon<COA>();
       CreateMapCommon<SysmanAccount>();

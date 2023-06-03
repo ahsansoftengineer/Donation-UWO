@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectName.Domain.Common;
 using ProjectName.Domain.Enums;
 using ProjectName.Infra.Entity.Base;
-using ProjectName.Infra.Repo;
+using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Base
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
   [ApiController]
   public class CommonStatusController<TController, TEntity> : BaseController<
     TController,

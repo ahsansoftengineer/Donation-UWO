@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.DTOs.Donation;
 using ProjectName.Infra.Entity.Donationz;
-using ProjectName.Infra.Repo;
+using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Donation
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
   [ApiController]
   public class DonationCellMasterController : BaseController<DonationCellMasterController, DonationCellMaster, DonationCellMasterDtoSearch, DonationCellMasterDto, DonationCellMasterDtoCreate>
   {

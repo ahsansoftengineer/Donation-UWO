@@ -4,12 +4,12 @@ using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.Base;
 using ProjectName.Domain.Common;
 using ProjectName.Infra.Entity.Hierarchy;
-using ProjectName.Infra.Repo;
+using ProjectName.Infra.UOW;
 using X.PagedList;
 
 namespace ProjectName.API.Controllers.Hierarchy
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
   [ApiController]
   public class OrgController : AlphaController<OrgController>
   {

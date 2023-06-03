@@ -3,10 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectName.Infra.Context;
 using ProjectName.Infra.Repo;
+using ProjectName.Infra.UOW;
 
 namespace ProjectName.Infra
 {
-  public static class DI
+    public static class DI
   {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration Configuration)
     {

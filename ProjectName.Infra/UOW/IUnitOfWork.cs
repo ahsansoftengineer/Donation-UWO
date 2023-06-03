@@ -4,8 +4,9 @@ using ProjectName.Infra.Entity.Extraz;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.Entity.MadaniBastaEntity;
 using ProjectName.Infra.Entity.Regionz;
+using ProjectName.Infra.Repo;
 
-namespace ProjectName.Infra.Repo
+namespace ProjectName.Infra.UOW
 {
   public interface IUnitOfWork : IDisposable
   {
@@ -23,6 +24,7 @@ namespace ProjectName.Infra.Repo
     IGenericRepo<Locationz> Locationzs { get; }
     IGenericRepo<Majlis> Majliss { get; }
     IGenericRepo<SysmanAccount> SysmanAccounts { get; }
+    IGenericRepo<Branch> Branchs { get; }
     // Regionz
     IGenericRepo<Country> Countrys { get; }
     IGenericRepo<State> States { get; }
@@ -45,7 +47,6 @@ namespace ProjectName.Infra.Repo
     IGenericRepo<DonorType> DonorTypes { get; }
     IGenericRepo<DonorBasic> DonorBasics { get; }
     IGenericRepo<DonorGSB> DonorGSBs { get; }
-    IGenericRepo<Branch> Branchs { get; }
 
   }
 }

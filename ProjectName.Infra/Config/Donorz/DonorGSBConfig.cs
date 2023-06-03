@@ -25,9 +25,10 @@ namespace ProjectName.Infra.Config.Donorz
           Email = name + "44@gmail.com",
           Gender = Gender.Male,
           Address = name + "44 Address",
+
           Area = "44 Area",
           NearBy = "44 Near By",
-          SubUnitId = 4,
+          SubUnitId = 1,
           WillingToJoinDI = YesNo.No,
           Followup = YesNo.No,
           DonationOption = DonationOption.OptionGSB
@@ -44,6 +45,7 @@ namespace ProjectName.Infra.Config.Donorz
           Email = name + "55@gmail.com",
           Gender = Gender.None,
           Address = name + "55 Address",
+
           Area = "55 Area",
           NearBy = "55 Near By",
           SubUnitId = 2,
@@ -53,9 +55,7 @@ namespace ProjectName.Infra.Config.Donorz
           Followup = YesNo.Yes,
           FollowupDate = 5, // Number between 1-30
           DonationOption = DonationOption.OptionSelf,
-          DonationOptionData = JsonConvert.SerializeObject(
-            new DonorGSBOptionSelf() { amount = 10000 }
-          )
+          DonationOptionData = "1000",
         },
         new DonorGSB()
         {
@@ -69,6 +69,7 @@ namespace ProjectName.Infra.Config.Donorz
           Email = name + "33@gmail.com",
           Gender = Gender.Female,
           Address = name + "33 Address",
+
           Area = "66 Area",
           NearBy = "66 Near By",
           SubUnitId = 1,

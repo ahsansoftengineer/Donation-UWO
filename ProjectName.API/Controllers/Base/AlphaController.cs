@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProjectName.Infra.Repo;
+using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Base
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
   [ApiController]
   public abstract class AlphaController<TController> : ControllerBase
   {

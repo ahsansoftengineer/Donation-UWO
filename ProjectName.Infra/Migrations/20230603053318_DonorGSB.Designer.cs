@@ -12,8 +12,8 @@ using ProjectName.Infra.Context;
 namespace ProjectName.Infra.Migrations
 {
     [DbContext(typeof(DBCntxt))]
-    [Migration("20230522155102_Initial")]
-    partial class Initial
+    [Migration("20230603053318_DonorGSB")]
+    partial class DonorGSB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,13 +59,13 @@ namespace ProjectName.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0881f46b-99e7-40f8-806b-018a985be73c",
+                            Id = "712bbee9-98ca-46d2-af00-0cdf56b586cb",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "00ab7be4-5ab9-4311-9fd2-3062be3d913f",
+                            Id = "8297c67a-d517-4f2e-b206-86d5110e15fd",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -276,24 +276,26 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5948),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3894),
                             Description = "DonationCategory 1 Description",
                             Title = "DonationCategory 1 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5949)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3894)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5954),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3899),
                             Description = "DonationCategory 2 Description",
                             Title = "DonationCategory 2 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5955)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3899)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3901),
                             Description = "DonationCategory 3 Description",
-                            Title = "DonationCategory 3 Title"
+                            Title = "DonationCategory 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3902)
                         });
                 });
 
@@ -344,25 +346,25 @@ namespace ProjectName.Infra.Migrations
                         {
                             Id = 1,
                             Address = "",
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7394),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5126),
                             Description = "DonationCellMaster 1 Description",
                             LocationzId = 1,
                             MajlisId = 1,
                             SUId = 1,
                             Title = "DonationCellMaster 1",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7395)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5127)
                         },
                         new
                         {
                             Id = 2,
                             Address = "",
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7429),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5137),
                             Description = "DonationCellMaster 2 Description",
                             LocationzId = 2,
                             MajlisId = 2,
                             SUId = 2,
                             Title = "DonationCellMaster 2",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7430)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5137)
                         });
                 });
 
@@ -399,20 +401,20 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6935),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4720),
                             Description = "DonationCellMaster 1 Description",
                             DonationTypeId = 1,
                             Title = "DonationCellMaster 1",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6936)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4721)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6945),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4730),
                             Description = "DonationCellMaster 2 Description",
                             DonationTypeId = 2,
                             Title = "DonationCellMaster 2",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6945)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4731)
                         });
                 });
 
@@ -460,23 +462,311 @@ namespace ProjectName.Infra.Migrations
                         {
                             Id = 1,
                             COAId = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6451),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4312),
                             Description = "DonationType 1 Description",
                             DonationCategoryId = 1,
                             SysmanAccountId = 1,
                             Title = "DonationType 1",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6453)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4313)
                         },
                         new
                         {
                             Id = 2,
                             COAId = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6464),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4325),
                             Description = "DonationType Description",
                             DonationCategoryId = 2,
                             SysmanAccountId = 2,
                             Title = "DonationType 2",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(6465)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(4325)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Donationz.TargetAssignment", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IncreasePercentage")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MajlisId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SUId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SystemzId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("TargetFor")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("TargetFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MajlisId");
+
+                    b.HasIndex("SUId");
+
+                    b.HasIndex("SystemzId");
+
+                    b.ToTable("TargetAssignments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5517),
+                            Description = "TargetAssignment 1 Description",
+                            IncreasePercentage = 20,
+                            MajlisId = 1,
+                            SUId = 1,
+                            SystemzId = 1,
+                            TargetFor = new DateTime(2023, 7, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5525),
+                            TargetFrom = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5524),
+                            Title = "TargetAssignment 1",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5518)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5541),
+                            Description = "TargetAssignment 2 Description",
+                            IncreasePercentage = 20,
+                            MajlisId = 2,
+                            SUId = 2,
+                            SystemzId = 2,
+                            TargetFor = new DateTime(2023, 7, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5544),
+                            TargetFrom = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5543),
+                            Title = "TargetAssignment 2",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5541)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Donor.DonorBasic", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DonorTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Mobile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrgId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("DonorTypeId");
+
+                    b.HasIndex("OrgId");
+
+                    b.ToTable("DonorBasic");
+
+                    b.UseTptMappingStrategy();
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "DonorBasic44 Address",
+                            CityId = 1,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6344),
+                            Description = "DonorBasic 1 Description",
+                            DonorTypeId = 1,
+                            Email = "DonorBasic44@gmail.com",
+                            Gender = 1,
+                            Mobile = "3212824400",
+                            OrgId = 1,
+                            Title = "DonorBasic 1",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6345)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "DonorBasic55 Address",
+                            CityId = 2,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6355),
+                            Description = "DonorBasic 2 Description",
+                            DonorTypeId = 2,
+                            Email = "DonorBasic55@gmail.com",
+                            Gender = 1,
+                            Mobile = "3212825500",
+                            OrgId = 2,
+                            Title = "DonorBasic 2",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6356)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "DonorBasic66 Address",
+                            CityId = 2,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6361),
+                            Description = "DonorBasic 3 Description",
+                            DonorTypeId = 2,
+                            Email = "DonorBasic66@gmail.com",
+                            Gender = 1,
+                            Mobile = "3212826600",
+                            OrgId = 2,
+                            Title = "DonorBasic 3",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6362)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Donor.DonorType", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DonorTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5937),
+                            Description = "DonorType 1 Description",
+                            Status = 0,
+                            Title = "DonorType 1 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5938)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5945),
+                            Description = "DonorType 2 Description",
+                            Status = 1,
+                            Title = "DonorType 2 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5945)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5949),
+                            Description = "DonorType 3 Description",
+                            Status = 2,
+                            Title = "DonorType 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(5950)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Extraz.Branch", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Branchs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2482),
+                            Description = "Branch 1 Description",
+                            Title = "Branch 1 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2483)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2487),
+                            Description = "Branch 2 Description",
+                            Title = "Branch 2 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2488)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2490),
+                            Description = "Branch 3 Description",
+                            Title = "Branch 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2491)
                         });
                 });
 
@@ -508,24 +798,26 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7648),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2369),
                             Description = "COA 1 Description",
                             Title = "COA 1 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7649)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2369)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7654),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2374),
                             Description = "COA 2 Description",
                             Title = "COA 2 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7655)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2374)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2377),
                             Description = "COA 3 Description",
-                            Title = "COA 3 Title"
+                            Title = "COA 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2377)
                         });
                 });
 
@@ -557,24 +849,26 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7556),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2285),
                             Description = "Locationz 1 Description",
                             Title = "Locationz 1 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7557)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2286)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7563),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2291),
                             Description = "Locationz 2 Description",
                             Title = "Locationz 2 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7563)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2292)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2294),
                             Description = "Locationz 3 Description",
-                            Title = "Locationz 3 Title"
+                            Title = "Locationz 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2295)
                         });
                 });
 
@@ -606,24 +900,26 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7606),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2325),
                             Description = "Majlis 1 Description",
                             Title = "Majlis 1 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7607)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2326)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7612),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2332),
                             Description = "Majlis 2 Description",
                             Title = "Majlis 2 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7612)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2332)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2335),
                             Description = "Majlis 3 Description",
-                            Title = "Majlis 3 Title"
+                            Title = "Majlis 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2335)
                         });
                 });
 
@@ -655,24 +951,26 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7693),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2404),
                             Description = "SysmanAccount 1 Description",
                             Title = "SysmanAccount 1 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7694)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2405)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7698),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2409),
                             Description = "SysmanAccount 2 Description",
                             Title = "SysmanAccount 2 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(7699)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2409)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2411),
                             Description = "SysmanAccount 3 Description",
-                            Title = "SysmanAccount 3 Title"
+                            Title = "SysmanAccount 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2412)
                         });
                 });
 
@@ -704,24 +1002,26 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3513),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1057),
                             Description = "BG 1 Description",
                             Title = "BG 1 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3514)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1057)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3518),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1062),
                             Description = "BG 2 Description",
                             Title = "BG 2 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3519)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1062)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1065),
                             Description = "BG 3 Description",
-                            Title = "BG 3 Title"
+                            Title = "BG 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1065)
                         });
                 });
 
@@ -759,19 +1059,19 @@ namespace ProjectName.Infra.Migrations
                         {
                             Id = 1,
                             BGId = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3969),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1433),
                             Description = "LE 1 Description",
                             Title = "LE 1",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3971)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1434)
                         },
                         new
                         {
                             Id = 2,
                             BGId = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3979),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1441),
                             Description = "LE 2 Description",
                             Title = "LE 2",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3980)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1441)
                         });
                 });
 
@@ -783,20 +1083,53 @@ namespace ProjectName.Infra.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Deposit")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FooterImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FooterImg")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LEId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Law")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LogoImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LogoImg")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TopImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TopImg")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("WarningImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WarningImg")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -808,20 +1141,20 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(4601),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1822),
                             Description = "OU 1 Description",
                             LEId = 1,
                             Title = "OU 1",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(4603)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1823)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(4669),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1832),
                             Description = "OU 2 Description",
                             LEId = 2,
                             Title = "OU 2",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(4670)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1832)
                         });
                 });
 
@@ -853,24 +1186,26 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(2876),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(520),
                             Description = "Org 1 Description",
                             Title = "Org 1 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(2887)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(528)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(2902),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(544),
                             Description = "Org 2 Description",
                             Title = "Org 2 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(2903)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(544)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(588),
                             Description = "Org 3 Description",
-                            Title = "Org 3 Title"
+                            Title = "Org 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(589)
                         });
                 });
 
@@ -907,20 +1242,20 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5151),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2215),
                             Description = "SU 1 Description",
                             OUId = 1,
                             Title = "SU 1",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5153)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2216)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5161),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2222),
                             Description = "SU 2 Description",
                             OUId = 2,
                             Title = "SU 2",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5162)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2223)
                         });
                 });
 
@@ -957,20 +1292,20 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3437),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(993),
                             Description = "SU 1 Description",
                             OrgId = 1,
                             Title = "SU 1",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3438)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(995)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3447),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1002),
                             Description = "SU 2 Description",
                             OrgId = 2,
                             Title = "SU 2",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(3448)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(1002)
                         });
                 });
 
@@ -1002,24 +1337,26 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5232),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3376),
                             Description = "MadaniBasta 1 Description",
                             Title = "MadaniBasta 1 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5233)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3377)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5241),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3382),
                             Description = "MadaniBasta 2 Description",
                             Title = "MadaniBasta 2 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5242)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3382)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3384),
                             Description = "MadaniBasta 3 Description",
-                            Title = "MadaniBasta 3 Title"
+                            Title = "MadaniBasta 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3385)
                         });
                 });
 
@@ -1051,24 +1388,26 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5279),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3415),
                             Description = "MadaniBastaEvent 1 Description",
                             Title = "MadaniBastaEvent 1 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5280)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3416)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5313),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3421),
                             Description = "MadaniBastaEvent 2 Description",
                             Title = "MadaniBastaEvent 2 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5313)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3422)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3423),
                             Description = "MadaniBastaEvent 3 Description",
-                            Title = "MadaniBastaEvent 3 Title"
+                            Title = "MadaniBastaEvent 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3424)
                         });
                 });
 
@@ -1100,24 +1439,26 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5381),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3456),
                             Description = "MadaniBastaPlace 1 Description",
                             Title = "MadaniBastaPlace 1 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5382)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3457)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5387),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3462),
                             Description = "MadaniBastaPlace 2 Description",
                             Title = "MadaniBastaPlace 2 Title",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5388)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3462)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3464),
                             Description = "MadaniBastaPlace 3 Description",
-                            Title = "MadaniBastaPlace 3 Title"
+                            Title = "MadaniBastaPlace 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3465)
                         });
                 });
 
@@ -1154,20 +1495,287 @@ namespace ProjectName.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5822),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3821),
                             Description = "MadaniBastaSubCategory 1 Description",
                             MadaniBastaId = 1,
                             Title = "MadaniBastaSubCategory 1",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5823)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3822)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5833),
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3830),
                             Description = "MadaniBastaSubCategory 2 Description",
                             MadaniBastaId = 2,
                             Title = "MadaniBastaSubCategory 2",
-                            UpdatedAt = new DateTime(2023, 5, 22, 15, 51, 2, 452, DateTimeKind.Utc).AddTicks(5833)
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3830)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Regionz.City", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StateId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("Citys");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3315),
+                            Description = "City 1 Description",
+                            StateId = 1,
+                            Title = "City 1",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3317)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3323),
+                            Description = "City 2 Description",
+                            StateId = 2,
+                            Title = "City 2",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(3324)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Regionz.Country", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countrys");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2531),
+                            Description = "Country 1 Description",
+                            Title = "Country 1 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2532)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2536),
+                            Description = "Country 2 Description",
+                            Title = "Country 2 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2537)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2539),
+                            Description = "Country 3 Description",
+                            Title = "Country 3 Title",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2539)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Regionz.State", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("States");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CountryId = 1,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2924),
+                            Description = "State 1 Description",
+                            Title = "State 1",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2925)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CountryId = 2,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2933),
+                            Description = "State 2 Description",
+                            Title = "State 2",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(2933)
+                        });
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Donor.DonorGSB", b =>
+                {
+                    b.HasBaseType("ProjectName.Infra.Entity.Donor.DonorBasic");
+
+                    b.Property<string>("Area")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("BranchId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DonationOption")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DonationOptionData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Followup")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FollowupDate")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NearBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SubUnitId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WillingToJoinDI")
+                        .HasColumnType("int");
+
+                    b.HasIndex("BranchId");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("SubUnitId");
+
+                    b.ToTable("DonorGSB");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 4,
+                            Address = "DonorGSB44 Address",
+                            CityId = 1,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6765),
+                            Description = "DonorGSB 4 Description",
+                            DonorTypeId = 1,
+                            Email = "DonorGSB44@gmail.com",
+                            Gender = 1,
+                            Mobile = "03444444444",
+                            OrgId = 1,
+                            Title = "DonorGSB 4",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6767),
+                            Area = "44 Area",
+                            DonationOption = 0,
+                            Followup = 0,
+                            NearBy = "44 Near By",
+                            SubUnitId = 1,
+                            WillingToJoinDI = 0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "DonorGSB55 Address",
+                            CityId = 2,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6785),
+                            Description = "DonorGSB 5 Description",
+                            DonorTypeId = 2,
+                            Email = "DonorGSB55@gmail.com",
+                            Gender = 0,
+                            Mobile = "03555555555",
+                            OrgId = 2,
+                            Title = "DonorGSB 5",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6786),
+                            Area = "55 Area",
+                            BranchId = 2,
+                            DepartmentId = 2,
+                            DonationOption = 1,
+                            DonationOptionData = "1000",
+                            Followup = 1,
+                            FollowupDate = 5,
+                            NearBy = "55 Near By",
+                            SubUnitId = 2,
+                            WillingToJoinDI = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Address = "DonorGSB33 Address",
+                            CityId = 2,
+                            CreatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6794),
+                            Description = "DonorGSB 6 Description",
+                            DonorTypeId = 1,
+                            Email = "DonorGSB33@gmail.com",
+                            Gender = 2,
+                            Mobile = "03666666666",
+                            OrgId = 2,
+                            Title = "DonorGSB 6",
+                            UpdatedAt = new DateTime(2023, 6, 3, 5, 33, 18, 140, DateTimeKind.Utc).AddTicks(6795),
+                            Area = "66 Area",
+                            BranchId = 2,
+                            DepartmentId = 2,
+                            DonationOption = 2,
+                            DonationOptionData = "[{\"name\":\"Nana\",\"amount\":1000},{\"name\":\"Dadi\",\"amount\":500}]",
+                            Followup = 1,
+                            FollowupDate = 10,
+                            NearBy = "66 Near By",
+                            SubUnitId = 1,
+                            WillingToJoinDI = 1
                         });
                 });
 
@@ -1294,6 +1902,60 @@ namespace ProjectName.Infra.Migrations
                     b.Navigation("SysmanAccount");
                 });
 
+            modelBuilder.Entity("ProjectName.Infra.Entity.Donationz.TargetAssignment", b =>
+                {
+                    b.HasOne("ProjectName.Infra.Entity.Extraz.Majlis", "Majlis")
+                        .WithMany()
+                        .HasForeignKey("MajlisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjectName.Infra.Entity.Hierarchy.SU", "SU")
+                        .WithMany()
+                        .HasForeignKey("SUId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjectName.Infra.Entity.Hierarchy.Systemz", "Systemz")
+                        .WithMany()
+                        .HasForeignKey("SystemzId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Majlis");
+
+                    b.Navigation("SU");
+
+                    b.Navigation("Systemz");
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Donor.DonorBasic", b =>
+                {
+                    b.HasOne("ProjectName.Infra.Entity.Regionz.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjectName.Infra.Entity.Donor.DonorType", "DonorType")
+                        .WithMany("DonorBasics")
+                        .HasForeignKey("DonorTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjectName.Infra.Entity.Hierarchy.Org", "Org")
+                        .WithMany()
+                        .HasForeignKey("OrgId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+
+                    b.Navigation("DonorType");
+
+                    b.Navigation("Org");
+                });
+
             modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.LE", b =>
                 {
                     b.HasOne("ProjectName.Infra.Entity.Hierarchy.BG", "BG")
@@ -1349,9 +2011,65 @@ namespace ProjectName.Infra.Migrations
                     b.Navigation("MadaniBasta");
                 });
 
+            modelBuilder.Entity("ProjectName.Infra.Entity.Regionz.City", b =>
+                {
+                    b.HasOne("ProjectName.Infra.Entity.Regionz.State", "State")
+                        .WithMany("Citys")
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("State");
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Regionz.State", b =>
+                {
+                    b.HasOne("ProjectName.Infra.Entity.Regionz.Country", "Country")
+                        .WithMany("States")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Donor.DonorGSB", b =>
+                {
+                    b.HasOne("ProjectName.Infra.Entity.Extraz.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchId");
+
+                    b.HasOne("ProjectName.Infra.Entity.Extraz.Majlis", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId");
+
+                    b.HasOne("ProjectName.Infra.Entity.Donor.DonorBasic", null)
+                        .WithOne()
+                        .HasForeignKey("ProjectName.Infra.Entity.Donor.DonorGSB", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjectName.Infra.Entity.Hierarchy.SU", "SU")
+                        .WithMany()
+                        .HasForeignKey("SubUnitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Branch");
+
+                    b.Navigation("Department");
+
+                    b.Navigation("SU");
+                });
+
             modelBuilder.Entity("ProjectName.Infra.Entity.ApiUser", b =>
                 {
                     b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Donor.DonorType", b =>
+                {
+                    b.Navigation("DonorBasics");
                 });
 
             modelBuilder.Entity("ProjectName.Infra.Entity.Hierarchy.BG", b =>
@@ -1367,6 +2085,16 @@ namespace ProjectName.Infra.Migrations
             modelBuilder.Entity("ProjectName.Infra.Entity.MadaniBastaEntity.MadaniBasta", b =>
                 {
                     b.Navigation("MadaniBastaSubCategorys");
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Regionz.Country", b =>
+                {
+                    b.Navigation("States");
+                });
+
+            modelBuilder.Entity("ProjectName.Infra.Entity.Regionz.State", b =>
+                {
+                    b.Navigation("Citys");
                 });
 #pragma warning restore 612, 618
         }

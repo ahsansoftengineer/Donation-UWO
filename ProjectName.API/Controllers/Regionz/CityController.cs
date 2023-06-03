@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Domain.DTOs.Regionz;
 using ProjectName.Infra.Entity.Regionz;
-using ProjectName.Infra.Repo;
+using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Regionz
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
   [ApiController]
   public class CityController : BaseController<CityController, City, CityDtoSearch, CityDto, CityDtoCreate>
   {

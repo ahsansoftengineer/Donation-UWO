@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Infra.Entity.MadaniBastaEntity;
-using ProjectName.Infra.Repo;
+using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.MadaniBastaz
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
   [ApiController]
   public class MadaniBastaEventController : CommonController<MadaniBastaEventController, MadaniBastaEvent>
   {

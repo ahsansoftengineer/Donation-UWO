@@ -3,14 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectName.Domain.Base;
 using ProjectName.Infra.Entity.Base;
 using ProjectName.Infra.Repo;
+using ProjectName.Infra.UOW;
 using X.PagedList;
 
 namespace ProjectName.API.Controllers.Base
 {
-  public class BaseController<TController, TEntity, DtoSearch, DtoResponse, DtoCreate>
+    public class BaseController<TController, TEntity, DtoSearch, DtoResponse, DtoCreate>
     : AlphaController<TController>
     //where TEntity : class
-    where TEntity : BaseEntity
+    where TEntity : AlphaEntity
     where DtoSearch : class
     where DtoResponse : class
     where DtoCreate: class
