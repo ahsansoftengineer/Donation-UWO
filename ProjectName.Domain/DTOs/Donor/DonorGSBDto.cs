@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ProjectName.Domain.Base;
 using ProjectName.Domain.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectName.Domain.DTOs.Donor
 {
@@ -15,7 +16,9 @@ namespace ProjectName.Domain.DTOs.Donor
     public YesNo Followup { get; set; }
     public int? FollowupDate { get; set; }
     public DonationOption DonationOption { get; set; }
+    [JsonIgnore]
     public string? DonationOptionData { get; set; }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public List<DonorGSBOptionMarhoom>? donorGSBOptionMarhooms
     {
       get
@@ -37,11 +40,13 @@ namespace ProjectName.Domain.DTOs.Donor
         if (value != null) DonationOptionData = JsonConvert.SerializeObject(value);
       }
     }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public int? donorGSBOptionSelf
     {
       get
       {
         int.TryParse(DonationOptionData, out int result);
+        if(result == 0) { return null; }
         return result;
       }
       set
@@ -64,7 +69,9 @@ namespace ProjectName.Domain.DTOs.Donor
     public YesNo Followup { get; set; }
     public int? FollowupDate { get; set; }
     public DonationOption DonationOption { get; set; }
+    [JsonIgnore]
     public string? DonationOptionData { get; set; }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public List<DonorGSBOptionMarhoom>? donorGSBOptionMarhooms
     {
       get
@@ -86,11 +93,13 @@ namespace ProjectName.Domain.DTOs.Donor
         if (value != null) DonationOptionData = JsonConvert.SerializeObject(value);
       }
     }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public int? donorGSBOptionSelf
     {
       get
       {
         int.TryParse(DonationOptionData, out int result);
+        if (result == 0) { return null; }
         return result;
       }
       set
@@ -110,7 +119,9 @@ namespace ProjectName.Domain.DTOs.Donor
     public YesNo? Followup { get; set; }
     public int? FollowupDate { get; set; }
     public DonationOption? DonationOption { get; set; }
+    [JsonIgnore]
     public string? DonationOptionData { get; set; }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public List<DonorGSBOptionMarhoom>? donorGSBOptionMarhooms
     {
       get
@@ -132,11 +143,13 @@ namespace ProjectName.Domain.DTOs.Donor
         if (value != null) DonationOptionData = JsonConvert.SerializeObject(value);
       }
     }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public int? donorGSBOptionSelf
     {
       get
       {
         int.TryParse(DonationOptionData, out int result);
+        if (result == 0) { return null; }
         return result;
       }
       set

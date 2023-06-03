@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ProjectName.API.DI
@@ -25,6 +26,15 @@ namespace ProjectName.API.DI
       //services.AddAutoMapper(typeof(MapperInitializer)); // Later
       // Transient Means Fresh Copy
       services.ConfigureSwagger();
+      
+      services.ConfigureControllerz();
+
+      services.ConfigureVersioning();
+      
+      return services;
+    }
+    public static void ConfigureControllerz(this IServiceCollection services)
+    {
       services
         // API Caching 3. Defining Cache Profile
         .AddControllers(config =>
@@ -32,7 +42,7 @@ namespace ProjectName.API.DI
           //config.Filters<Filters>();
           config.CacheProfiles.Add("120SecondsDuration", new CacheProfile
           {
-            Duration = 120
+            Duration = 2
             //,Location = ResponseCacheLocation.Client
             //,NoStore = true
             //,VaryByHeader = "I don't know which string"
@@ -41,15 +51,10 @@ namespace ProjectName.API.DI
         })
         .AddNewtonsoftJson(opt =>
         {
-          opt.SerializerSettings.ReferenceLoopHandling =
-            Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+          opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+          opt.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
         });
-
-      services.ConfigureVersioning();
-      
-      return services;
     }
-
     public static void ConfigureSwagger(this IServiceCollection services)
     {
       services.AddSwaggerGen(c =>
