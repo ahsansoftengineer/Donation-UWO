@@ -9,7 +9,7 @@ using X.PagedList;
 
 namespace ProjectName.API.Controllers.Hierarchy
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class OrgController : AlphaController<OrgController>
   {

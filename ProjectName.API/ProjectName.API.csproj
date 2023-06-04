@@ -28,4 +28,8 @@
     <ProjectReference Include="..\ProjectName.Infra\ProjectName.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Filezs\ouz\" />
+  </ItemGroup>
+
 </Project>

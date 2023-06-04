@@ -31,6 +31,8 @@ UPDATE-DATABASE -Context DatabaseContext // PM Package Manager Console
 // Before Running the Below Command Ensure the Project is not Running Because DB In Use
 dotnet ef database update -p ProjectName.Infra -s ProjectName.Api --connection "SERVER=.;DATABASE=Donation;USER=sa;PASSWORD=asdf1234;Encrypt=false"
 
+D:
+cd D:\Dev\1-Core\SolutionNameDonation
 dotnet run --project ProjectName.Api
 ```
 

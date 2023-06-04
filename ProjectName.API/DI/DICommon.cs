@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Swashbuckle.AspNetCore.SwaggerGen;
+using ProjectName.API.Common;
 
 namespace ProjectName.API.DI
 {
@@ -14,23 +14,17 @@ namespace ProjectName.API.DI
       // API Throttling 3
       services.ConfigureRateLimiting();
       services.AddHttpContextAccessor();
-
       // API Caching 6: Adding Services Extensions
       services.ConfigureHttpCacheHeaders();
-
       services.AddAuthentication();
       services.ConfigureIdentity();
-
       services.ConfigureCors();
-
       //services.AddAutoMapper(typeof(MapperInitializer)); // Later
       // Transient Means Fresh Copy
       services.ConfigureSwagger();
-      
       services.ConfigureControllerz();
-
       services.ConfigureVersioning();
-      
+      services.ConfigureFileHandling();
       return services;
     }
     public static void ConfigureControllerz(this IServiceCollection services)
@@ -54,6 +48,7 @@ namespace ProjectName.API.DI
           opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
           opt.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
         });
+     
     }
     public static void ConfigureSwagger(this IServiceCollection services)
     {
@@ -64,9 +59,10 @@ namespace ProjectName.API.DI
           Title = "Trevor Simple",
           Version = "v1"
         });
+        //c.IgnoreObsoleteProperties();
+        //c.SchemaFilter<MySwaggerSchemaFilter>(); // Failed to apply this
       });
     }
-
     public static void ConfigureCors(this IServiceCollection services)
     {
       services.AddCors(option =>
@@ -98,5 +94,6 @@ namespace ProjectName.API.DI
       //});
 
     }
+
   }
 }

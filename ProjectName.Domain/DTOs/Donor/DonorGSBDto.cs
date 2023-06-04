@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ProjectName.Domain.Base;
 using ProjectName.Domain.Enums;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectName.Domain.DTOs.Donor
 {

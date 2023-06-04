@@ -1,9 +1,11 @@
 ﻿using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
+using ProjectName.API.Common;
 using ProjectName.Domain.Common;
 using ProjectName.Infra.Context;
 using ProjectName.Infra.Entity;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace ProjectName.API.DI
 {
@@ -16,11 +18,11 @@ namespace ProjectName.API.DI
         .ConfigureVersioning()
         //.ConfigureHttpCacheHeaders() // Enable on Production
         .ConfigureRateLimiting();
-
+      services.ConfigureFileHandling();
       return services;
     }
-
-    public static IApplicationBuilder AddExternalConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
+    public static IApplicationBuilder AddExternalConfiguration(this IApplicationBuilder app, 
+      IWebHostEnvironment env)
     {
       app.ConfigureDevEnv(env);
       app.ConfigureExceptionHandler();
@@ -44,8 +46,7 @@ namespace ProjectName.API.DI
         // Convention Based Routing Schema
         //ep.MapControllerRoute(
         //  name: "default",
-        //  pattern: "{controller=Home}/{action=Index}/{id?}"
-        //  );
+        //  pattern: "{controller=Home}/{action=Index}/{id?}"); //
         ep.MapControllers();
       });
 
@@ -58,7 +59,11 @@ namespace ProjectName.API.DI
       {
         app.UseDeveloperExceptionPage();
         app.UseSwagger();
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trevor v1"));
+        app.UseSwaggerUI(c => {
+          c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trevor v1");
+          c.DocExpansion(DocExpansion.None);
+          //c.InjectJavascript("/js/swagger-custom.js"); //
+        });
       }
     }
     public static IApplicationBuilder ConfigureExceptionHandler(this IApplicationBuilder app)
@@ -149,6 +154,16 @@ namespace ProjectName.API.DI
       services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
 
       return services;
+    }
+    public static void ConfigureFileHandling(this IServiceCollection services)
+    {
+      services.Configure<IISServerOptions>(options =>
+      {
+        options.MaxRequestBodySize = int.MaxValue; // Set the maximum request body size (e.g., unlimited)
+      });
+
+      //services.AddHttpContextAccessor();// Already Configured
+      services.AddScoped<FileUploderz, FileUploderz>();
     }
   }
 }

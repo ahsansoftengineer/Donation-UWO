@@ -7,10 +7,10 @@ using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Donor
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class DonorGSBController : BaseController<
-    DonorGSBController, DonorGSB, DonorGSBDtoSearch, DonorGSBDto, DonorGSBDtoCreate>
+  DonorGSBController, DonorGSB, DonorGSBDtoSearch, DonorGSBDto, DonorGSBDtoCreate>
   {
     public DonorGSBController(
       ILogger<DonorGSBController> logger,
