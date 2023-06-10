@@ -8,6 +8,7 @@ using ProjectName.Infra.Entity.Regionz;
 using ProjectName.Domain.DTOs.Regionz;
 using ProjectName.Infra.Entity.Donor;
 using ProjectName.Domain.DTOs.Donor;
+using System.Net;
 
 namespace ProjectName.API.Config
 {
@@ -18,7 +19,13 @@ namespace ProjectName.API.Config
       CreateMapAll<Systemz, SystemzDto, SystemzDtoCreate, SystemzDtoSearch>();
 
       CreateMapAll<LE, LEDto, LEDtoCreate, LEDtoSearch>();
-      CreateMapAll<OU, OUDto, OUDtoCreate, OUDtoSearch>();
+      CreateMap<OUDtoCreate, OUDtoCreateToEntity>();
+        //.ForMember(d => d.LogoImg, c => c.MapFrom(y => y.LogoImg.Name))
+        //.ForMember(d => d.TopImg, c => c.MapFrom(y => y.TopImg.Name))
+        //.ForMember(d => d.WarningImg, c => c.MapFrom(y => y.WarningImg.Name))
+        //.ForMember(d => d.FooterImg, c => c.MapFrom(y => y.FooterImg.Name));
+
+      CreateMapAll<OU, OUDto, OUDtoCreateToEntity, OUDtoSearch>();
       CreateMapAll<SU, SUDto, SUDtoCreate, SUDtoSearch>();
 
       CreateMapAll<MadaniBastaSubCategory, 

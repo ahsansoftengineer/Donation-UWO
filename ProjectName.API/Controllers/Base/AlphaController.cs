@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.Infra.UOW;
 
@@ -24,36 +23,40 @@ namespace ProjectName.API.Controllers.Base
       Logger.LogError(ex, $"Something went wrong in the {methodName}");
       return StatusCode(500, "Internal Server Error, Please try again later");
     }
-
-    protected ObjectResult CreateInvalid()
+    protected ObjectResult FileInvalid(string message = $"Invalid POST attempt in Create")
     {
-      Logger.LogError($"Invalid POST attempt in Create");
+      Logger.LogError(message);
       return BadRequest(ModelState);
     }
-    protected ObjectResult UpdateInvalid()
+    protected ObjectResult CreateInvalid(string message = $"Invalid POST attempt in Create")
     {
-      Logger.LogError($"Invalid UPDATE attempt in Update");
+      Logger.LogError(message);
       return BadRequest(ModelState);
     }
-    protected ObjectResult StatusInvalid()
+    protected ObjectResult UpdateInvalid(string message = $"Invalid UPDATE attempt in Update")
     {
-      Logger.LogError($"Invalid STATUS attempt in Update");
+      Logger.LogError(message);
       return BadRequest(ModelState);
     }
-    protected ObjectResult UpdateNull()
+    protected ObjectResult StatusInvalid(string message = $"Invalid STATUS attempt in Update")
     {
-      Logger.LogError($"Invalid UPDATE attempt in Update");
+      Logger.LogError(message);
+      return BadRequest(ModelState);
+    }
+    protected ObjectResult UpdateNull(string message = $"Invalid UPDATE attempt in Update")
+    {
+      Logger.LogError(message);
       return BadRequest("Submit Data is Invalid");
     }
 
-    protected ObjectResult DeleteInvalid()
+    protected ObjectResult DeleteInvalid(string message = $"Invalid DELETE attempt in Delete")
     {
-      Logger.LogError($"Invalid DELETE attempt in Delete");
+      Logger.LogError(message);
       return BadRequest("Submit id is Negative");
     }
-    protected ObjectResult DeleteNull()
+    protected ObjectResult DeleteNull(string message = $"Invalid DELETE attempt in Delete")
     {
-      Logger.LogError($"Invalid DELETE attempt in Delete");
+      Logger.LogError(message);
       return BadRequest("Submit id is Invalid");
 
     }

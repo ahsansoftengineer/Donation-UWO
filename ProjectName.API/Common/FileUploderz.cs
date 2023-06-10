@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json.Linq;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Infra.UOW;
+using System.Reflection;
 
 namespace ProjectName.API.Common
 {
@@ -9,6 +12,7 @@ namespace ProjectName.API.Common
   public class FileUploderz : AlphaController<FileUploderz>
   {
     private readonly IWebHostEnvironment hostEnv;
+    private string storageFiles = "/assets/ouz";
     public FileUploderz(
       ILogger<FileUploderz> logger, 
       IMapper mapper, 
@@ -20,14 +24,15 @@ namespace ProjectName.API.Common
     {
       hostEnv = hostingEnvironment;
     }
-
-    public async Task<IActionResult> UploadFile(IFormFile file)
+    // Async Methods Cannot have output parameters
+    // Don't use this methods
+    public async Task<IActionResult> UploadFile(IFormFile file, string fileName)
     {
       if (file == null || file.Length == 0) return BadRequest("Invalid file");
 
       // Specify the directory where you want to save the file
       //var uploadDirectory = "D:/Directory";
-      var uploadDirectory = hostEnv.ContentRootPath + "/Filezs/ouz/";
+      var uploadDirectory = hostEnv.ContentRootPath + storageFiles;
       Console.WriteLine(hostEnv.ContentRootPath);
 
       // Create the directory if it doesn't exist
@@ -35,7 +40,13 @@ namespace ProjectName.API.Common
         Directory.CreateDirectory(uploadDirectory);
 
       // Generate a unique file name (e.g., using a Guid)
-      var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+      string extension = Path.GetExtension(file.FileName);
+      string allowedExtensions = ".png .jpeg .webp .jpg";
+      if (allowedExtensions.IndexOf(extension) == -1)
+      {
+        return FileInvalid($"Invalid File Type {file.FileName} Only {allowedExtensions} allowed");
+      }
+      fileName += Guid.NewGuid().ToString() + extension;
 
       // Combine the directory and file name to get the full path
       var filePath = Path.Combine(uploadDirectory, fileName);
@@ -45,8 +56,50 @@ namespace ProjectName.API.Common
       {
         await file.CopyToAsync(stream);
       }
+      return Ok(this.storageFiles + "/" + fileName);
+    }
 
-      return Ok("File uploaded successfully");
+    public async Task<IActionResult> UploadFileReflection(
+      IFormFile file, 
+      string propertyName,
+      object obj
+      )
+    {
+      if (file == null || file.Length == 0) return BadRequest("Invalid file");
+
+      // Specify the directory where you want to save the file
+      //var uploadDirectory = "D:/Directory";
+      var uploadDirectory = hostEnv.ContentRootPath + storageFiles;
+      Console.WriteLine(hostEnv.ContentRootPath);
+
+      // Create the directory if it doesn't exist
+      if (!Directory.Exists(uploadDirectory))
+        Directory.CreateDirectory(uploadDirectory);
+
+      // Generate a unique file name (e.g., using a Guid)
+      string extension = Path.GetExtension(file.FileName);
+      string allowedExtensions = ".png .jpeg .webp .jpg";
+      if (allowedExtensions.IndexOf(extension) == -1)
+      {
+        return FileInvalid($"Invalid File Type {file.FileName} Only {allowedExtensions} allowed");
+      }
+      PropertyInfo propertyInfo = obj.GetType().GetProperty(propertyName);
+      propertyName += Guid.NewGuid().ToString() + extension;
+
+      // Combine the directory and file name to get the full path
+      var filePath = Path.Combine(uploadDirectory, propertyName);
+
+      // Save the file to the specified path
+      using (var stream = new FileStream(filePath, FileMode.Create))
+      {
+        await file.CopyToAsync(stream);
+      }
+      // Assign Property Value using Reflection
+      if (propertyInfo != null)
+      {
+        propertyInfo.SetValue(obj, this.storageFiles + "/" + propertyName);
+      }
+      return Ok("Worked Correctly");
     }
   }
 }

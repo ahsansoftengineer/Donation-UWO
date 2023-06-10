@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Filezs\ouz\" />
+    <None Include="wwwroot\js\SwaggerCustome.js" />
   </ItemGroup>
 
 </Project>

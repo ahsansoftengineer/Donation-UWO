@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectName.API.Common;
 using ProjectName.API.Controllers.Base;
-using ProjectName.Domain.Common;
 using ProjectName.Domain.DTOs.Hierarchy;
 using ProjectName.Infra.Entity.Hierarchy;
 using ProjectName.Infra.UOW;
@@ -29,9 +28,29 @@ namespace ProjectName.API.Controllers.Hierarchy
     [HttpPost("create-ou")]
     public async Task<IActionResult> UploadFile([FromForm] OUDtoCreate model)
     {
-      Console.WriteLine(model.TopImg);
-      await FileUploderz.UploadFile(model.TopImg);
-      return Ok();
+      var result = Mapper.Map<OUDtoCreate, OUDtoCreateToEntity>(model);
+      // Way 1
+      IActionResult topImg = await FileUploderz.UploadFile(model.TopImg, "TopImage");
+      //var topImg = await FileUploderz.UploadFile(model.TopImg, "TopImage"); //
+      if (topImg is OkObjectResult topResult) result.TopImg = (string)topResult.Value;
+
+      // Way 3 Reflection
+      await FileUploderz.UploadFileReflection(model.LogoImg, "LogoImg", result);
+      await FileUploderz.UploadFileReflection(model.WarningImg, "WarningImg", result);
+      await FileUploderz.UploadFileReflection(model.FooterImg, "FooterImg", result);
+      
+      if (!ModelState.IsValid) return CreateInvalid();
+      try
+      {
+        var finalResult = Mapper.Map<OUDtoCreateToEntity, OU>(result);
+        await Repo.Insert(finalResult);
+        await UnitOfWork.Save();
+        return Ok(finalResult);
+      }
+      catch (Exception ex)
+      {
+        return CatchException(ex, nameof(Create));
+      }
     }
   }
 }
