@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Newtonsoft.Json.Linq;
 using ProjectName.API.Controllers.Base;
 using ProjectName.Infra.UOW;
 using System.Reflection;

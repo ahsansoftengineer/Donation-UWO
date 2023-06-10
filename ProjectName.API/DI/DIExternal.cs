@@ -1,6 +1,7 @@
 ﻿using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.FileProviders;
 using ProjectName.API.Common;
 using ProjectName.Domain.Common;
 using ProjectName.Infra.Context;
@@ -24,6 +25,7 @@ namespace ProjectName.API.DI
     public static IApplicationBuilder AddExternalConfiguration(this IApplicationBuilder app, 
       IWebHostEnvironment env)
     {
+      app.ConfigureStaticFilesHandling();
       app.ConfigureDevEnv(env);
       app.ConfigureExceptionHandler();
       app.UseHttpsRedirection();
@@ -51,6 +53,18 @@ namespace ProjectName.API.DI
       });
 
       return app;
+    }
+    public static void ConfigureStaticFilesHandling(this IApplicationBuilder app)
+    {
+      app.UseStaticFiles(); // Enable static file serving
+
+      // Optional: Serve files from a custom directory
+      var staticFilesPath = Path.Combine(Directory.GetCurrentDirectory(), "assets");
+      app.UseStaticFiles(new StaticFileOptions
+      {
+        FileProvider = new PhysicalFileProvider(staticFilesPath),
+        RequestPath = "/assets"
+      });
     }
     public static void ConfigureDevEnv(this IApplicationBuilder app, IWebHostEnvironment env)
     {
