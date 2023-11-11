@@ -8,7 +8,6 @@ using ProjectName.Infra.Entity.Regionz;
 using ProjectName.Domain.DTOs.Regionz;
 using ProjectName.Infra.Entity.Donor;
 using ProjectName.Domain.DTOs.Donor;
-using System.Net;
 
 namespace ProjectName.API.Config
 {

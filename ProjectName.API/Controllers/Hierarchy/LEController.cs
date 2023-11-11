@@ -7,7 +7,7 @@ using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Hierarchy
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class LEController : BaseController<
     LEController, LE, LEDtoSearch, LEDto, LEDtoCreate>

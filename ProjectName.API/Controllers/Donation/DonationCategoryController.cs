@@ -6,7 +6,7 @@ using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Donation
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class DonationCategoryController : CommonController<DonationCategoryController, DonationCategory>
   {
@@ -16,7 +16,6 @@ namespace ProjectName.API.Controllers.Donation
       IUnitOfWork unitOfWork) : base(logger, mapper, unitOfWork)
     {
       Repo = unitOfWork.DonationCategorys;
-
     }
   }
 }
