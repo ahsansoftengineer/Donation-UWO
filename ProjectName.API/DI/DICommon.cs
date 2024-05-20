@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using ProjectName.API.Common;
 
 namespace ProjectName.API.DI
 {
-  public static partial class DICommon
+    public static partial class DICommon
   {
 
     public static IServiceCollection AddDICommon(this IServiceCollection services)

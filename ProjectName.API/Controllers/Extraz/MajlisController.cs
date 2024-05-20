@@ -6,7 +6,7 @@ using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Extraz
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class MajlisController : CommonController<MajlisController, Majlis>
   {

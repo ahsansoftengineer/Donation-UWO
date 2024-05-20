@@ -6,7 +6,7 @@ using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.MadaniBastaz
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class MadaniBastaPlaceController : CommonController<MadaniBastaPlaceController, MadaniBastaPlace>
   {

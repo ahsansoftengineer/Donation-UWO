@@ -7,7 +7,7 @@ using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.MadaniBastaz
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class MadaniBastaSubCategoryController : BaseController<MadaniBastaSubCategoryController, MadaniBastaSubCategory, MadaniBastaSubCategoryDtoSearch, MadaniBastaSubCategoryDto, MadaniBastaSubCategoryDtoCreate>
   {

@@ -7,7 +7,7 @@ using ProjectName.Infra.UOW;
 
 namespace ProjectName.API.Controllers.Regionz
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class CityController : BaseController<CityController, City, CityDtoSearch, CityDto, CityDtoCreate>
   {
