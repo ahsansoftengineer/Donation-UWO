@@ -1,4 +1,4 @@
-﻿## Dotnet Core CLI Commands
+## Dotnet Core CLI Commands
 - Note: For Bash You can Revert BackSlash \ to ForwardSlash /
 - Create a Folder for your project with that folder run the following commands
 
