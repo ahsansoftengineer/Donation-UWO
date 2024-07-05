@@ -98,7 +98,7 @@ dotnet tool install --global dotnet-ef
 dotnet tool list --global
 
 
-dotnet ef database update --project Donation.Infrastructure --startup-project Donation.Api --connection "SERVER=127.0.0.1,1433;DATABASE=Donation;USER=sa;PASSWORD=asdf1234;Encrypt=false"
+dotnet ef database add MigrationName --project Donation.Infrastructure --startup-project Donation.Api --connection "SERVER=127.0.0.1,1433;DATABASE=Donation;USER=sa;PASSWORD=asdf1234;Encrypt=false"
 
 # ADD
 dotnet ef migrations add InitialCreate -p Donation.Infrastructure -s Donation.Api
