@@ -10,57 +10,57 @@ dotnet new sln -o SolutionName
 ```bash
 dotnet new webapi -o ProjectName.Api
 dotnet new classlib -o ProjectName.Contracts
-dotnet new classlib -o ProjectName.Infrastructure
+dotnet new classlib -o ProjectName.Infra
 dotnet new classlib -o ProjectName.Application
 dotnet new classlib -o ProjectName.Domain
 ```
 ### ADD / REMOVE PROJECTS
 ```bash
 dotnet sln add (ls -r **\*.csproj) # Powershell Command
-dotnet sln remove .\Donation.Contacts\Donation.Contacts.csproj # cmd
+dotnet sln remove .\ProjectName.Contacts\ProjectName.Contacts.csproj # cmd
 dotnet format ./solution.sln # ??
 more.\SolutionName.sln # ??
 ```
 ### ADDING LOCAL PROJECTS
 ```bash
 dotnet build
-dotnet add .\Donation.Api\ reference .\Donation.Contracts\ .\Donation.Application\
-dotnet add .\Donation.Infrastructure\ reference .\Donation.Application\
-dotnet add .\Donation.Application\ reference .\Donation.Domain\
-dotnet add .\Donation.Api\ reference .\Donation.Infrastructure\
+dotnet add .\ProjectName.Api\ reference .\ProjectName.Contracts\ .\ProjectName.Application\
+dotnet add .\ProjectName.Infra\ reference .\ProjectName.Application\
+dotnet add .\ProjectName.Application\ reference .\ProjectName.Domain\
+dotnet add .\ProjectName.Api\ reference .\ProjectName.Infra\
 ```
 ### RUNNING PROJECTS
 ```bash
-dotnet run --project .\Donation.Api\
-dotnet watch run --project .\Donation.Api\
+dotnet run --project .\ProjectName.Api\
+dotnet watch run --project .\ProjectName.Api\
 ```
 
 #### USER SECRETS
 ```bash 
-dotnet user-secrets init --project .\Donation.Api\
-dotnet user-secrets set --project .\Donation.Api\ "JwtSettings:Secret" "super-secret-key-from-user-secrets"
-dotnet user-secrets list --project .\Donation.Api\
+dotnet user-secrets init --project .\ProjectName.Api\
+dotnet user-secrets set --project .\ProjectName.Api\ "JwtSettings:Secret" "super-secret-key-from-user-secrets"
+dotnet user-secrets list --project .\ProjectName.Api\
 ```
 ### EXTERNAL PACKAGES
 - Adding Packages to Specific Project
 ```bash
-dotnet add .\Donation.Infrastructure\ package Microsoft.Extensions.Configuration
-dotnet add .\Donation.Infrastructure\ package Microsoft.Extensions.Options.ConfigurationExtensions
-dotnet add .\Donation.Infrastructure\ package Microsoft.AspNetCore.Authentication.JwtBearer
+dotnet add .\ProjectName.Infra\ package Microsoft.Extensions.Configuration
+dotnet add .\ProjectName.Infra\ package Microsoft.Extensions.Options.ConfigurationExtensions
+dotnet add .\ProjectName.Infra\ package Microsoft.AspNetCore.Authentication.JwtBearer
 
-dotnet add .\Donation.Application\ package OneOf // Drawback of Scalability used in Application Layer
-dotnet add .\Donation.Application\ package FluentResults // It has Lack Some Ability of OneOf used in Application Layer
-dotnet add .\Donation.Domain\ package ErrorOr // Recommended and Final Approach
-dotnet add .\Donation.Application\ package MediatR
-dotnet add .\Donation.Application\ package MediatR.Extension.Microsoft.DependencyInjection
-dotnet add .\Donation.Application\ package Mapster
-dotnet add .\Donation.Application\ package FluentValidation
-dotnet add .\Donation.Application\ package FluentValidation.AspNetCore
+dotnet add .\ProjectName.Application\ package OneOf // Drawback of Scalability used in Application Layer
+dotnet add .\ProjectName.Application\ package FluentResults // It has Lack Some Ability of OneOf used in Application Layer
+dotnet add .\ProjectName.Domain\ package ErrorOr // Recommended and Final Approach
+dotnet add .\ProjectName.Application\ package MediatR
+dotnet add .\ProjectName.Application\ package MediatR.Extension.Microsoft.DependencyInjection
+dotnet add .\ProjectName.Application\ package Mapster
+dotnet add .\ProjectName.Application\ package FluentValidation
+dotnet add .\ProjectName.Application\ package FluentValidation.AspNetCore
 
-dotnet add Donation.Infrastructure package Microsoft.EntityFrameworkCore 
-dotnet add Donation.Infrastructure package Microsoft.EntityFrameworkCore.SqlServer
-dotnet add Donation.Infrastructure package Microsoft.EntityFrameworkCore.Design
-dotnet add Donation.Api package Microsoft.EntityFrameworkCore.Design
+dotnet add ProjectName.Infra package Microsoft.EntityFrameworkCore 
+dotnet add ProjectName.Infra package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add ProjectName.Infra package Microsoft.EntityFrameworkCore.Design
+dotnet add ProjectName.Api package Microsoft.EntityFrameworkCore.Design
 ```
 ### GIT
 ```bash
@@ -89,7 +89,7 @@ docker ps
 // Below Command Run After SQL Container Runs (Keys are Case Insensitive & their alternatives are available)
 
 
-dotnet ef database update -p Donation.Infrastructure -s Donation.Api --connection "server=localhost;Database=Donation;User Id=sa;password=asdf1234;TrustServerCertificate=true"
+dotnet ef database update -p ProjectName.Infra -s ProjectName.Api --connection "server=localhost;Database=ProjectName;User Id=sa;password=asdf1234;TrustServerCertificate=true"
  // This Command won't work b/c of Certificate & Swagger (Run using f5)
 ```
 ### MIGRATION
@@ -98,16 +98,16 @@ dotnet tool install --global dotnet-ef
 dotnet tool list --global
 
 
-dotnet ef database add MigrationName --project Donation.Infrastructure --startup-project Donation.Api --connection "SERVER=127.0.0.1,1433;DATABASE=Donation;USER=sa;PASSWORD=asdf1234;Encrypt=false"
+dotnet ef database add MigrationName --project ProjectName.Infra --startup-project ProjectName.Api --connection "SERVER=127.0.0.1,1433;DATABASE=ProjectName;USER=sa;PASSWORD=asdf1234;Encrypt=false"
 
 # ADD
-dotnet ef migrations add InitialCreate -p Donation.Infrastructure -s Donation.Api
+dotnet ef migrations add InitialCreate -p ProjectName.Infra -s ProjectName.Api
 # REMOVE
-dotnet ef migrations remove  -p Donation.Infrastructure -s Donation.Api
+dotnet ef migrations remove  -p ProjectName.Infra -s ProjectName.Api
 # UPDATE
-dotnet ef database update -p Donation.Infrastructure -s Donation.Api --connection "Server=localhost;Database=Donation;User Id=sa;Password=asdf1234;Encrypt=false"
+dotnet ef database update -p ProjectName.Infra -s ProjectName.Api --connection "Server=localhost;Database=ProjectName;User Id=sa;Password=asdf1234;Encrypt=false"
 # RUN
-dotnet run --project Donation.Api
+dotnet run --project ProjectName.Api
 ```
 ### CURL COMMAND
 - Undermentioned Commands only works with Bash
